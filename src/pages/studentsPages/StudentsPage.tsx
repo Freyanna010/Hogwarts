@@ -1,4 +1,3 @@
-import StudentCard from "@/componets/StudentCard";
 import StudentsList from "@/componets/StudentsList";
 import {
   addFavoriteStudents,
@@ -14,7 +13,6 @@ import { Button, Col, Row, Typography } from "antd";
 import { FC, useEffect, useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import avatar from "@assets/hogAvatar.webp";
 import { PlusOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
