@@ -9,9 +9,7 @@ const StudentPage = () => {
   const { currentStudent } = useSelector((state: RootState) => state.students);
 
   useEffect(() => {
-    // if (id) {
-    //   dispatch(fetchStudentDataById(id));
-    // }
+
     console.log(currentStudent);
     
   }, [dispatch]);

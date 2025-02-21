@@ -12,7 +12,7 @@ import { AppDispatch, RootState } from "@/store/store";
 import { hogwartsTheme } from "@/styles/theme";
 import { Button, Col, Row, Typography } from "antd";
 import { FC, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+  import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import avatar from "@assets/hogAvatar.webp";
 import { PlusOutlined } from "@ant-design/icons";
