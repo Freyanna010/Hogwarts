@@ -1,0 +1,33 @@
+.houseCard {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  border-radius: 50%;
+  cursor:
+    url("../../assets/cursor2.png") 10 10,
+    auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h3 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    left: 10px;
+    text-align: center;
+    width: fit-content;
+    opacity: 50%;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 70px;
+  }
+}

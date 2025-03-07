@@ -21,9 +21,19 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@components/*": ["components/*"],
+      "@ui/*": ["components/ui/*"],
+      "@features/*": ["features/*"],
+      "@assets/*": ["assets/*"],
+      "@types": ["types"],
+      "@styles/*": ["styles/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src"]

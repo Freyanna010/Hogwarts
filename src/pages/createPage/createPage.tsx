@@ -1,4 +1,4 @@
-import StudentForm from "@/componets/StudentForm";
+import StudentForm from "@components/StudentForm";
 
 const CreatePage = () => {
   return <StudentForm />;

@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+
+.header {
+  max-width: 1200px;
+  width: 100%;
+  position: sticky;
+  z-index: 1;
+}
+
+.headerTitle {
+  font-family: "Almendra";
+  margin: 0;
+  text-transform: uppercase;
+  color: $lite-yellow;
+  font-size: 30px;
+}
+
+.headerLogo {
+  height: 32px;
+}

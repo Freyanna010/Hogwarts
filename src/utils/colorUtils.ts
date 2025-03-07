@@ -1,5 +1,6 @@
 import { hogwartsTheme } from "@/styles/theme";
 
+// TODO: изменить на название классов
 export const getHouseColor = (house: string) => {
   switch (house) {
     case "Gryffindor":

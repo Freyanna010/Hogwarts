@@ -1,0 +1,88 @@
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  perspective: 800px;
+}
+
+.slider {
+  position: relative;
+  height: 400px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  cursor:
+    url("../../../assets/cursor2.png") 10 10,
+    auto;
+
+  // &::before{
+  //   content: "";
+  //   position: absolute;
+  //   top: -10px;
+  //   left: -10px;
+  //   right: -10px;
+  //   bottom: -10px;
+
+  //   filter: blur(10px);
+  //   z-index: -1;
+  // }
+}
+
+.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) rotateY(0deg);
+  z-index: 2;
+}
+
+.next {
+  opacity: 0.5;
+  transform: translateX(50%) scale(0.8) rotateY(-30deg);
+  z-index: 1;
+  filter: blur(50px);
+}
+
+.prev {
+  opacity: 0.5;
+  transform: translateX(-150%) scale(0.8) rotateY(30deg);
+  z-index: 1;
+  filter: blur(50px);
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  cursor:
+    url("../../../assets/cursor2.png") 10 10,
+    auto;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}

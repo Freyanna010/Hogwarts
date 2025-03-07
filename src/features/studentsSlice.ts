@@ -30,16 +30,16 @@ const studentsSlice = createSlice({
   reducers: {
     deleteStudent: (state, action: PayloadAction<string>) => {
       state.allStudents = state.allStudents.filter(
-        (student) => student.id !== action.payload
+        (student) => student.id !== action.payload,
       );
       state.filteredStudents = state.filteredStudents.filter(
-        (student) => student.id !== action.payload
+        (student) => student.id !== action.payload,
       );
     },
     addFavoriteStudents: (state, action: PayloadAction<string>) => {
       if (state.favoriteStudents.includes(action.payload)) {
         state.favoriteStudents = state.favoriteStudents.filter(
-          (id) => id !== action.payload
+          (id) => id !== action.payload,
         );
       } else {
         state.favoriteStudents.push(action.payload);
@@ -50,11 +50,13 @@ const studentsSlice = createSlice({
       state.filteredStudents.unshift(action.payload);
     },
     chooseStudentById: (state, action: PayloadAction<string>) => {
-      state.currentStudent =  state.allStudents.find(student => student.id === action.payload) ?? null;
+      state.currentStudent =
+        state.allStudents.find((student) => student.id === action.payload) ??
+        null;
     },
     filterStudentsByHouse: (state, action: PayloadAction<string>) => {
       state.filteredStudents = state.allStudents.filter(
-        (student) => student.house === action.payload
+        (student) => student.house === action.payload,
       );
     },
     resetFilter: (state) => {
@@ -62,7 +64,7 @@ const studentsSlice = createSlice({
     },
     showFavoriteStudents: (state) => {
       state.filteredStudents = state.allStudents.filter((student) =>
-        state.favoriteStudents.includes(student.id)
+        state.favoriteStudents.includes(student.id),
       );
     },
   },
@@ -104,6 +106,6 @@ export const {
   filterStudentsByHouse,
   resetFilter,
   showFavoriteStudents,
-  chooseStudentById
+  chooseStudentById,
 } = studentsSlice.actions;
 export default studentsSlice.reducer;
