@@ -9,7 +9,10 @@ export const fetchStudentsData = createAsyncThunk(
         "https://hp-api.onrender.com/api/characters/students",
       );
       return response.data;
-    } catch (error: any) {
+    }catch (error: unknown) {
+      if (axios.isAxiosError(error)) {        
+        return rejectWithValue(error.message);
+      }
       return rejectWithValue("Loading error");
     }
   },
@@ -23,8 +26,11 @@ export const fetchStudentDataById = createAsyncThunk(
         "https://hp-api.onrender.com/api/character/" + id,
       );
       return response.data;
-    } catch (error: any) {
-      return rejectWithValue("Student not found");
-    }
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {        
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue("Loading error");
+    }  
   },
 );

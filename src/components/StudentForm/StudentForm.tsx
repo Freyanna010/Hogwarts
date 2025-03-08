@@ -66,6 +66,7 @@ const StudentForm: FC = () => {
         acc[key] = value;
 
         return acc;
+        // TODO:исправить
       }, {} as any);
 
     newObj.id = uuidv4();

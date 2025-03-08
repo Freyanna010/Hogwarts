@@ -5,22 +5,23 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@store/store";
-import { hogwartsTheme } from "@styles/theme";
-import { chooseStudentById } from "features/studentsSlice";
+
 import { getHouseColor } from "@utils/colorUtils";
+import { chooseStudentById } from "@features/studentsSlice";
+import { hogwartsTheme } from "@styles/theme";
 
 interface Props {
   id: string;
   image: string;
   name: string;
   house: string;
-  onLike: (studentId: string) => void;
-  onDelete: (studentId: string) => void;
-  studentsLoading: boolean;
+  onLike: () => void;
+  onDelete: () => void;
+  studentsLoading?: boolean;
 }
 
 const StudentCard: FC<Props> = (props) => {
-  const { id, image, name, house, onLike, onDelete, studentsLoading } = props;
+  const { id, image, name, house, studentsLoading, onLike, onDelete } = props;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -31,19 +32,17 @@ const StudentCard: FC<Props> = (props) => {
   const navigate = useNavigate();
 
   const handleLikeClick = (
-    studentId: string,
     e: React.MouseEvent<HTMLButtonElement>,
   ) => {
     e.stopPropagation();
     setIsLiked(!isLiked);
-    onLike(studentId);
+    onLike();
   };
   const handleDeleteClick = (
-    studentId: string,
     e: React.MouseEvent<HTMLButtonElement>,
   ) => {
     e.stopPropagation();
-    onDelete(studentId);
+    onDelete();
   };
   const handleCardClick = (studentId: string) => {
     navigate(`/students/${studentId}`);
@@ -78,7 +77,7 @@ const StudentCard: FC<Props> = (props) => {
               )
             }
             onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleLikeClick(id, e)
+              handleLikeClick( e)
             }
           />
         </Tooltip>
@@ -87,7 +86,7 @@ const StudentCard: FC<Props> = (props) => {
             type="text"
             icon={<DeleteOutlined style={{ color: color }} />}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleDeleteClick(id, e)
+              handleDeleteClick( e)
             }
           />
         </Tooltip>

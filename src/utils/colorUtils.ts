@@ -1,4 +1,5 @@
-import { hogwartsTheme } from "@/styles/theme";
+import { hogwartsTheme } from "@styles/theme";
+
 
 // TODO: изменить на название классов
 export const getHouseColor = (house: string) => {

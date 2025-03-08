@@ -7,9 +7,10 @@ import clsx from "clsx";
 
 interface SliderProps {
   children: ReactElement[];
+  className?: string
 }
 
-const Slider: FC<SliderProps> = ({ children }) => {
+const Slider: FC<SliderProps> = ({ children, className }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const totalSlides = children.length;
 
@@ -24,7 +25,7 @@ const Slider: FC<SliderProps> = ({ children }) => {
     setActiveSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
 
   return (
-    <div className={classes.sliderContainer}>
+    <div className={clsx(classes.sliderContainer, className)}>
       <Button
         icon={<DoubleLeftOutlined />}
         shape="circle"

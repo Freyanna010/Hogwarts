@@ -8,30 +8,28 @@ import { Student } from "@types";
 type Props = {
   onLike: (studentId: string) => void;
   onDelete: (studentId: string) => void;
-  studentsLoading: boolean;
+  studentsLoading?: boolean;
   students: Student[];
 };
 
 const StudentsList: FC<Props> = ({
   onLike,
   onDelete,
-  studentsLoading,
   students,
 }) => (
   <>
     {students.map((student) => (
-      <Col key={student.id} xs={12} sm={12} md={12} lg={8} xl={6}>
+      <Col key={student.id} xs={24} sm={24} md={8} lg={8} xl={8}>
         <StudentCard
           id={student.id}
           image={student.image || avatar}
           name={student.name}
           house={student.house || "Unknown"}
-          onLike={onLike}
-          onDelete={onDelete}
-          studentsLoading={studentsLoading}
+          onLike={() => onLike(student.id)}
+          onDelete={() => onDelete(student.id)}
         />
       </Col>
     ))}
   </>
-);
+);  
 export default StudentsList;
