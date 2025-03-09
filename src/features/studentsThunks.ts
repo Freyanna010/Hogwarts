@@ -9,8 +9,8 @@ export const fetchStudentsData = createAsyncThunk(
         "https://hp-api.onrender.com/api/characters/students",
       );
       return response.data;
-    }catch (error: unknown) {
-      if (axios.isAxiosError(error)) {        
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
         return rejectWithValue(error.message);
       }
       return rejectWithValue("Loading error");
@@ -27,10 +27,10 @@ export const fetchStudentDataById = createAsyncThunk(
       );
       return response.data;
     } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {        
+      if (axios.isAxiosError(error)) {
         return rejectWithValue(error.message);
       }
       return rejectWithValue("Loading error");
-    }  
+    }
   },
 );

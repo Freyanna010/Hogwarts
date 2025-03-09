@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+.studentCard {
+  width: 100%;
+  cursor:
+    url("../../assets/cursor2.png") 10 10,
+    auto;
+  padding: 1px 4px;
+}
+
+.gryffindorColor {
+  background-color: $gryffindorColor;
+}
+.slytherinColor {
+  background-color: $slytherinColor;
+}
+.ravenclawColor {
+  background-color: $ravenclawColor;
+}
+.hufflepuffColor {
+  background-color: $hufflepuffColor;
+}

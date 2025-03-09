@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import HogwartsPage from "@pages/HogwartsPage";
 import HousePage from "@pages/HousePage";
 
-
 const Routing = () => (
   <Routes>
     <Route path="/" element={<HogwartsPage />} />

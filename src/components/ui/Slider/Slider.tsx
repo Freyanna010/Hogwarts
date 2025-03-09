@@ -7,7 +7,7 @@ import clsx from "clsx";
 
 interface SliderProps {
   children: ReactElement[];
-  className?: string
+  className?: string;
 }
 
 const Slider: FC<SliderProps> = ({ children, className }) => {

@@ -24,7 +24,7 @@ const App: FC = () => {
         <VideoBg />
         <Header />
         <Content className={clsx(classes.content, classes.customScrollbar)}>
-              <Routing />
+          <Routing />
         </Content>
       </Layout>
     </ConfigProvider>

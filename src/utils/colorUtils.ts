@@ -1,18 +1,14 @@
-import { hogwartsTheme } from "@styles/theme";
-
-
-// TODO: изменить на название классов
 export const getHouseColor = (house: string) => {
   switch (house) {
     case "Gryffindor":
-      return hogwartsTheme.token.colorGryffindor;
+      return "gryffindorColor";
     case "Slytherin":
-      return hogwartsTheme.token.colorSlytherin;
+      return "slytherinColor";
     case "Ravenclaw":
-      return hogwartsTheme.token.colorRavenclaw;
+      return "ravenclawColor";
     case "Hufflepuff":
-      return hogwartsTheme.token.colorHufflepuff;
+      return "hufflepuffColor";
     default:
-      return hogwartsTheme.token.colorPrimary;
+      return "";
   }
 };

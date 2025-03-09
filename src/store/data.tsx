@@ -1,8 +1,7 @@
-
 export type HouseName = "Hufflepuff" | "Gryffindor" | "Slytherin" | "Ravenclaw";
 export interface House {
   id: string;
-  name: HouseName
+  name: HouseName;
   img: string;
 }
 

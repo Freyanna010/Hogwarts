@@ -1,92 +1,63 @@
 import { Button, Card, Flex, Image, Tooltip, Typography } from "antd";
 import React, { FC, useState } from "react";
 import { HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@store/store";
-
 import { getHouseColor } from "@utils/colorUtils";
-import { chooseStudentById } from "@features/studentsSlice";
-import { hogwartsTheme } from "@styles/theme";
+import classes from "./StudentCard.module.scss";
+import clsx from "clsx";
+import { Student } from "@types";
 
 interface Props {
-  id: string;
-  image: string;
-  name: string;
-  house: string;
-  onLike: () => void;
-  onDelete: () => void;
+  student: Student;
+  onLikeClick: (id: string) => void;
+  onDeleteClick: (id: string) => void;
+  onCardClick: (id: string) => void;
   studentsLoading?: boolean;
 }
 
 const StudentCard: FC<Props> = (props) => {
-  const { id, image, name, house, studentsLoading, onLike, onDelete } = props;
+  const { student, onLikeClick, onDeleteClick, onCardClick } = props;
 
-  const dispatch = useDispatch<AppDispatch>();
+  const { id, image, name, house } = student;
 
   const { Title } = Typography;
-  const { color } = hogwartsTheme.token;
 
   const [isLiked, setIsLiked] = useState(false);
-  const navigate = useNavigate();
 
-  const handleLikeClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleLikeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setIsLiked(!isLiked);
-    onLike();
+    setIsLiked((prev) => !prev);
+    onLikeClick(id);
   };
-  const handleDeleteClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    onDelete();
+    onDeleteClick(id);
   };
-  const handleCardClick = (studentId: string) => {
-    navigate(`/students/${studentId}`);
-    dispatch(chooseStudentById(studentId));
-  };
+
+  const handelCardClick = () => onCardClick(id);
 
   const CardColor = getHouseColor(house);
 
   return (
     <Card
-      loading={studentsLoading}
-      style={{
-        width: "100%",
-
-        backgroundColor: CardColor,
-        cursor: "pointer",
-        borderColor: color,
-        padding: "1px 4px",
-      }}
-      hoverable
-      onClick={() => handleCardClick(id)}
+      className={clsx(classes.studentCard, classes[CardColor])}
+      onClick={handelCardClick}
     >
       <Flex justify="end">
         <Tooltip title={isLiked ? "remove from favorites" : "add to favorites"}>
           <Button
             type="text"
-            icon={
-              isLiked ? (
-                <HeartFilled style={{ color: color }} />
-              ) : (
-                <HeartOutlined style={{ color: color }} />
-              )
-            }
+            icon={isLiked ? <HeartFilled /> : <HeartOutlined />}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleLikeClick( e)
+              handleLikeClick(e)
             }
           />
         </Tooltip>
         <Tooltip title="Delete">
           <Button
             type="text"
-            icon={<DeleteOutlined style={{ color: color }} />}
+            icon={<DeleteOutlined />}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleDeleteClick( e)
+              handleDeleteClick(e)
             }
           />
         </Tooltip>
@@ -100,7 +71,6 @@ const StudentCard: FC<Props> = (props) => {
           level={4}
           style={{
             fontFamily: "Spectral ",
-            color: color,
             fontWeight: 300,
             marginTop: 14,
           }}
@@ -110,7 +80,6 @@ const StudentCard: FC<Props> = (props) => {
         <Title
           level={4}
           style={{
-            color: color,
             fontWeight: 700,
             margin: 0,
             textTransform: "uppercase",
