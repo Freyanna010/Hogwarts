@@ -5,22 +5,22 @@ import { Student } from "../types/types";
 interface StudentsState {
   allStudents: Student[];
   favoriteStudents: string[];
-  filteredStudents: Student[];
+  houseStudents: Student[];
   currentStudent: null | Student;
-  studentsLoading: boolean;
+  isStudentsLoading: boolean;
   studentsError: null | string;
-  studentLoading: boolean;
+  isStudentLoading: boolean;
   studentError: null | string;
 }
 
 const initialState: StudentsState = {
   allStudents: [],
-  filteredStudents: [],
+  houseStudents: [],
   favoriteStudents: [],
   currentStudent: null,
-  studentsLoading: false,
+  isStudentsLoading: false,
   studentsError: null,
-  studentLoading: false,
+  isStudentLoading: false,
   studentError: null,
 };
 
@@ -30,16 +30,16 @@ const studentsSlice = createSlice({
   reducers: {
     deleteStudent: (state, action: PayloadAction<string>) => {
       state.allStudents = state.allStudents.filter(
-        (student) => student.id !== action.payload,
+        (student) => student.id !== action.payload
       );
-      state.filteredStudents = state.filteredStudents.filter(
-        (student) => student.id !== action.payload,
+      state.houseStudents = state.houseStudents.filter(
+        (student) => student.id !== action.payload
       );
     },
     addFavoriteStudents: (state, action: PayloadAction<string>) => {
       if (state.favoriteStudents.includes(action.payload)) {
         state.favoriteStudents = state.favoriteStudents.filter(
-          (id) => id !== action.payload,
+          (id) => id !== action.payload
         );
       } else {
         state.favoriteStudents.push(action.payload);
@@ -47,7 +47,7 @@ const studentsSlice = createSlice({
     },
     addNewStudent: (state, action: PayloadAction<Student>) => {
       state.allStudents.unshift(action.payload);
-      state.filteredStudents.unshift(action.payload);
+      state.houseStudents.unshift(action.payload);
     },
     chooseStudentById: (state, action: PayloadAction<string>) => {
       state.currentStudent =
@@ -55,44 +55,44 @@ const studentsSlice = createSlice({
         null;
     },
     filterStudentsByHouse: (state, action: PayloadAction<string>) => {
-      state.filteredStudents = state.allStudents.filter(
-        (student) => student.house === action.payload,
+      state.houseStudents = state.allStudents.filter(
+        (student) => student.house === action.payload
       );
     },
     resetFilter: (state) => {
-      state.filteredStudents = [...state.allStudents];
+      state.houseStudents = [...state.allStudents];
     },
     showFavoriteStudents: (state) => {
-      state.filteredStudents = state.allStudents.filter((student) =>
-        state.favoriteStudents.includes(student.id),
+      state.houseStudents = state.allStudents.filter((student) =>
+        state.favoriteStudents.includes(student.id)
       );
     },
   },
   extraReducers(builder) {
     builder
       .addCase(fetchStudentsData.pending, (state) => {
-        state.studentsLoading = true;
+        state.isStudentsLoading = true;
         state.studentsError = null;
       })
       .addCase(fetchStudentsData.fulfilled, (state, action) => {
-        state.studentsLoading = false;
+        state.isStudentsLoading = false;
         state.allStudents = action.payload;
-        state.filteredStudents = action.payload;
+        state.houseStudents = action.payload;
       })
       .addCase(fetchStudentsData.rejected, (state, action) => {
-        state.studentsLoading = false;
+        state.isStudentsLoading = false;
         state.studentsError = action.payload as string;
       })
       .addCase(fetchStudentDataById.pending, (state) => {
-        state.studentLoading = true;
+        state.isStudentLoading = true;
         state.studentError = null;
       })
       .addCase(fetchStudentDataById.fulfilled, (state, action) => {
-        state.studentLoading = false;
+        state.isStudentLoading = false;
         state.currentStudent = action.payload;
       })
       .addCase(fetchStudentDataById.rejected, (state, action) => {
-        state.studentLoading = false;
+        state.isStudentLoading = false;
         state.studentError = action.payload as string;
       });
   },

@@ -46,3 +46,15 @@ export interface FormValues {
   patronus: string;
   fileList: UploadFile[];
 }
+
+export type HouseName = "Hufflepuff" | "Gryffindor" | "Slytherin" | "Ravenclaw";
+export interface House {
+  id: string;
+  name: string;
+  img: string;
+  emblemImg: string;
+  video: string;
+  description: string;
+
+
+}

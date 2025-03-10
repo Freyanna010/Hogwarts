@@ -1,7 +1,5 @@
-import { House } from "@store/data";
-
-export type HouseCardProps = Omit<House, "id"> & {
-  id: string;
-  onClick?: () => void;
-  style?: React.CSSProperties;
-};
+import { House } from "@types";
+export interface HouseCardProps{
+  house: House,
+  onCardClick?: (name: string) => void
+}

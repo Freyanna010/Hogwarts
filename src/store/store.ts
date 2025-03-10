@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import studentSlice from "../features/studentsSlice";
+import studentSlice from "@features/studentsSlice";
+import housesSlice from "@features/hоusesSlice";
 
 export const store = configureStore({
   reducer: {
     students: studentSlice,
-    // favoriteStudents: favoriteStudentsSlice
+    houses: housesSlice,
   },
 });
 

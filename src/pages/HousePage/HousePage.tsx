@@ -1,5 +1,4 @@
 import StudentCard from "@components/StudentCard";
-import StudentsList from "@components/StudentsList";
 import {
   addFavoriteStudents,
   chooseStudentById,
@@ -17,15 +16,17 @@ const HousePage: FC = () => {
   const { houseName } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (houseName) {
-      dispatch(filterStudentsByHouse(houseName));
-    }
-  }, [dispatch, houseName]);
-
-  const { filteredStudents } = useSelector(
+  const { houseStudents: filteredStudents, isStudentsLoading, allStudents } = useSelector(
     (state: RootState) => state.students,
   );
+
+  useEffect(() => {
+    if (allStudents.length > 0 && houseName) {
+      dispatch(filterStudentsByHouse(houseName));
+    }
+  }, [dispatch, houseName, allStudents]);
+
+
 
   const handleLikeStudent = (studentId: string) =>
     dispatch(addFavoriteStudents(studentId));

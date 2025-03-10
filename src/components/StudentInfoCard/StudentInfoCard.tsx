@@ -11,7 +11,7 @@ import { hogwartsTheme } from "@styles/theme";
 import { calculateAge } from "@utils/dateUtils";
 
 const StudentInfoCard = () => {
-  const { currentStudent, studentLoading, studentsError } = useSelector(
+  const { currentStudent, isStudentLoading: studentLoading, studentsError } = useSelector(
     (state: RootState) => state.students,
   );
 

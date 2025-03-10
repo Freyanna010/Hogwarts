@@ -1,1 +1,1 @@
-export { default } from "./HouseCard";
+export { default } from "./RoundSliderCard/RoundSliderCard";
