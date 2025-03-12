@@ -55,6 +55,4 @@ export interface House {
   emblemImg: string;
   video: string;
   description: string;
-
-
 }

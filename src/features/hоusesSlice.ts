@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import housesData from "@store/housesData.json"; 
+import housesData from "@store/housesData.json";
 import { House } from "@types";
 
 interface HousesState {
@@ -7,7 +7,7 @@ interface HousesState {
 }
 
 const initialState: HousesState = {
-  houses: housesData.houses
+  houses: housesData.houses,
 };
 
 const housesSlice = createSlice({

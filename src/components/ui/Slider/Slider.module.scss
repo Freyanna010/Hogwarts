@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .sliderContainer {
   position: relative;
   width: 100%;
@@ -8,7 +10,7 @@
 
 .slider {
   position: relative;
-  height: 400px;
+  height: 550px;
 }
 
 .slide {
@@ -21,32 +23,31 @@
     opacity 0.5s ease;
   transform-style: preserve-3d;
   transform-origin: center;
-  border-radius: 50%;
+  height: 100%;
+  width: 50%;
+  border-radius: 15px;
+
   -webkit-mask-image: radial-gradient(
     circle,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0) 70%
   );
   mask-image: radial-gradient(
     circle,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0) 70%
   );
+
+
+
+
   cursor:
     url("../../../assets/cursor2.png") 10 10,
     auto;
-
-  // &::before{
-  //   content: "";
-  //   position: absolute;
-  //   top: -10px;
-  //   left: -10px;
-  //   right: -10px;
-  //   bottom: -10px;
-
-  //   filter: blur(10px);
-  //   z-index: -1;
-  // }
 }
 
 .active {
@@ -71,8 +72,7 @@
 
 .buttons {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 25%;
   z-index: 3;
   cursor:
     url("../../../assets/cursor2.png") 10 10,
@@ -86,3 +86,4 @@
 .nextButton {
   right: 10px;
 }
+

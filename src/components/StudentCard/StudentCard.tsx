@@ -5,6 +5,7 @@ import { getHouseColor } from "@utils/colorUtils";
 import classes from "./StudentCard.module.scss";
 import clsx from "clsx";
 import { Student } from "@types";
+import HgEmblem from "@assets/hogAvatar.webp";
 
 interface Props {
   student: Student;
@@ -63,7 +64,7 @@ const StudentCard: FC<Props> = (props) => {
         </Tooltip>
       </Flex>
       <Flex justify="center" align="center">
-        <Image height={320} src={image} style={{ minWidth: 220 }} />
+        <Image height={320} src={image || HgEmblem} style={{ minWidth: 220 }} />
       </Flex>
 
       <Flex justify="center" align="center" vertical>
