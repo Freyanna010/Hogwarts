@@ -7,12 +7,9 @@ import clsx from "clsx";
 import { useEffectEvent } from "@hooks/useEffectEvent";
 import { SliderProps } from "./Slider.types";
 
-const Slider: FC<SliderProps> = ({
-  children,
-  className,
-  autoSwitch = true,
-  switchTimer = 3000,
-}) => {
+const Slider: FC<SliderProps> = (props) => {
+  const { children, className, autoSwitch = true, switchTimer = 3000 } = props;
+
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const totalSlides = children.length;
   const intervalRef = useRef<number | null>(null);
@@ -72,7 +69,7 @@ const Slider: FC<SliderProps> = ({
               prev: classes.prev,
             }),
           );
-          
+
           return (
             <div key={index} className={slideClass}>
               {child}

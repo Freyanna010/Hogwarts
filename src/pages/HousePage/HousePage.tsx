@@ -9,7 +9,7 @@ import {
 import { chooseHouseByName } from "@features/hоusesSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { Col, Row, Spin } from "antd";
-import {LoadingOutlined,  } from "@ant-design/icons";
+import { LoadingOutlined } from "@ant-design/icons";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -43,7 +43,8 @@ const HousePage: FC = () => {
     dispatch(chooseStudentById(studentId));
   };
 
-  const handleSortStudentByName = (direction: "a-z" | "z-a") => dispatch(sortStudentByName(direction))
+  const handleSortStudentByName = (direction: "a-z" | "z-a") =>
+    dispatch(sortStudentByName(direction));
 
   if (isStudentsLoading) {
     return (
@@ -72,16 +73,15 @@ const HousePage: FC = () => {
           )}
         </Col>
 
-      {/* TODO: вынести в cardList? Вместе с сортировкой? Пробрасывать пропсы два раза? */}
+        {/* TODO: вынести в cardList? Вместе с сортировкой? Пробрасывать пропсы два раза? */}
         <Col span={24}>
-        <StudentCardList
-          onLikeClicK = {handleLikeStudentCard}
-          onDeleteClicK = {handleDeleteStudentCard}
-          onCardClick = {handleStudentCardClick}
-          onSortClick =  {handleSortStudentByName}
-          students = {houseStudents}
-        />
-
+          <StudentCardList
+            onLikeClicK={handleLikeStudentCard}
+            onDeleteClicK={handleDeleteStudentCard}
+            onCardClick={handleStudentCardClick}
+            onSortClick={handleSortStudentByName}
+            students={houseStudents}
+          />
         </Col>
       </Row>
     </>

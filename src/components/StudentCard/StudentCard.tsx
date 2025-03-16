@@ -65,7 +65,6 @@ const StudentCard: FC<Props> = (props) => {
         </Tooltip>
       </Flex>
       <Flex justify="center" align="center">
-    
         <Image src={image || HgEmblem} className={classes.cardImg} />
       </Flex>
 

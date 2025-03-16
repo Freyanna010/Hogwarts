@@ -15,13 +15,18 @@ const Image = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
 
   return (
     <>
-      {!isLoad && <Skeleton.Node active  style={{ width: imgProps.width, height: imgProps.height }}/>}
+      {!isLoad && (
+        <Skeleton.Node
+          active
+          style={{ width: imgProps.width, height: imgProps.height }}
+        />
+      )}
       <img
         {...imgProps}
         alt="Loading..."
         onError={handleImageError}
         onLoad={handleImageLoad}
-        style={{ display: isLoad ? "block" : "none",  }}
+        style={{ display: isLoad ? "block" : "none" }}
       />
     </>
   );
