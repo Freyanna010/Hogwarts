@@ -1,0 +1,19 @@
+@use "../../styles/variables" as *;
+
+.spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: $lite-yellow;
+  text-shadow: $yellow;
+  font-size: 80px;
+}
+
+.cardList {
+  margin: 15px 10px;
+}
+
+.houseCardBanner {
+  margin-top: 10px;
+}

@@ -1,4 +1,4 @@
-import { Button, Card, Flex, Image, Tooltip, Typography } from "antd";
+import { Button, Card, Flex, Tooltip, Typography } from "antd";
 import React, { FC, useState } from "react";
 import { HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
 import { getHouseColor } from "@utils/colorUtils";
@@ -6,6 +6,7 @@ import classes from "./StudentCard.module.scss";
 import clsx from "clsx";
 import { Student } from "@types";
 import HgEmblem from "@assets/hogAvatar.webp";
+import Image from "@components/ui/Image";
 
 interface Props {
   student: Student;
@@ -64,7 +65,8 @@ const StudentCard: FC<Props> = (props) => {
         </Tooltip>
       </Flex>
       <Flex justify="center" align="center">
-        <Image height={320} src={image || HgEmblem} style={{ minWidth: 220 }} />
+    
+        <Image src={image || HgEmblem} className={classes.cardImg} />
       </Flex>
 
       <Flex justify="center" align="center" vertical>

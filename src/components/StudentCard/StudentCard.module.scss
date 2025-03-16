@@ -5,9 +5,13 @@
   cursor:
     url("../../assets/cursor2.png") 10 10,
     auto;
-  padding: 1px 4px;
+  padding: 1px 2px;
 }
 
+.cardImg{
+  width: 80%;
+  height: 320px;
+}
 .gryffindorColor {
   background-color: $gryffindorColor;
 }

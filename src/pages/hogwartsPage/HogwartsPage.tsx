@@ -15,7 +15,6 @@ const HogwartsPage: FC = () => {
   };
 
   return (
-    
     <Slider className={classes.hgPageSlider}>
       {houses.map((house) => (
         <HouseCard

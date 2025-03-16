@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@use "../../../styles/variables" as *;
 
 .sliderContainer {
   position: relative;
@@ -42,9 +42,6 @@
     rgba(0, 0, 0, 0) 70%
   );
 
-
-
-
   cursor:
     url("../../../assets/cursor2.png") 10 10,
     auto;
@@ -86,4 +83,3 @@
 .nextButton {
   right: 10px;
 }
-

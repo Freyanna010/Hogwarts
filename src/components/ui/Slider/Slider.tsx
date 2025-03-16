@@ -4,13 +4,21 @@ import { Button } from "antd";
 import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
 import { getSlideClass } from "./utils";
 import clsx from "clsx";
+import { useEffectEvent } from "@hooks/useEffectEvent";
 
 interface SliderProps {
   children: ReactElement[];
   className?: string;
+  autoSwitch?: boolean;
+  switchTimer?: number | null;
 }
 
-const Slider: FC<SliderProps> = ({ children, className }) => {
+const Slider: FC<SliderProps> = ({
+  children,
+  className,
+  autoSwitch = true,
+  switchTimer = 3000,
+}) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const totalSlides = children.length;
   const intervalRef = useRef<number | null>(null);
@@ -19,29 +27,45 @@ const Slider: FC<SliderProps> = ({ children, className }) => {
     setActiveSlideIndex(
       (prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides,
     );
-    console.log(activeSlideIndex);
+  };
+  const handleNextSlide = () => {
+    setActiveSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
 
-  // TODO: warning  The 'handleNextSlide' function makes the dependencies of useEffect Hook (at line 34) change on every render. To fix this, wrap the definition of 'handleNextSlide' in its own useCallback() Hook  react-hooks/exhaustive-deps
-  const handleNextSlide = () =>
-    setActiveSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  const startAutoSlider = useEffectEvent(() => {
+    if (autoSwitch && switchTimer !== null) {
+      intervalRef.current = window.setInterval(handleNextSlide, switchTimer);
+    }
+  });
+  const stopAutoSlider = useEffectEvent(() => {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+    }
+  });
 
   useEffect(() => {
-    intervalRef.current = window.setInterval(handleNextSlide, 3000);
+    startAutoSlider();
+    return stopAutoSlider();
+  }, [stopAutoSlider, startAutoSlider]);
 
-    return () => {
-      if (intervalRef.current !== null) clearInterval(intervalRef.current);
-    };
-  }, [handleNextSlide]);
-
+  // TODO: Добавить свайпы
   return (
-    <div className={clsx(classes.sliderContainer, className)}>
+    <div
+      className={clsx(classes.sliderContainer, className)}
+      onMouseEnter={stopAutoSlider}
+      onMouseLeave={startAutoSlider}
+    >
       <Button
-        icon={<DoubleLeftOutlined style={{ fontSize: "50px", color:"rgba(250, 255, 151, 0.921)" }}/>}
+        icon={
+          // TODO: Убрать стили
+          <DoubleLeftOutlined
+            style={{ fontSize: "50px", color: "rgba(250, 255, 151, 0.921)" }}
+          />
+        }
         shape="circle"
         onClick={handlePrevSlide}
         type="text"
-         size="large"
+        size="large"
         className={clsx(classes.buttons, classes.prevButton)}
       />
       <div className={classes.slider}>
@@ -64,10 +88,13 @@ const Slider: FC<SliderProps> = ({ children, className }) => {
       </div>
 
       <Button
-        icon={<DoubleRightOutlined   style={{ fontSize: "50px", color:"rgba(250, 255, 151, 0.921)" }}/>}
+        icon={
+          <DoubleRightOutlined
+            style={{ fontSize: "50px", color: "rgba(250, 255, 151, 0.921)" }}
+          />
+        }
         shape="circle"
         type="text"
-   
         onClick={handleNextSlide}
         className={clsx(classes.buttons, classes.nextButton)}
       />

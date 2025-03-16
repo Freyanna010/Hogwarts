@@ -14,7 +14,7 @@ const StudentInfoCard = () => {
   const {
     currentStudent,
     isStudentLoading: studentLoading,
-    studentsError,
+    errorMessage: studentsError,
   } = useSelector((state: RootState) => state.students);
 
   // const student = currentStudent ? currentStudent[0] : null;

@@ -1,15 +1,25 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { HouseCardProps } from "./HouseCard.type";
 import SliderHouseCard from "./SliderHouseCard/SliderHouseCard";
+import BannerHouseCard from "./BannerHouseCard/BannerHouseCard";
 
-const HouseCard: FC<HouseCardProps> = ({ house, onCardClick, type }) => {
-  switch (type) {
-    case "slider":
-      return <SliderHouseCard house={house} onCardClick={onCardClick} />;
+const HouseCard: FC<HouseCardProps> = ({
+  house,
+  onCardClick,
+  type,
+  className,
+}) => {
+  const componentMap: Record<string, JSX.Element> = {
+    slider: (
+      <SliderHouseCard
+        house={house}
+        onCardClick={onCardClick}
+        className={className}
+      />
+    ),
+    banner: <BannerHouseCard house={house} className={className} />,
+  };
 
-    default:
-      return null;
-  }
+  return componentMap[type] || null;
 };
-
 export default HouseCard;

@@ -8,9 +8,8 @@ interface StudentsState {
   houseStudents: Student[];
   currentStudent: null | Student;
   isStudentsLoading: boolean;
-  studentsError: null | string;
+  errorMessage: null | string;
   isStudentLoading: boolean;
-  studentError: null | string;
 }
 
 const initialState: StudentsState = {
@@ -19,9 +18,8 @@ const initialState: StudentsState = {
   favoriteStudents: [],
   currentStudent: null,
   isStudentsLoading: false,
-  studentsError: null,
+  errorMessage: null,
   isStudentLoading: false,
-  studentError: null,
 };
 
 const studentsSlice = createSlice({
@@ -72,7 +70,7 @@ const studentsSlice = createSlice({
     builder
       .addCase(fetchStudentsData.pending, (state) => {
         state.isStudentsLoading = true;
-        state.studentsError = null;
+        state.errorMessage = null;
       })
       .addCase(fetchStudentsData.fulfilled, (state, action) => {
         state.isStudentsLoading = false;
@@ -81,11 +79,11 @@ const studentsSlice = createSlice({
       })
       .addCase(fetchStudentsData.rejected, (state, action) => {
         state.isStudentsLoading = false;
-        state.studentsError = action.payload as string;
+        state.errorMessage = action.payload as string;
       })
       .addCase(fetchStudentDataById.pending, (state) => {
         state.isStudentLoading = true;
-        state.studentError = null;
+        state.errorMessage = null;
       })
       .addCase(fetchStudentDataById.fulfilled, (state, action) => {
         state.isStudentLoading = false;
@@ -93,7 +91,7 @@ const studentsSlice = createSlice({
       })
       .addCase(fetchStudentDataById.rejected, (state, action) => {
         state.isStudentLoading = false;
-        state.studentError = action.payload as string;
+        state.errorMessage = action.payload as string;
       });
   },
 });
