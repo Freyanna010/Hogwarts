@@ -1,17 +1,11 @@
-import { FC, ReactElement, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import classes from "./Slider.module.scss";
 import { Button } from "antd";
 import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
 import { getSlideClass } from "./utils";
 import clsx from "clsx";
 import { useEffectEvent } from "@hooks/useEffectEvent";
-
-interface SliderProps {
-  children: ReactElement[];
-  className?: string;
-  autoSwitch?: boolean;
-  switchTimer?: number | null;
-}
+import { SliderProps } from "./Slider.types";
 
 const Slider: FC<SliderProps> = ({
   children,
@@ -78,7 +72,7 @@ const Slider: FC<SliderProps> = ({
               prev: classes.prev,
             }),
           );
-
+          
           return (
             <div key={index} className={slideClass}>
               {child}

@@ -1,19 +1,20 @@
-import StudentCard from "@components/StudentCard";
 import classes from "./HousePage.module.scss";
 import {
   addFavoriteStudents,
   chooseStudentById,
   deleteStudent,
   filterStudentsByHouse,
+  sortStudentByName,
 } from "@features/studentsSlice";
 import { chooseHouseByName } from "@features/hоusesSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { Col, Row, Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import {LoadingOutlined,  } from "@ant-design/icons";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
+import StudentCardList from "@components/StudentCardList";
 
 const HousePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,7 +24,7 @@ const HousePage: FC = () => {
   const { houseStudents, allStudents, isStudentsLoading, errorMessage } =
     useSelector((state: RootState) => state.students);
   const { currentHouse } = useSelector((state: RootState) => state.houses);
-// TODO: два диспатча
+  // TODO: два диспатча
   useEffect(() => {
     if (allStudents.length > 0 && houseName) {
       dispatch(filterStudentsByHouse(houseName));
@@ -31,16 +32,18 @@ const HousePage: FC = () => {
     }
   }, [dispatch, houseName, allStudents]);
 
-  const handleLikeStudent = (studentId: string) =>
+  const handleLikeStudentCard = (studentId: string) =>
     dispatch(addFavoriteStudents(studentId));
 
-  const handleDeleteStudent = (studentId: string) =>
+  const handleDeleteStudentCard = (studentId: string) =>
     dispatch(deleteStudent(studentId));
 
-  const handleCardClick = (studentId: string) => {
+  const handleStudentCardClick = (studentId: string) => {
     navigate(`/students/${studentId}`);
     dispatch(chooseStudentById(studentId));
   };
+
+  const handleSortStudentByName = (direction: "a-z" | "z-a") => dispatch(sortStudentByName(direction))
 
   if (isStudentsLoading) {
     return (
@@ -69,25 +72,16 @@ const HousePage: FC = () => {
           )}
         </Col>
 
+      {/* TODO: вынести в cardList? Вместе с сортировкой? Пробрасывать пропсы два раза? */}
         <Col span={24}>
-          <div className={classes.cardList}>
-            <Row>
-              <Row>Sort name: </Row>
-            </Row>
-            <Row gutter={[24, 24]} justify="start">
-              {/* TODO: вынести в компонент cardList? */}
-              {houseStudents.map((student) => (
-                <Col key={student.id} xs={24} sm={24} md={8} lg={8} xl={8}>
-                  <StudentCard
-                    student={student}
-                    onLikeClick={handleLikeStudent}
-                    onDeleteClick={handleDeleteStudent}
-                    onCardClick={handleCardClick}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </div>
+        <StudentCardList
+          onLikeClicK = {handleLikeStudentCard}
+          onDeleteClicK = {handleDeleteStudentCard}
+          onCardClick = {handleStudentCardClick}
+          onSortClick =  {handleSortStudentByName}
+          students = {houseStudents}
+        />
+
         </Col>
       </Row>
     </>
