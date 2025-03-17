@@ -6,6 +6,6 @@ export interface StudentCardListProps {
   onCardClick: (studentId: string) => void;
   onSortClick: (direction: "a-z" | "z-a") => void;
   onSearchChange: (value: string) => void;
-  className: string;  
+  className: string;
   students: Student[];
 }

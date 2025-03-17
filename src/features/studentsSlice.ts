@@ -68,9 +68,9 @@ const studentsSlice = createSlice({
     },
     filterStudentsBySearch: (state, action: PayloadAction<string>) => {
       const searchValue = action.payload.toLowerCase();
-      state.houseStudents = state.houseStudents
-        .filter((student) => student.name.toLowerCase().includes(searchValue));
-      
+      state.houseStudents = state.houseStudents.filter((student) =>
+        student.name.toLowerCase().includes(searchValue),
+      );
     },
     showFavoriteStudents: (state) => {
       state.houseStudents = state.allStudents.filter((student) =>

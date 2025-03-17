@@ -17,7 +17,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
 import StudentCardList from "@components/StudentCardList";
 import debounce from "lodash.debounce";
-
+import { useEffectEvent } from "@hooks/useEffectEvent";
 
 const HousePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -50,23 +50,26 @@ const HousePage: FC = () => {
     dispatch(sortStudentByName(direction));
 
 
-
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   const handleOnChangeSearch = (value: string) => {
     setSearchInputValue(value);
   };
-  const debouncedSearch = debounce((value: string) => {
-    if (value !== '') {
-      dispatch(filterStudentsBySearch(value));
-    }
-  }, 500);
-  useEffect(() => {
-    debouncedSearch(searchInputValue);
-    return () => {
-      debouncedSearch.cancel();
-    };
-  }, [searchInputValue]);
+  const debouncedSearch = useEffectEvent(
+    debounce((value: string) => {
+      if (value !== "") {
+        dispatch(filterStudentsBySearch(value));
+      }
+    }, 500)
+  );
+
+useEffect(() => {
+  debouncedSearch(searchInputValue);
+
+  return () => {
+    debouncedSearch.cancel();
+  };
+}, [searchInputValue]);
 
   if (isStudentsLoading) {
     return (
@@ -110,6 +113,5 @@ const HousePage: FC = () => {
     </>
   );
 };
-
 
 export default HousePage;
