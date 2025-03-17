@@ -1,9 +1,10 @@
 import { Button, Col, Input, Row } from "antd";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import StudentCard from "../StudentCard";
 import { DownOutlined, SearchOutlined, UpOutlined } from "@ant-design/icons";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
+import debounce from "lodash.debounce";
 
 const StudentCardList: FC<StudentCardListProps> = (props) => {
   const {
@@ -20,11 +21,25 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
 
   const handleOnDownOutlined = () => onSortClick("a-z");
   const handleOnUpOutlined = () => onSortClick("z-a");
+
   const handleOnChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setSearchInputValue(value)
-    onSearchChange(searchInputValue);
+    setSearchInputValue(value);
   };
+
+  const debouncedSearch = debounce((value: string) => {
+    if (value !== '') {
+      onSearchChange(value);
+    }
+  }, 500);
+
+  useEffect(() => {
+    debouncedSearch(searchInputValue);
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchInputValue, debouncedSearch]);
 
   return (
     <div className={className} style={{ maxWidth: "100%", minHeight: "400px" }}>
