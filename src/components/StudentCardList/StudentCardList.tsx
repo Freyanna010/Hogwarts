@@ -1,25 +1,41 @@
 import { Button, Col, Input, Row } from "antd";
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import StudentCard from "../StudentCard";
 import { DownOutlined, SearchOutlined, UpOutlined } from "@ant-design/icons";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 
 const StudentCardList: FC<StudentCardListProps> = (props) => {
+  const {
+    onLikeClicK,
+    onDeleteClicK,
+    students,
+    onCardClick,
+    onSortClick,
+    onSearchChange,
+    className,
+  } = props;
 
-  const { onLikeClicK, onDeleteClicK, students, onCardClick, onSortClick,  onSearchChange } =
-    props;
+  const [searchInputValue, setSearchInputValue] = useState<string> ("")
+
   const handleOnDownOutlined = () => onSortClick("a-z");
   const handleOnUpOutlined = () => onSortClick("z-a");
   const handleOnChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    onSearchChange(value);
+    setSearchInputValue(value)
+    onSearchChange(searchInputValue);
   };
 
   return (
-    <div className={classes.cardList}>
-      <Row className={classes.cadListRow}>
-      <Input size="large" placeholder="search student" prefix={<SearchOutlined />} onChange={handleOnChangeSearch}/>
+    <div className={className} style={{ maxWidth: "100%", minHeight: "400px" }}>
+      <Row className={classes.searchCardListRow}>
+        <Input
+          size="large"
+          placeholder="search student"
+          prefix={<SearchOutlined />}
+          value={searchInputValue}
+          onChange={handleOnChangeSearch}
+        />
         <Row>
           Sort name:
           <Button

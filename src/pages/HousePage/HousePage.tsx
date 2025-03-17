@@ -43,11 +43,10 @@ const HousePage: FC = () => {
     navigate(`/students/${studentId}`);
     dispatch(chooseStudentById(studentId));
   };
-
   const handleSortStudentByName = (direction: "a-z" | "z-a") =>
     dispatch(sortStudentByName(direction));
-
-  const handleOnChangeSearch = (value: string) => 
+  
+  const handleOnChangeSearch = (value: string) =>
     dispatch(filterStudentsBySearch(value));
 
   if (isStudentsLoading) {
@@ -66,30 +65,30 @@ const HousePage: FC = () => {
 
   return (
     <>
-      <Row gutter={[24, 24]} justify="start">
-        <Col span={24}>
-          {currentHouse && (
-            <HouseCard
-              type="banner"
-              house={currentHouse}
-              className={classes.houseCardBanner}
-            />
-          )}
-        </Col>
+<Row gutter={[24, 24]} justify="start">
+  <Col span={24}>
+    {currentHouse && (
+      <HouseCard
+        type="banner"
+        house={currentHouse}
+        className={classes.houseCardBanner}
+      />
+    )}
+  </Col>
 
-     
-        <Col span={24}>
-          <StudentCardList
-            onLikeClicK={handleLikeStudentCard}
-            onDeleteClicK={handleDeleteStudentCard}
-            onCardClick={handleStudentCardClick}
-            onSortClick={handleSortStudentByName}
-            onSearchChange = {handleOnChangeSearch}
-            students={houseStudents}
+  <Col span={24}>   
+      <StudentCardList
+        onLikeClicK={handleLikeStudentCard}
+        onDeleteClicK={handleDeleteStudentCard}
+        onCardClick={handleStudentCardClick}
+        onSortClick={handleSortStudentByName}
+        onSearchChange={handleOnChangeSearch}
+        students={houseStudents}
+        className={classes.studentContainer}
+      />
+  </Col>
+</Row>
 
-          />
-        </Col>
-      </Row>
     </>
   );
 };
