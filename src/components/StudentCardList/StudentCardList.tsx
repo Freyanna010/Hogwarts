@@ -1,7 +1,7 @@
-import { Button, Col, Row } from "antd";
+import { Button, Col, Input, Row } from "antd";
 import { FC } from "react";
 import StudentCard from "../StudentCard";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import { DownOutlined, SearchOutlined, UpOutlined } from "@ant-design/icons";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 
@@ -14,6 +14,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
   return (
     <div className={classes.cardList}>
       <Row className={classes.cadListRow}>
+      <Input size="large" placeholder="search student" prefix={<SearchOutlined />} />
         <Row>
           Sort name:
           <Button

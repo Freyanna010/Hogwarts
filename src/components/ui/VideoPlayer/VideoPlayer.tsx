@@ -9,7 +9,7 @@ const VideoPlayer: FC<VidePlayerProps> = ({
   width,
   height,
   startTime,
-  volume = 1,
+  volume = 0.1,
 }) => {
   const startPlayerRef = useRef<ReactPlayer | null>(null);
   const [isLoading, setIsLoading] = useState(true);
