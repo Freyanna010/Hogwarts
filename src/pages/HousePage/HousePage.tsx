@@ -4,6 +4,7 @@ import {
   chooseStudentById,
   deleteStudent,
   filterStudentsByHouse,
+  filterStudentsBySearch,
   sortStudentByName,
 } from "@features/studentsSlice";
 import { chooseHouseByName } from "@features/hоusesSlice";
@@ -47,7 +48,7 @@ const HousePage: FC = () => {
     dispatch(sortStudentByName(direction));
 
   const handleOnChangeSearch = (value: string) => 
-    dispatch(filterStudents(value));
+    dispatch(filterStudentsBySearch(value));
 
   if (isStudentsLoading) {
     return (
@@ -76,14 +77,16 @@ const HousePage: FC = () => {
           )}
         </Col>
 
-        {/* TODO: вынести в cardList? Вместе с сортировкой? Пробрасывать пропсы два раза? */}
+     
         <Col span={24}>
           <StudentCardList
             onLikeClicK={handleLikeStudentCard}
             onDeleteClicK={handleDeleteStudentCard}
             onCardClick={handleStudentCardClick}
             onSortClick={handleSortStudentByName}
+            onSearchChange = {handleOnChangeSearch}
             students={houseStudents}
+
           />
         </Col>
       </Row>

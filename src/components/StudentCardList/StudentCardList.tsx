@@ -1,18 +1,19 @@
 import { Button, Col, Input, Row } from "antd";
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import StudentCard from "../StudentCard";
 import { DownOutlined, SearchOutlined, UpOutlined } from "@ant-design/icons";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 
 const StudentCardList: FC<StudentCardListProps> = (props) => {
-  const { onLikeClicK, onDeleteClicK, students, onCardClick, onSortClick } =
+
+  const { onLikeClicK, onDeleteClicK, students, onCardClick, onSortClick,  onSearchChange } =
     props;
   const handleOnDownOutlined = () => onSortClick("a-z");
   const handleOnUpOutlined = () => onSortClick("z-a");
   const handleOnChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    dispatch(filterStudents(value)); // пример вызова экшена
+    onSearchChange(value);
   };
 
   return (

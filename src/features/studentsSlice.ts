@@ -67,10 +67,8 @@ const studentsSlice = createSlice({
       }
     },
     filterStudentsBySearch: (state, action: PayloadAction<string>) => {
-      state.houseStudents = state.houseStudents.filter((student) => student.name.toLowerCase().includes(action.payload.toLowerCase)
-    }
-
-
+      state.houseStudents = state.houseStudents.filter((student) => student.name.toLowerCase().includes(action.payload.toLowerCase()))
+    },
     showFavoriteStudents: (state) => {
       state.houseStudents = state.allStudents.filter((student) =>
         state.favoriteStudents.includes(student.id),
@@ -116,5 +114,6 @@ export const {
   showFavoriteStudents,
   chooseStudentById,
   sortStudentByName,
+  filterStudentsBySearch,
 } = studentsSlice.actions;
 export default studentsSlice.reducer;
