@@ -49,27 +49,30 @@ const HousePage: FC = () => {
   const handleSortStudentByName = (direction: "a-z" | "z-a") =>
     dispatch(sortStudentByName(direction));
 
-
+  
+  // TODO: доработать поиск
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   const handleOnChangeSearch = (value: string) => {
     setSearchInputValue(value);
   };
-  const debouncedSearch = useEffectEvent(
-    debounce((value: string) => {
-      if (value !== "") {
-        dispatch(filterStudentsBySearch(value));
-      }
-    }, 500)
-  );
+  const debouncedSearch = debounce((value: string) => {
+    if (value !== "") {
+      dispatch(filterStudentsBySearch(value));
+    }
+  }, 500);
+  
+  const handleDebouncedSearch = useEffectEvent((value: string) => {
+    debouncedSearch(value);
+  });
 
-useEffect(() => {
-  debouncedSearch(searchInputValue);
-
-  return () => {
-    debouncedSearch.cancel();
-  };
-}, [searchInputValue]);
+  useEffect(() => {
+    handleDebouncedSearch(searchInputValue);
+  
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchInputValue]);
 
   if (isStudentsLoading) {
     return (

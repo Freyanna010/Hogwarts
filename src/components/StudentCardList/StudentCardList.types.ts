@@ -5,7 +5,7 @@ export interface StudentCardListProps {
   onDeleteClicK: (studentId: string) => void;
   onCardClick: (studentId: string) => void;
   onSortClick: (direction: "a-z" | "z-a") => void;
-  onSearchChange: (value: string) => void;
+  onSearchChange?: (value: string) => void;
   className: string;
   students: Student[];
 }
