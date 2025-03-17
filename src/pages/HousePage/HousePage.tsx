@@ -46,6 +46,9 @@ const HousePage: FC = () => {
   const handleSortStudentByName = (direction: "a-z" | "z-a") =>
     dispatch(sortStudentByName(direction));
 
+  const handleOnChangeSearch = (value: string) => 
+    dispatch(filterStudents(value));
+
   if (isStudentsLoading) {
     return (
       <Spin

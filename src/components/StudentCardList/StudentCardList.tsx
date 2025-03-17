@@ -8,24 +8,28 @@ import { StudentCardListProps } from "./StudentCardList.types";
 const StudentCardList: FC<StudentCardListProps> = (props) => {
   const { onLikeClicK, onDeleteClicK, students, onCardClick, onSortClick } =
     props;
-  const onDownOutlined = () => onSortClick("a-z");
-  const onUpOutlined = () => onSortClick("z-a");
+  const handleOnDownOutlined = () => onSortClick("a-z");
+  const handleOnUpOutlined = () => onSortClick("z-a");
+  const handleOnChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    dispatch(filterStudents(value)); // пример вызова экшена
+  };
 
   return (
     <div className={classes.cardList}>
       <Row className={classes.cadListRow}>
-      <Input size="large" placeholder="search student" prefix={<SearchOutlined />} />
+      <Input size="large" placeholder="search student" prefix={<SearchOutlined />} onChange={handleOnChangeSearch}/>
         <Row>
           Sort name:
           <Button
             type="text"
-            onClick={onDownOutlined}
+            onClick={handleOnDownOutlined}
             // TODO: стили
             icon={<DownOutlined style={{ color: "#fff" }} />}
           />
           <Button
             type="text"
-            onClick={onUpOutlined}
+            onClick={handleOnUpOutlined}
             icon={<UpOutlined style={{ color: "#fff" }} />}
           />
         </Row>
