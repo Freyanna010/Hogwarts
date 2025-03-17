@@ -28,16 +28,16 @@ const studentsSlice = createSlice({
   reducers: {
     deleteStudent: (state, action: PayloadAction<string>) => {
       state.allStudents = state.allStudents.filter(
-        (student) => student.id !== action.payload
+        (student) => student.id !== action.payload,
       );
       state.houseStudents = state.houseStudents.filter(
-        (student) => student.id !== action.payload
+        (student) => student.id !== action.payload,
       );
     },
     addFavoriteStudents: (state, action: PayloadAction<string>) => {
       if (state.favoriteStudents.includes(action.payload)) {
         state.favoriteStudents = state.favoriteStudents.filter(
-          (id) => id !== action.payload
+          (id) => id !== action.payload,
         );
       } else {
         state.favoriteStudents.push(action.payload);
@@ -54,7 +54,7 @@ const studentsSlice = createSlice({
     },
     filterStudentsByHouse: (state, action: PayloadAction<string>) => {
       state.houseStudents = state.allStudents.filter(
-        (student) => student.house === action.payload
+        (student) => student.house === action.payload,
       );
     },
 
@@ -67,13 +67,14 @@ const studentsSlice = createSlice({
       }
     },
     filterStudentsBySearch: (state, action: PayloadAction<string>) => {
-      state.houseStudents = state.houseStudents.filter((student) =>
-        student.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
+      const searchValue = action.payload.toLowerCase();
+      state.houseStudents = state.houseStudents
+        .filter((student) => student.name.toLowerCase().includes(searchValue));
+      
     },
     showFavoriteStudents: (state) => {
       state.houseStudents = state.allStudents.filter((student) =>
-        state.favoriteStudents.includes(student.id)
+        state.favoriteStudents.includes(student.id),
       );
     },
   },
