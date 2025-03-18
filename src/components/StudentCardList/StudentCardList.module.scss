@@ -1,6 +1,9 @@
+@use "../../styles/variables" as *;
+
 .searchCardListRow {
-  background-color: black;
-  color: aliceblue;
+  background-color: $background-dark;
+  color: $lite-yellow;
+  margin-bottom: 10px;
 }
 
 .cardListRow {
@@ -10,3 +13,10 @@
   flex-wrap: wrap;
   gap: 24px;
 }
+
+.SearchInput{
+  background-color: $background-dark;
+  color: $lite-yellow;
+  margin-bottom: 15px;
+}
+

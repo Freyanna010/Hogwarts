@@ -32,6 +32,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
           placeholder="search student"
           prefix={<SearchOutlined />}
           onChange={handleOnChangeSearch}
+          className={classes.SearchInput}
         />
         <Row>
           Sort name:
