@@ -1,11 +1,10 @@
 import { FC } from "react";
-import { Header as AntdHeder } from "antd/es/layout/layout";
 import { Button } from "antd";
 import classes from "./Header.module.scss";
 
 const Header: FC = () => {
   return (
-    <AntdHeder className={classes.header}>
+    <header className={classes.header}>
       <h1 className={classes.headerTitle}>Hogwarts</h1>
       <Button
         type="text"
@@ -19,7 +18,7 @@ const Header: FC = () => {
         // onClick={handleNavigateCreate}
         // icon={<PlusOutlined />}
       />
-    </AntdHeder>
+    </header>
   );
 };
 

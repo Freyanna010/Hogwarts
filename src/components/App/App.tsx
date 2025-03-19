@@ -19,15 +19,15 @@ const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <ConfigProvider theme={hogwartsTheme}>
-      <Layout className={classes.layout}>
-        <VideoBg />
+    <>
+      <VideoBg />
+      <div className={classes.pageContainer}>
         <Header />
-        <Content className={clsx(classes.content, classes.customScrollbar)}>
+        <main className={clsx(classes.main, classes.customScrollbar)}>
           <Routing />
-        </Content>
-      </Layout>
-    </ConfigProvider>
+        </main>
+      </div>
+    </>
   );
 };
 
