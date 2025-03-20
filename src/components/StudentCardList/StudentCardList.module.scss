@@ -22,5 +22,6 @@
   &:is(:hover, :focus-within) {
     color: $lite-yellow;
     background-color: $background-dark;
+    border: 2px solid $lite-yellow;
   }
 }
