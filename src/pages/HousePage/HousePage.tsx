@@ -5,6 +5,7 @@ import {
   deleteStudent,
   filterStudentsByHouse,
   filterStudentsBySearch,
+  setSearchValue,
   sortStudentByName,
 } from "@features/studentsSlice";
 import { chooseHouseByName } from "@features/hоusesSlice";
@@ -24,7 +25,7 @@ const HousePage: FC = () => {
   const { houseName } = useParams();
   const navigate = useNavigate();
 
-  const { houseStudents, allStudents, isStudentsLoading, errorMessage } =
+  const { filteredStudents, allStudents, isStudentsLoading, errorMessage, searchValue} =
     useSelector((state: RootState) => state.students);
   const { currentHouse } = useSelector((state: RootState) => state.houses);
 
@@ -49,30 +50,16 @@ const HousePage: FC = () => {
   const handleSortStudentByName = (direction: "a-z" | "z-a") =>
     dispatch(sortStudentByName(direction));
 
-  
-  // TODO: доработать поиск
-  const [searchInputValue, setSearchInputValue] = useState<string>("");
+const debouncedChangeSearch =   useEffectEvent(
+  debounce((value: string) => {
+    dispatch(setSearchValue(value));
+    dispatch(filterStudentsBySearch());
+  }, 500)
+);
 
-  const handleOnChangeSearch = (value: string) => {
-    setSearchInputValue(value);
-  };
-  const debouncedSearch = debounce((value: string) => {
-    if (value !== "") {
-      dispatch(filterStudentsBySearch(value));
-    }
-  }, 500);
-  
-  const handleDebouncedSearch = useEffectEvent((value: string) => {
-    debouncedSearch(value);
-  });
-
-  useEffect(() => {
-    handleDebouncedSearch(searchInputValue);
-  
-    return () => {
-      debouncedSearch.cancel();
-    };
-  }, [searchInputValue]);
+const handleChangeSearch = (value: string) => {
+  debouncedChangeSearch(value);
+};
 
   if (isStudentsLoading) {
     return (
@@ -107,9 +94,10 @@ const HousePage: FC = () => {
             onDeleteClicK={handleDeleteStudentCard}
             onCardClick={handleStudentCardClick}
             onSortClick={handleSortStudentByName}
-            onSearchChange={handleOnChangeSearch}
-            students={houseStudents}
+            onSearchChange={handleChangeSearch}
+            students={filteredStudents}
             className={classes.studentContainer}
+            searchValue={searchValue}
           />
         </Col>
       </Row>

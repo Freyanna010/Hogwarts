@@ -14,9 +14,14 @@
   gap: 24px;
 }
 
-.SearchInput{
+.searchInput {
   background-color: $background-dark;
   color: $lite-yellow;
   margin-bottom: 15px;
+
+  &:is(:hover, :focus-within) {
+    color: $lite-yellow;
+    background-color: $background-dark;
+  }
 }
 

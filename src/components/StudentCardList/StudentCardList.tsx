@@ -14,6 +14,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
     onSortClick,
     onSearchChange,
     className,
+    searchValue = ""
   } = props;
 
   const handleOnDownOutlined = () => onSortClick("a-z");
@@ -32,7 +33,8 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
           placeholder="search student"
           prefix={<SearchOutlined />}
           onChange={handleOnChangeSearch}
-          className={classes.SearchInput}
+          className={classes.searchInput}
+          value={searchValue}
         />
         <Row>
           Sort name:
