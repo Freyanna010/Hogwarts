@@ -5,14 +5,13 @@ import {
   deleteStudent,
   filterStudentsByHouse,
   filterStudentsBySearch,
-  setSearchValue,
   sortStudentByName,
 } from "@features/studentsSlice";
 import { chooseHouseByName } from "@features/hоusesSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { Col, Row, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { FC, useEffect} from "react";
+import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
@@ -52,7 +51,7 @@ const HousePage: FC = () => {
     dispatch(chooseStudentById(studentId));
   };
 
-  const handleSortStudentByName = (direction: "a-z" | "z-a") =>
+  const handleSortStudentByName = (direction: "asc" | "desc" | "none") =>
     dispatch(sortStudentByName(direction));
 
   const debouncedChangeSearch = useEffectEvent(

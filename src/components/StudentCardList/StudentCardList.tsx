@@ -4,6 +4,8 @@ import StudentCard from "../StudentCard";
 import { DownOutlined, SearchOutlined, UpOutlined } from "@ant-design/icons";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
+import SortingButton from "@components/ui/SortingButton";
+import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
 
 const StudentCardList: FC<StudentCardListProps> = (props) => {
   const {
@@ -15,13 +17,15 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
     onSearchChange,
     className,
     searchValue = "",
-  } = props;
+  } = props; 
 
-  const handleOnDownOutlined = () => onSortClick("a-z");
-  const handleOnUpOutlined = () => onSortClick("z-a");
+  const handleSortChange = (direction: Direction) => {
+    onSortClick(direction)
+  };
 
   const handleOnChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const { value } = e.target;
+
     onSearchChange(value);
   };
 
@@ -38,17 +42,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
         />
         <Row>
           Sort name:
-          <Button
-            type="text"
-            onClick={handleOnDownOutlined}
-            // TODO: стили
-            icon={<DownOutlined style={{ color: "#fff" }} />}
-          />
-          <Button
-            type="text"
-            onClick={handleOnUpOutlined}
-            icon={<UpOutlined style={{ color: "#fff" }} />}
-          />
+          <SortingButton onSortClick={handleSortChange} />
         </Row>
       </Row>
 

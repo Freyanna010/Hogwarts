@@ -4,7 +4,6 @@ import { Button } from "antd";
 import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
 import { getSlideClass } from "./utils";
 import clsx from "clsx";
-import { useEffectEvent } from "@hooks/useEffectEvent";
 import { SliderProps } from "./Slider.types";
 
 const Slider: FC<SliderProps> = (props) => {
@@ -39,7 +38,7 @@ const Slider: FC<SliderProps> = (props) => {
 
   useEffect(() => {
     startAutoSlider();
-    return stopAutoSlider; 
+    return stopAutoSlider;
   }, [startAutoSlider, stopAutoSlider]);
 
   // TODO: Добавить свайпы

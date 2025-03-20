@@ -65,12 +65,9 @@ const studentsSlice = createSlice({
       // TODO: копирую здесь
       state.filteredStudents = state.houseStudents;
     },
-    // setSearchValue: (state, action: PayloadAction<string>) => {
-    //   state.searchValue = action.payload;
-    // },
-    filterStudentsBySearch: (state, action: PayloadAction<string>) => {   
-      state.searchValue = action.payload;  
-      const  searchValue = state.searchValue.toLocaleLowerCase() 
+    filterStudentsBySearch: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
+      const searchValue = state.searchValue.toLocaleLowerCase();
       if (searchValue) {
         state.filteredStudents = state.houseStudents.filter((student) =>
           student.name.toLowerCase().includes(searchValue),
@@ -134,6 +131,5 @@ export const {
   chooseStudentById,
   sortStudentByName,
   filterStudentsBySearch,
-  // setSearchValue,
 } = studentsSlice.actions;
 export default studentsSlice.reducer;
