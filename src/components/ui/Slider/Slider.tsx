@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import classes from "./Slider.module.scss";
 import { Button } from "antd";
 import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
@@ -8,36 +8,39 @@ import { useEffectEvent } from "@hooks/useEffectEvent";
 import { SliderProps } from "./Slider.types";
 
 const Slider: FC<SliderProps> = (props) => {
-  const { children, className, autoSwitch = true, switchTimer = 3000 } = props;
+  const { children, className, autoSwitch = true, switchTimer = 2500 } = props;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   const totalSlides = children.length;
   const intervalRef = useRef<number | null>(null);
 
-  const handlePrevSlide = () => {
+  const handlePrevSlide = useCallback(() => {
     setActiveSlideIndex(
       (prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides,
     );
-  };
-  const handleNextSlide = () => {
-    setActiveSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
-  };
+  }, [totalSlides]);
 
-  const startAutoSlider = useEffectEvent(() => {
+  const handleNextSlide = useCallback(() => {
+    setActiveSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  }, [totalSlides]);
+
+  const startAutoSlider = useCallback(() => {
     if (autoSwitch && switchTimer !== null) {
       intervalRef.current = window.setInterval(handleNextSlide, switchTimer);
     }
-  });
-  const stopAutoSlider = useEffectEvent(() => {
+  }, [autoSwitch, switchTimer, handleNextSlide]);
+
+  const stopAutoSlider = useCallback(() => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-  });
+  }, []);
 
   useEffect(() => {
     startAutoSlider();
-    return stopAutoSlider();
-  }, [stopAutoSlider, startAutoSlider]);
+    return stopAutoSlider; 
+  }, [startAutoSlider, stopAutoSlider]);
 
   // TODO: Добавить свайпы
   return (

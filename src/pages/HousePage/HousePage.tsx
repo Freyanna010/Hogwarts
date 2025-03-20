@@ -57,8 +57,7 @@ const HousePage: FC = () => {
 
   const debouncedChangeSearch = useEffectEvent(
     debounce((value: string) => {
-      dispatch(setSearchValue(value));
-      dispatch(filterStudentsBySearch());
+      dispatch(filterStudentsBySearch(value));
     }, 500),
   );
 
