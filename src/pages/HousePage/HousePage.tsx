@@ -12,7 +12,7 @@ import { chooseHouseByName } from "@features/hоusesSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { Col, Row, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
@@ -25,8 +25,13 @@ const HousePage: FC = () => {
   const { houseName } = useParams();
   const navigate = useNavigate();
 
-  const { filteredStudents, allStudents, isStudentsLoading, errorMessage, searchValue} =
-    useSelector((state: RootState) => state.students);
+  const {
+    filteredStudents,
+    allStudents,
+    isStudentsLoading,
+    errorMessage,
+    searchValue,
+  } = useSelector((state: RootState) => state.students);
   const { currentHouse } = useSelector((state: RootState) => state.houses);
 
   useEffect(() => {
@@ -50,16 +55,16 @@ const HousePage: FC = () => {
   const handleSortStudentByName = (direction: "a-z" | "z-a") =>
     dispatch(sortStudentByName(direction));
 
-const debouncedChangeSearch =   useEffectEvent(
-  debounce((value: string) => {
-    dispatch(setSearchValue(value));
-    dispatch(filterStudentsBySearch());
-  }, 500)
-);
+  const debouncedChangeSearch = useEffectEvent(
+    debounce((value: string) => {
+      dispatch(setSearchValue(value));
+      dispatch(filterStudentsBySearch());
+    }, 500),
+  );
 
-const handleChangeSearch = (value: string) => {
-  debouncedChangeSearch(value);
-};
+  const handleChangeSearch = (value: string) => {
+    debouncedChangeSearch(value);
+  };
 
   if (isStudentsLoading) {
     return (

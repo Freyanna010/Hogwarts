@@ -1,4 +1,3 @@
-
 import { FC, useEffect } from "react";
 import VideoBg from "@components/ui/VideoBg";
 import Routing from "@components/Routing";

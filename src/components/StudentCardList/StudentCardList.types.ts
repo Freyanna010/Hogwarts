@@ -8,5 +8,5 @@ export interface StudentCardListProps {
   onSearchChange: (value: string) => void;
   className: string;
   students: Student[];
-  searchValue: string
+  searchValue: string;
 }
