@@ -39,5 +39,31 @@
   transform: translate(-50%, -50%);
   left: 50%;
   top: 250px;
-  background-color: black;
+  background-color: $dark-blue;
+
+  &:hover
+   {
+    color: $lite-yellow !important;
+    background-color: $background-dark !important;
+    border: 2px solid $lite-yellow !important;
+  }
 }
+
+
+:global {
+  .houseCardButton{
+    .houseCardButton.ant-btn.ant-btn{
+      color: $lite-yellow;
+      background-color: $dark-blue;
+      border: none;
+      padding: 8px 16px;
+      transition: all 0.3s ease;
+      &:hover {
+        color: $lite-yellow;
+        background-color: $background-dark;
+        border: 2px solid $lite-yellow;
+      }  }
+
+  }
+}
+

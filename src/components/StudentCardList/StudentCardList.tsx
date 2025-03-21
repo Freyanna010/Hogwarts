@@ -1,7 +1,7 @@
-import { Button, Col, Input, Row } from "antd";
+import { Col, Input, Row } from "antd";
 import { ChangeEvent, FC } from "react";
 import StudentCard from "../StudentCard";
-import { DownOutlined, SearchOutlined, UpOutlined } from "@ant-design/icons";
+import { SearchOutlined} from "@ant-design/icons";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 import SortingButton from "@components/ui/SortingButton";
@@ -30,7 +30,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
   };
 
   return (
-    <div className={className} style={{ maxWidth: "100%", minHeight: "400px" }}>
+    <div className={className}>
       <Row className={classes.searchCardListRow}>
         <Input
           size="large"

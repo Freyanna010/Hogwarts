@@ -9,11 +9,13 @@ const SortingButton: React.FC<SortingButtonProps> = ({ onSortClick }) => {
 
   const handleClick = () => {
     const nextDirection = getDirection(direction);
+
     setDirection(nextDirection);
     onSortClick?.(nextDirection);
   };
 
   const icon = getIcon(direction);
+
   return <Button type="text" onClick={handleClick} icon={icon} />;
 };
 

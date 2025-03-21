@@ -78,11 +78,14 @@ const studentsSlice = createSlice({
       }
     },
     sortStudentByName: (state, action: PayloadAction<string>) => {
-      if (action.payload === "a-z") {
-        state.houseStudents.sort((a, b) => a.name.localeCompare(b.name));
+      if (action.payload === "asc") {
+        state.filteredStudents =  state.filteredStudents.sort((a, b) => a.name.localeCompare(b.name));
       }
-      if (action.payload === "z-a") {
-        state.houseStudents.sort((a, b) => b.name.localeCompare(a.name));
+      if (action.payload === "desc") {
+        state.filteredStudents =  state.filteredStudents.sort((a, b) => b.name.localeCompare(a.name));
+      }
+      if (action.payload === "none") {
+        state.filteredStudents = state.houseStudents;
       }
     },
     showFavoriteStudents: (state) => {

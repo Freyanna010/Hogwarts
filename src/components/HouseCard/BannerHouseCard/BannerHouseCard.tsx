@@ -25,12 +25,12 @@ const BannerHouseCard: FC<Omit<HouseCardProps, "type">> = ({
         <img src={emblemImg} alt={name} />
         <p>{description}</p>
         <Button
-          variant="outlined"
+          type="link"
           className={classes.houseCardButton}
           icon={isShowVideo ? <DownOutlined /> : <UpOutlined />}
           onClick={handleClick}
         >
-          {isShowVideo ? `Open the ${name} room` : `Close the ${name} room`}
+          {isShowVideo ? `Close the ${name} room` : ` Open the ${name} room`}
         </Button>
       </div>
       {isShowVideo && (
