@@ -61,6 +61,7 @@ const Slider: FC<SliderProps> = (props) => {
         size="large"
         className={clsx(classes.buttons, classes.prevButton)}
       />
+      
       <div className={classes.slider}>
         {children.map((child, index) => {
           const slideClass = clsx(

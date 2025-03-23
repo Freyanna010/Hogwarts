@@ -3,14 +3,17 @@
 .sliderContainer {
   position: relative;
   width: 100%;
+  height: 70dvh;
   margin: 0 auto;
   overflow: hidden;
   perspective: 800px;
+  box-sizing: border-box;
+  container-type: size;
 }
 
 .slider {
   position: relative;
-  height: 550px;
+  height: 100%;
 }
 
 .slide {
@@ -24,6 +27,7 @@
   transform-style: preserve-3d;
   transform-origin: center;
   height: 100%;
+  max-height: 100%;
   width: 50%;
   border-radius: 15px;
 
@@ -51,6 +55,7 @@
   opacity: 1;
   transform: translateX(-50%) scale(1) rotateY(0deg);
   z-index: 2;
+
 }
 
 .next {
@@ -69,7 +74,8 @@
 
 .buttons {
   position: absolute;
-  top: 25%;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 3;
   cursor:
     url("../../../assets/cursor2.png") 10 10,
@@ -83,3 +89,26 @@
 .nextButton {
   right: 10px;
 }
+
+
+@container (max-width: 320px) {
+  .sliderContainer{
+    height: 50dvh;
+  }
+  .slide {
+    width: 90%;
+  }
+}
+
+@container (max-width: 600px) {
+  .slide {
+    width: 80%;
+  }
+}
+
+@container (max-width: 900px) {
+  .slide {
+    width: 70%;
+  }
+}
+
