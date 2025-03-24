@@ -1,5 +1,5 @@
-import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import { Direction } from '../SortingВutton.types';
+import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import { Direction } from "../SortingВutton.types";
 
 export const getIcon = (direction: Direction): JSX.Element => {
   const iconMap: Record<Direction, JSX.Element> = {

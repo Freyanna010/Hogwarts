@@ -26,7 +26,7 @@ const BannerHouseCard: FC<Omit<HouseCardProps, "type">> = ({
         <p>{description}</p>
         <Button
           type="link"
-          className=  {classes.houseCardButton} 
+          className={classes.houseCardButton}
           icon={isShowVideo ? <DownOutlined /> : <UpOutlined />}
           onClick={handleClick}
         >

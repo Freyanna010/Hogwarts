@@ -1,4 +1,3 @@
-
 export type Direction = "asc" | "desc" | "none";
 
 export type SortingButtonProps = {

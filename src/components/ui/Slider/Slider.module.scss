@@ -11,7 +11,7 @@
   container-type: size;
 
   @container (max-width: 320px) {
-    .sliderContainer{
+    .sliderContainer {
       height: 50vh;
     }
     .slide {
@@ -38,7 +38,6 @@
   height: 100%;
   width: 50%;
 
-
   cursor:
     url("../../../assets/cursor2.png") 10 10,
     auto;
@@ -48,7 +47,6 @@
   opacity: 1;
   transform: translateX(-50%) scale(1) rotateY(0deg);
   z-index: 2;
-
 }
 
 .next {
@@ -83,9 +81,8 @@
   right: 10px;
 }
 
-
 @container (max-width: 320px) {
-  .sliderContainer{
+  .sliderContainer {
     height: 50vh;
   }
   .slide {
@@ -104,4 +101,3 @@
     width: 70%;
   }
 }
-

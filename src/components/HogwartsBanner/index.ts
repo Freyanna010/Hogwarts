@@ -1,1 +1,1 @@
-export {default} from "./HogwartsBanner"
+export { default } from "./HogwartsBanner";

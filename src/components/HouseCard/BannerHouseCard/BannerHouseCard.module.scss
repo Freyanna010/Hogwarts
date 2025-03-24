@@ -41,18 +41,16 @@
   top: 250px;
   background-color: $dark-blue;
 
-  &:hover
-   {
+  &:hover {
     color: $lite-yellow !important;
     background-color: $background-dark !important;
     border: 2px solid $lite-yellow !important;
   }
 }
 
-
 :global {
-  .houseCardButton{
-    .houseCardButton.ant-btn.ant-btn{
+  .houseCardButton {
+    .houseCardButton.ant-btn.ant-btn {
       color: $lite-yellow;
       background-color: $dark-blue;
       border: none;
@@ -62,8 +60,7 @@
         color: $lite-yellow;
         background-color: $background-dark;
         border: 2px solid $lite-yellow;
-      }  }
-
+      }
+    }
   }
 }
-
