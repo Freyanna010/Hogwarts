@@ -9,6 +9,7 @@
   perspective: 800px;
   box-sizing: border-box;
   container-type: size;
+  
 
   @container (max-width: 320px) {
     .sliderContainer {
@@ -23,6 +24,8 @@
 .slider {
   position: relative;
   height: 100%;
+
+
 }
 
 .slide {
@@ -36,7 +39,7 @@
   transform-style: preserve-3d;
   transform-origin: center;
   height: 100%;
-  width: 50%;
+  width: auto;
 
   cursor:
     url("../../../assets/cursor2.png") 10 10,

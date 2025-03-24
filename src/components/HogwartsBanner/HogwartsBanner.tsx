@@ -24,7 +24,7 @@ const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
 
       <Slider className={classes.bannerSlider}>
         {images.map((image) => (
-          <Image src={image.image} className={classes.imageBannerSlider} />
+          <img src={image.image} className={classes.imageBannerSlider} />
         ))}
       </Slider>
     </div>
