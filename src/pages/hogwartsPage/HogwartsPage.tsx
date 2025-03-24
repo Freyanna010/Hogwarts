@@ -19,17 +19,21 @@ const HogwartsPage: FC = () => {
 
   return (
     <div>
-      <Slider className={classes.hgPageSlider}>
-        {houses.map((house) => (
-          <HouseCard
-            house={house}
-            onCardClick={navigateToHousePage}
-            type="slider"
-          />
-        ))}
-      </Slider>
+      <div className={classes.hgPageSlider}>
+        <Slider>
+          {houses.map((house) => (
+            <HouseCard
+              house={house}
+              onCardClick={navigateToHousePage}
+              type="slider"
+            />
+          ))}
+        </Slider>
+      </div>
 
-      <HogwartsBanner images={hogwartsImages} className={classes.hgPageBanner}/>
+      <div className={classes.hgPageBanner}>
+        <HogwartsBanner images={hogwartsImages} />
+      </div>
     </div>
   );
 };

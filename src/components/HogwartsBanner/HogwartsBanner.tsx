@@ -1,13 +1,13 @@
-import {  Image } from "antd";
+import { Image } from "antd";
 import classes from "./HogwartsBanner.module.scss";
 import Slider from "@components/ui/Slider";
 import { HogwartsBannerProps } from "./HogwartsBanner.types";
 import { FC } from "react";
 import clsx from "clsx";
 
-const HogwartsBanner: FC<HogwartsBannerProps> = ({ images, className }) => {
+const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
   return (
-    <div className={clsx(classes.bannerContainer, className) }>
+    <div className={classes.bannerContainer}>
       <h1>Welcome to Hogwarts</h1>
       <p>
         Located in a huge sprawling castle in the Scottish highlands, the
@@ -22,9 +22,9 @@ const HogwartsBanner: FC<HogwartsBannerProps> = ({ images, className }) => {
         talking portraits and much more.
       </p>
 
-      <Slider>
+      <Slider className={classes.bannerSlider}>
         {images.map((image) => (
-       <Image src={image.image}/>
+          <Image src={image.image} />
         ))}
       </Slider>
     </div>
