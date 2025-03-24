@@ -5,9 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@store/store";
 import HouseCard from "@components/HouseCard";
+import HogwartsBanner from "@components/HogwartsBanner";
+import { hogwartsImagesData } from "@store/hogwartsImageData";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
+  const hogwartsImages = hogwartsImagesData;
   const navigate = useNavigate();
 
   const navigateToHousePage = (houseName: string) => {
@@ -15,15 +18,19 @@ const HogwartsPage: FC = () => {
   };
 
   return (
-    <Slider className={classes.hgPageSlider}>
-      {houses.map((house) => (
-        <HouseCard
-          house={house}
-          onCardClick={navigateToHousePage}
-          type="slider"
-        />
-      ))}
-    </Slider>
+    <div>
+      <Slider className={classes.hgPageSlider}>
+        {houses.map((house) => (
+          <HouseCard
+            house={house}
+            onCardClick={navigateToHousePage}
+            type="slider"
+          />
+        ))}
+      </Slider>
+
+      <HogwartsBanner images={hogwartsImages} className={classes.hgPageBanner}/>
+    </div>
   );
 };
 

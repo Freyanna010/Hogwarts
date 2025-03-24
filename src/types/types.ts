@@ -56,3 +56,8 @@ export interface House {
   video: string;
   description: string;
 }
+
+export interface HogwartsImage {
+  id: string;
+  image: string;
+}

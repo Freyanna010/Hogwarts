@@ -23,7 +23,7 @@ body {
   background-color: $background-dark;
   flex-grow: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   z-index: 1;
   overflow-y: auto;
 }
