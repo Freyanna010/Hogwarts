@@ -88,19 +88,16 @@
   .sliderContainer {
     height: 50vh;
   }
-  .slide {
-    width: 90%;
-  }
 }
 
 @container (max-width: 600px) {
-  .slide {
-    width: 80%;
+  .sliderContainer {
+    height: 50vh;
   }
 }
 
 @container (max-width: 900px) {
-  .slide {
-    width: 70%;
+  .sliderContainer {
+    height: 50vh;
   }
 }
