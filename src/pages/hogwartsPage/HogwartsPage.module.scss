@@ -69,13 +69,6 @@
   z-index: 3;
 }
 
-.bannerSlider {
-  margin-top: 5vh;
-  max-height: 50%;
-  width: 100%;
-  object-fit: contain;
-}
-
 .hgPageSlider {
   height: 100dvh;
   display: flex;
@@ -89,4 +82,45 @@
 .title {
   font-size: 48px;
   color: $lite-yellow;
+}
+
+.hgPageThree {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.hgPageThreeBg {
+  display: flex;
+  background-color: $dark;
+  height: 50dvh;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+
+  .hgPageThreeColumn {
+    max-width: 40dvw;
+    display: flex;
+    flex-direction: column;
+    color: $lite-yellow;
+    padding-left: 3vh;
+    gap: 20px;
+  
+    p {
+      font-size: 1.2rem;
+      text-indent: 3%;
+     
+    }
+  }
+
+  img {
+    width: 40vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }

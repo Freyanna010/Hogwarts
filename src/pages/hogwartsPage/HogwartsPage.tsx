@@ -9,6 +9,7 @@ import HogwartsBanner from "@components/HogwartsBanner";
 import { hogwartsImagesData } from "@store/hogwartsImageData";
 import owl from "@assets/owl.png";
 import LetterModal from "@components/LetterModal/LetterModal";
+import three from "@assets/three.png";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
@@ -57,6 +58,26 @@ const HogwartsPage: FC = () => {
             />
           ))}
         </Slider>
+      </div>
+
+      <div className={classes.hgPageThree}>
+        <div className={classes.hgPageThreeBg}>
+          <div className={classes.hgPageThreeColumn}>
+            <h2 className={classes.title}>The famous three</h2>
+            <p>
+              Harry, Ron, and Hermione are students at Hogwarts School of
+              Witchcraft and Wizardry. Together, they faced many challenges and
+              defeated a terrifying monster that threatened the school. With
+              Harry’s bravery, Ron’s loyalty, and Hermione’s cleverness, they
+              proved that true friendship and courage can overcome even the
+              darkest dangers.
+            </p>
+          </div>
+
+          <div className={classes.hgPageThreeImage}>
+            <img src={three} />
+          </div>
+        </div>
       </div>
     </div>
   );

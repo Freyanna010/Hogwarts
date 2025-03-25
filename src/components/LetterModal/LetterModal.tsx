@@ -1,7 +1,7 @@
 import { FC } from "react";
-import classes from "./Letter.module.scss";
+import classes from "./LetterModal.module.scss";
 import { Button } from "antd";
-import { LetterModalProps} from "./LetterModal.types";
+import { LetterModalProps } from "./LetterModal.types";
 
 const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
   return (
