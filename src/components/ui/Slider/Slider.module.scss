@@ -9,7 +9,6 @@
   perspective: 800px;
   box-sizing: border-box;
   container-type: size;
-  
 
   @container (max-width: 320px) {
     .sliderContainer {
@@ -24,8 +23,6 @@
 .slider {
   position: relative;
   height: 100%;
-
-
 }
 
 .slide {
