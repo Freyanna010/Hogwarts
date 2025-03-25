@@ -1,9 +1,7 @@
-import { Image } from "antd";
 import classes from "./HogwartsBanner.module.scss";
 import Slider from "@components/ui/Slider";
 import { HogwartsBannerProps } from "./HogwartsBanner.types";
 import { FC } from "react";
-import clsx from "clsx";
 
 const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
   return (
@@ -27,7 +25,6 @@ const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
           <img src={image.image} className={classes.imageBannerSlider} />
         ))}
       </Slider>
-      
     </div>
   );
 };
