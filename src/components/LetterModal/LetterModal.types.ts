@@ -1,4 +1,4 @@
-export interface ModalLetterProps {
+export interface LetterModalProps {
   onGoClick: () => void;
   onCloseClick: () => void;
 }

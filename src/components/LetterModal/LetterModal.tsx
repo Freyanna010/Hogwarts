@@ -1,9 +1,9 @@
 import { FC } from "react";
-import classes from "./MadalLetter.module.scss";
+import classes from "./Letter.module.scss";
 import { Button } from "antd";
-import { ModalLetterProps } from "./ModalLetter.types";
+import { LetterModalProps} from "./LetterModal.types";
 
-const ModalLetter: FC<ModalLetterProps> = ({ onGoClick, onCloseClick }) => {
+const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
   return (
     <div className={classes.overlay} onClick={onCloseClick}>
       <div className={classes.modalLetterContainer}>
@@ -21,4 +21,4 @@ const ModalLetter: FC<ModalLetterProps> = ({ onGoClick, onCloseClick }) => {
   );
 };
 
-export default ModalLetter;
+export default LetterModal;

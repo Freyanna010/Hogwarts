@@ -8,7 +8,7 @@ import HouseCard from "@components/HouseCard";
 import HogwartsBanner from "@components/HogwartsBanner";
 import { hogwartsImagesData } from "@store/hogwartsImageData";
 import owl from "@assets/owl.png";
-import ModalLetter from "@components/ModallLetter/ModalLetter";
+import LetterModal from "@components/LetterModal/LetterModal";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
@@ -26,7 +26,7 @@ const HogwartsPage: FC = () => {
   return (
     <div className={classes.wrapperHgPageSlider}>
       {isShowModal && (
-        <ModalLetter
+        <LetterModal
           onCloseClick={handleCloseClick}
           onGoClick={handleGoClick}
         />
