@@ -7,6 +7,8 @@ import { RootState } from "@store/store";
 import HouseCard from "@components/HouseCard";
 import HogwartsBanner from "@components/HogwartsBanner";
 import { hogwartsImagesData } from "@store/hogwartsImageData";
+import owl from "@assets/owl.png";
+import { Image } from "antd";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
@@ -18,8 +20,19 @@ const HogwartsPage: FC = () => {
   };
 
   return (
-    <div>
+    <div className={classes.wrapperHgPageSlider}>
+
+      <div className={classes.hgPageTitle}>
+        <img src={owl} className={classes.hgPageSliderImg} />
+        <h1 className={classes.title}>Welcome to Hogwarts</h1>
+      </div>
+
+      <div className={classes.hgPageBanner}>
+        <HogwartsBanner images={hogwartsImages} />
+      </div>
+
       <div className={classes.hgPageSlider}>
+        <h2> Hogwarts houses</h2>
         <Slider>
           {houses.map((house) => (
             <HouseCard
@@ -29,10 +42,8 @@ const HogwartsPage: FC = () => {
             />
           ))}
         </Slider>
-      </div>
 
-      <div className={classes.hgPageBanner}>
-        <HogwartsBanner images={hogwartsImages} />
+
       </div>
     </div>
   );

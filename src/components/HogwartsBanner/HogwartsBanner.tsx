@@ -8,7 +8,7 @@ import clsx from "clsx";
 const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
   return (
     <div className={classes.bannerContainer}>
-      <h1>Welcome to Hogwarts</h1>
+      <h2> Hogwarts</h2>
       <p>
         Located in a huge sprawling castle in the Scottish highlands, the
         celebrated school of witchcraft and wizardry taught its young students
