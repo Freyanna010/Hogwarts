@@ -26,7 +26,7 @@
 }
 
 .bannerSlider {
-  margin-top: 4vh;
+  margin-top: 5vh;
   max-height: 50%;
   width: 100%;
   object-fit: contain;
@@ -35,4 +35,11 @@
 .imageBannerSlider {
   height: auto;
   max-height: 100%;
+}
+
+// TODO: для проверки
+@media (max-width: 480px) {
+  .bannerContainer {
+    background-color: aqua;
+  }
 }
