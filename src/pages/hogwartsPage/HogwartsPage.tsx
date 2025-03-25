@@ -33,22 +33,22 @@ const HogwartsPage: FC = () => {
         />
       )}
 
-      <div className={classes.hgPageTitle}>
-        <img
+      <div className={classes.hgPageTitle}>  //TODO: вынести контейнер в ui  компонет который задает высоту и позиционирование или просто общий класс для дивов
+        <img  //TODO: вынести  в ui  компонет только со стилями анимации
           src={owl}
           className={classes.hgPageSliderImg}
           onClick={handleImageClick}
         />
 
-        <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>
+        <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>   
       </div>
 
       <div className={classes.hgPageBanner}>
-        <HogwartsBanner images={hogwartsImages} />
+        <HogwartsBanner images={hogwartsImages} />  //TODO: не выносить в отдельный компоненет
       </div>
 
       <div className={classes.hgPageSlider}>
-        <h2 className={classes.title}> Hogwarts houses</h2>
+        <h2 className={classes.title}> Hogwarts houses</h2>   //TODO: такой title есть на других старницах  
         <Slider>
           {houses.map((house) => (
             <HouseCard
