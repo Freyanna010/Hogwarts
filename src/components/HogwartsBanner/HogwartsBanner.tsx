@@ -8,7 +8,7 @@ import clsx from "clsx";
 const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
   return (
     <div className={classes.bannerContainer}>
-      <h2> Hogwarts</h2>
+      <h2 className={classes.title}> Hogwarts</h2>
       <p>
         Located in a huge sprawling castle in the Scottish highlands, the
         celebrated school of witchcraft and wizardry taught its young students
@@ -27,6 +27,7 @@ const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
           <img src={image.image} className={classes.imageBannerSlider} />
         ))}
       </Slider>
+      
     </div>
   );
 };

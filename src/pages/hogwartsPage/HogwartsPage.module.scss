@@ -17,7 +17,7 @@
 
 }
 
-.title{
+.titleMain{
   font-size: 120px;
   font-family: "Almendra";
   text-transform: uppercase;
@@ -71,6 +71,13 @@
   z-index: 3;
 }
 
+.bannerSlider {
+  margin-top: 5vh;
+  max-height: 50%;
+  width: 100%;
+  object-fit: contain;
+}
+
 
 .hgPageSlider {
   height: 100dvh;
@@ -80,10 +87,9 @@
   justify-content: center;
   gap: 10vh;
   z-index: 3;
-
-  h2 {
-    font-size: 48px;
-    color: $lite-yellow
-  }
 }
 
+.title{
+    font-size: 48px;
+    color: $lite-yellow
+}
