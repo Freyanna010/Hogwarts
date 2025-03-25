@@ -9,7 +9,7 @@ body {
 }
 
 .pageContainer {
-  max-width: 1200px;
+  max-width: 1280px;
   height: 100dvh;
   margin: 0 auto;
   display: flex;
@@ -47,22 +47,8 @@ body {
 
 @container (max-width: 1000px) {
   .pageContainer {
-    max-width: 90%;
-  }
-}
-
-@container (max-width: 600px) {
-  .pageContainer {
-    max-width: 80%;
-  }
-}
-
-@container (max-width: 320px) {
-  .pageContainer {
     max-width: 100%;
-    padding: 0 10px;
   }
-
   .main {
     background-color: transparent;
   }
