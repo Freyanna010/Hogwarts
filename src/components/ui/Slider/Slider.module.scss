@@ -81,19 +81,7 @@
   right: 10px;
 }
 
-// @container (max-width: 320px) {
-//   .sliderContainer {
-//     height: 50vh;
-//   }
-// }
-
-// @container (max-width: 600px) {
-//   .sliderContainer {
-//     height: 50vh;
-//   }
-// }
-
-@container (max-width: 900px) {
+@media (max-width: 480px) {
   .sliderContainer {
     height: 50vh;
   }

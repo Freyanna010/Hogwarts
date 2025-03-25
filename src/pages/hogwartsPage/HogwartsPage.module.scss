@@ -1,12 +1,5 @@
-
-
-.hgPage{
-  container-type: inline-size;
-  container-name: pageContainer;
-}
-
 .hgPageSlider {
-  padding-top: 10%;
+  padding-top: 10vh;
   height: 100dvh;
 }
 
@@ -15,8 +8,3 @@
   height: 100dvh;
 }
 
-@container pageContainer (max-width: 480px) {
-  .hgPageSlider{
-    padding-top: 60%;
-  }
-}
