@@ -33,22 +33,26 @@ const HogwartsPage: FC = () => {
         />
       )}
 
-      <div className={classes.hgPageTitle}>  //TODO: вынести контейнер в ui  компонет который задает высоту и позиционирование или просто общий класс для дивов
-        <img  //TODO: вынести  в ui  компонет только со стилями анимации
+      {/* TODO: вынести div контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
+      <div className={classes.hgPageTitle}>
+        {/*TODO: вынести  в ui  компонет только со стилями анимации ⬇ */}
+        <img
           src={owl}
           className={classes.hgPageSliderImg}
           onClick={handleImageClick}
         />
-
-        <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>   
+        <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>
       </div>
 
+      {/* TODO: вынести div контейнер в ui компонет который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
       <div className={classes.hgPageBanner}>
-        <HogwartsBanner images={hogwartsImages} />  //TODO: не выносить в отдельный компоненет
+        {/*TODO: не выносить в отдельный компоненет ⬇ */}
+        <HogwartsBanner images={hogwartsImages} />
       </div>
 
       <div className={classes.hgPageSlider}>
-        <h2 className={classes.title}> Hogwarts houses</h2>   //TODO: такой title есть на других старницах  
+        {/*TODO: такой title eсть на других старницах ⬇*/}
+        <h2 className={classes.title}> Hogwarts houses</h2>
         <Slider>
           {houses.map((house) => (
             <HouseCard
@@ -60,7 +64,10 @@ const HogwartsPage: FC = () => {
         </Slider>
       </div>
 
+      {/* TODO: вынести div контейнер в ui компонет который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
       <div className={classes.hgPageThree}>
+
+        {/* TODO: оставить так или вынести как HogwartsBanner ⬆*/}
         <div className={classes.hgPageThreeBg}>
           <div className={classes.hgPageThreeColumn}>
             <h2 className={classes.title}>The famous three</h2>
