@@ -10,19 +10,23 @@ import { hogwartsImagesData } from "@store/hogwartsImageData";
 import owl from "@assets/owl.png";
 import LetterModal from "@components/LetterModal/LetterModal";
 import three from "@assets/three.png";
+import { Tooltip } from "antd";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
   const hogwartsImages = hogwartsImagesData;
   const navigate = useNavigate();
   const [isShowModal, seIsShowModal] = useState(false);
+  const [isShowTooltip, seIsShowTooltip] = useState(false);
 
   const navigateToHousePage = (houseName: string) => {
     navigate(`/house/${houseName}`);
   };
   const handleImageClick = () => seIsShowModal(!isShowModal);
-  const handleCloseClick = () => seIsShowModal(false);
+  const handleCloseClick = () => seIsShowModal(false);  
   const handleGoClick = () => navigate("/create-student");
+  const handleMouseEnter = () => seIsShowTooltip(true);
+  const handleMouseLeave = () => seIsShowTooltip(false);
 
   return (
     <div className={classes.wrapperHgPageSlider}>
@@ -35,12 +39,22 @@ const HogwartsPage: FC = () => {
 
       {/* TODO: вынести div контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
       <div className={classes.hgPageTitle}>
-        {/*TODO: вынести  в ui  компонет только со стилями анимации ⬇ */}
+
+        <Tooltip
+        title="I have a letter for you!"
+        open={isShowTooltip}
+        placement="right"
+   
+      >
+              {/* TODO: вынести div контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
         <img
           src={owl}
           className={classes.hgPageSliderImg}
           onClick={handleImageClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
+      </Tooltip>
         <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>
       </div>
 
