@@ -13,6 +13,8 @@ import three from "@assets/three.png";
 import { Tooltip } from "antd";
 import { chooseStudentById } from "@features/studentsSlice";
 import React from "react";
+import { Link, Element } from "react-scroll";
+
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
@@ -23,6 +25,7 @@ const HogwartsPage: FC = () => {
   const hogwartsImages = hogwartsImagesData;
 
   const navigate = useNavigate();
+  
   const [isShowModal, seIsShowModal] = useState(false);
   const [isShowTooltip, seIsShowTooltip] = useState(false);
 
@@ -48,15 +51,16 @@ const HogwartsPage: FC = () => {
           onGoClick={handleGoClick}
         />
       )}
-
-      {/* TODO: вынести div контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
-      <div className={classes.hgPageTitle}>
+      
+      {/* TODO: вынести section  ⬇ контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов*/}
+      <section className={classes.hgPageTitle}>
         <Tooltip
           title="I have a letter for you!"
           open={isShowTooltip}
           placement="right"
+          mouseEnterDelay={0.7}
         >
-          {/* TODO: вынести div контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
+          {/* TODO: выести в AnimateImage вместе со стилями анимфции ⬇*/}
           <img
             src={owl}
             className={classes.hgPageSliderImg}
@@ -66,15 +70,23 @@ const HogwartsPage: FC = () => {
           />
         </Tooltip>
         <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>
-      </div>
 
+        {/* TODO: не работает навигация ⬇*/}
+        <Link to="section2" smooth={true} duration={500}>
+        About Hogwarts
+        </Link>
+      </section>
+
+<Element name="section1">
       {/* TODO: вынести div контейнер в ui компонет который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
-      <div className={classes.hgPageBanner}>
+      <section className={classes.hgPageBanner} >
         {/*TODO: не выносить в отдельный компоненет ⬇ */}
         <HogwartsBanner images={hogwartsImages} />
-      </div>
+      </section>
+</Element>
 
-      <div className={classes.hgPageSlider}>
+<Element  name="section2">
+<section className={classes.hgPageSlider}>
         {/*TODO: такой title eсть на других старницах ⬇*/}
         <h2 className={classes.title}> Hogwarts houses</h2>
         <Slider>
@@ -86,10 +98,12 @@ const HogwartsPage: FC = () => {
             />
           ))}
         </Slider>
-      </div>
+      </section>
+</Element>
 
+<Element name="section2">
       {/* TODO: вынести div контейнер в ui компонет который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
-      <div className={classes.hgPageThree}>
+      <section className={classes.hgPageThree}>
         {/* TODO: оставить содержимое блока так или вынести как HogwartsBanner  в компонент ⬆*/}
         <div className={classes.hgPageThreeBg}>
           <div className={classes.hgPageThreeColumn}>
@@ -134,7 +148,9 @@ const HogwartsPage: FC = () => {
             <img src={three} />
           </div>
         </div>
-      </div>
+      </section>
+</Element>
+
     </div>
   );
 };

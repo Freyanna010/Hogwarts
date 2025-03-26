@@ -6,8 +6,9 @@ import { LetterModalProps } from "./LetterModal.types";
 const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
   return (
     <div className={classes.overlay} onClick={onCloseClick}>
-      <div className={classes.modalLetterContainer}>
-        <div className={classes.modalContent}>
+      {/*TODO: править стиль для закрытия */}
+      <div className={classes.modalLetterContainer}  onClick={(e) => e.stopPropagation()} >
+        <div className={classes.modalContent} >
           <p> хатите в хогравст?</p>
           <Button className={classes.button} onClick={onGoClick}>
             Go to Hogwarts
