@@ -11,10 +11,13 @@ import owl from "@assets/owl.png";
 import LetterModal from "@components/LetterModal/LetterModal";
 import three from "@assets/three.png";
 import { Tooltip } from "antd";
+import { chooseStudentById } from "@features/studentsSlice";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
+  const students = useSelector((state: RootState) => state.students.allStudents);
   const hogwartsImages = hogwartsImagesData;
+
   const navigate = useNavigate();
   const [isShowModal, seIsShowModal] = useState(false);
   const [isShowTooltip, seIsShowTooltip] = useState(false);
@@ -27,6 +30,11 @@ const HogwartsPage: FC = () => {
   const handleGoClick = () => navigate("/create-student");
   const handleMouseEnter = () => seIsShowTooltip(true);
   const handleMouseLeave = () => seIsShowTooltip(false);
+
+    const handleLinkClick = (studentId: string) => {
+      navigate(`/students/${studentId}`);
+      dispatch(chooseStudentById(studentId));
+    };
 
   return (
     <div className={classes.wrapperHgPageSlider}>
@@ -86,13 +94,30 @@ const HogwartsPage: FC = () => {
           <div className={classes.hgPageThreeColumn}>
             <h2 className={classes.title}>The famous three</h2>
             <p>
-              Harry, Ron, and Hermione are students at Hogwarts School of
-              Witchcraft and Wizardry. Together, they faced many challenges and
-              defeated a terrifying monster that threatened the school. With
-              Harry’s bravery, Ron’s loyalty, and Hermione’s cleverness, they
-              proved that true friendship and courage can overcome even the
-              darkest dangers.
-            </p>
+              {/*TODO: править ссылки - React.Fragment? */}
+      {["Harry Potter", "Ron Weasley", "Hermione Granger"].map((name) => {
+        const student = students.find((s) => s.name === name);
+        return student ? (
+          <a
+            key={student.id}
+            href={`/students/${student.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick(student.id);
+            }}
+          >
+            {name}
+          </a>
+        ) : (
+          name
+        );
+      })}
+      {" "}are students at Hogwarts School of Witchcraft and Wizardry. Together, they faced many challenges and
+      defeated a terrifying monster that threatened the school. With
+      Harry’s bravery, Ron’s loyalty, and Hermione’s cleverness, they
+      proved that true friendship and courage can overcome even the
+      darkest dangers.
+    </p>
           </div>
 
           <div className={classes.hgPageThreeImage}>
@@ -105,3 +130,7 @@ const HogwartsPage: FC = () => {
 };
 
 export default HogwartsPage;
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}
+
