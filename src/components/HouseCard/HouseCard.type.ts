@@ -1,7 +1,11 @@
 import { House } from "@types";
+
+export type HouseCardType =  "slider" | "banner" | "popupMenu" ;
+
 export interface HouseCardProps {
   className?: string;
   house: House;
-  type: "slider" | "banner" | "nawBar";
+  type: HouseCardType;
   onCardClick?: (nameName: string) => void;
 }
+

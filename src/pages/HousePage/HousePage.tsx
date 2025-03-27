@@ -1,6 +1,6 @@
 import classes from "./HousePage.module.scss";
 import {
-  addFavoriteStudents,
+  changeFavoriteStudents,
   chooseStudentById,
   deleteStudent,
   filterStudentsByHouse,
@@ -41,7 +41,7 @@ const HousePage: FC = () => {
   }, [dispatch, houseName, allStudents]);
 
   const handleLikeStudentCard = (studentId: string) =>
-    dispatch(addFavoriteStudents(studentId));
+    dispatch(changeFavoriteStudents(studentId));
 
   const handleDeleteStudentCard = (studentId: string) =>
     dispatch(deleteStudent(studentId));

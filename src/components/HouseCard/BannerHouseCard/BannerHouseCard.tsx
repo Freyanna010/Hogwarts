@@ -8,10 +8,7 @@ import clsx from "clsx";
 import { getVideoId } from "@components/ui/VideoPlayer/getVideoId";
 
 // TODO:Типизация
-const BannerHouseCard: FC<Omit<HouseCardProps, "type">> = ({
-  house,
-  className,
-}) => {
+const BannerHouseCard: FC<Omit<HouseCardProps, "type">> = ({ house, className }) => {
   const { name, emblemImg, description, video } = house;
   const [isShowVideo, setShowVideo] = useState(false);
 

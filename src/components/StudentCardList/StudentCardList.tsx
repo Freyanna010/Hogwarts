@@ -10,7 +10,6 @@ import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
 const StudentCardList: FC<StudentCardListProps> = (props) => {
   const {
     onLikeClicK,
-    onDeleteClicK,
     students,
     onCardClick,
     onSortClick,
@@ -51,8 +50,8 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
           <Col key={student.id} xs={24} sm={24} md={8} lg={8} xl={8}>
             <StudentCard
               student={student}
+              type="favoritePage"
               onLikeClick={onLikeClicK}
-              onDeleteClick={onDeleteClicK}
               onCardClick={onCardClick}
             />
           </Col>

@@ -1,0 +1,17 @@
+@import "../../../styles/variables";
+
+.popupMenuContainer {
+  z-index: 10;
+  width: 92%;
+  margin: 0 7px;
+  background-color: $dark-blue;
+  height: 30%;
+  padding: 4% ;
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  align-items: center;
+  justify-content: space-between;
+  
+  
+}

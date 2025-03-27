@@ -10,14 +10,15 @@ import Image from "@components/ui/Image";
 
 interface Props {
   student: Student;
-  onLikeClick: (id: string) => void;
-  onDeleteClick: (id: string) => void;
+  onLikeClick?: (id: string) => void;
+  onDeleteClick?: (id: string) => void;
   onCardClick: (id: string) => void;
+  type: "housePage" | "favoritePage";
   studentsLoading?: boolean;
 }
 
 const StudentCard: FC<Props> = (props) => {
-  const { student, onLikeClick, onDeleteClick, onCardClick } = props;
+  const { student, onLikeClick, onDeleteClick, onCardClick, type } = props;
 
   const { id, image, name, house } = student;
 
@@ -26,13 +27,17 @@ const StudentCard: FC<Props> = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setIsLiked((prev) => !prev);
-    onLikeClick(id);
+    if (onLikeClick) {
+      e.stopPropagation();
+      setIsLiked((prev) => !prev);
+      onLikeClick(id);
+    }
   };
   const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    onDeleteClick(id);
+    if (onDeleteClick) {
+      e.stopPropagation();
+      onDeleteClick(id);
+    }
   };
 
   const handelCardClick = () => onCardClick(id);
@@ -45,24 +50,31 @@ const StudentCard: FC<Props> = (props) => {
       onClick={handelCardClick}
     >
       <Flex justify="end">
-        <Tooltip title={isLiked ? "remove from favorites" : "add to favorites"}>
-          <Button
-            type="text"
-            icon={isLiked ? <HeartFilled /> : <HeartOutlined />}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleLikeClick(e)
-            }
-          />
-        </Tooltip>
-        <Tooltip title="Delete">
-          <Button
-            type="text"
-            icon={<DeleteOutlined />}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleDeleteClick(e)
-            }
-          />
-        </Tooltip>
+        {type === "housePage" && (
+          <Tooltip
+            title={isLiked ? "remove from favorites" : "add to favorites"}
+          >
+            <Button
+              type="text"
+              icon={isLiked ? <HeartFilled /> : <HeartOutlined />}
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                handleLikeClick(e)
+              }
+            />
+          </Tooltip>
+        )}
+
+        {type === "favoritePage" && (
+          <Tooltip title="Delete">
+            <Button
+              type="text"
+              icon={<DeleteOutlined />}
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                handleDeleteClick(e)
+              }
+            />
+          </Tooltip>
+        )}
       </Flex>
       <Flex justify="center" align="center">
         <Image src={image || HgEmblem} className={classes.cardImg} />

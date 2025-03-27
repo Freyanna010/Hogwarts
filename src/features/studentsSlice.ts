@@ -4,7 +4,8 @@ import { Student } from "../types/types";
 
 interface StudentsState {
   allStudents: Student[];
-  favoriteStudents: string[];
+  favoriteStudents: Student[];
+  favoriteStudentsId: string[];
   houseStudents: Student[];
   filteredStudents: Student[];
   currentStudent: null | Student;
@@ -18,7 +19,7 @@ const initialState: StudentsState = {
   allStudents: [],
   houseStudents: [],
   favoriteStudents: [],
-  // TODO: для фильрации по поиску
+  favoriteStudentsId: [],
   filteredStudents: [],
   currentStudent: null,
   isStudentsLoading: false,
@@ -39,15 +40,20 @@ const studentsSlice = createSlice({
         (student) => student.id !== action.payload,
       );
     },
-    addFavoriteStudents: (state, action: PayloadAction<string>) => {
-      if (state.favoriteStudents.includes(action.payload)) {
-        state.favoriteStudents = state.favoriteStudents.filter(
+    changeFavoriteStudents: (state, action: PayloadAction<string>) => {
+      if (state.favoriteStudentsId.includes(action.payload)) {
+        state.favoriteStudentsId = state.favoriteStudentsId.filter(
           (id) => id !== action.payload,
         );
       } else {
-        state.favoriteStudents.push(action.payload);
+        state.favoriteStudentsId.push(action.payload);
       }
+
+      state.favoriteStudents = state.allStudents.filter((student) =>
+        state.favoriteStudentsId.includes(student.id),
+      );
     },
+
     addNewStudent: (state, action: PayloadAction<Student>) => {
       state.allStudents.unshift(action.payload);
       state.houseStudents.unshift(action.payload);
@@ -92,11 +98,6 @@ const studentsSlice = createSlice({
         state.filteredStudents = state.houseStudents;
       }
     },
-    showFavoriteStudents: (state) => {
-      state.houseStudents = state.allStudents.filter((student) =>
-        state.favoriteStudents.includes(student.id),
-      );
-    },
   },
   extraReducers(builder) {
     builder
@@ -130,11 +131,10 @@ const studentsSlice = createSlice({
 
 export const {
   deleteStudent,
-  addFavoriteStudents,
+  changeFavoriteStudents,
   addNewStudent,
   chooseStudentById: addStudentById,
   filterStudentsByHouse,
-  showFavoriteStudents,
   chooseStudentById,
   sortStudentByName,
   filterStudentsBySearch,

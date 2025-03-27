@@ -1,24 +1,85 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Button } from "antd";
 import classes from "./Header.module.scss";
+import { useNavigate } from "react-router-dom";
+import { HeartOutlined, PlusOutlined } from "@ant-design/icons";
+import PopupMenu from "@components/ui/PopupMenu";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/store";
+import HouseCard from "@components/HouseCard";
 
 const Header: FC = () => {
+  const navigate = useNavigate();
+  const houses = useSelector((state: RootState) => state.houses.houses);
+
+  const [isShowHouseMenu, setIsShowHouseMenu] = useState(false);
+  // const [isShowShopMenu, setIsShowShopMenu] = useState(false);
+
+  const handleNavigateToHogwartsPage = () => {
+    navigate("/");
+  };
+  const handleNavigateToFavoritePage = () => {
+    navigate("/students/favorites");
+  };
+  const handleNavigateCreate = () => {
+    navigate("/students/create-student");
+  };
+  const handleShowHouseMenu = () => {
+    setIsShowHouseMenu(!isShowHouseMenu);
+  };
+
   return (
-    <header className={classes.header}>
-      <h1 className={classes.headerTitle}>Hogwarts</h1>
-      <Button
-        type="text"
-        // onClick={handleShowStudentsClick}
-        style={{ textTransform: "uppercase" }}
+    <>
+     <header className={classes.header}>
+      <h1
+        className={classes.headerTitle}
+        onClick={handleNavigateToHogwartsPage}
       >
-        {/* {showFavorites ? "All students" : "Favorite students"} */}
-      </Button>
-      <Button
-        type="text"
-        // onClick={handleNavigateCreate}
-        // icon={<PlusOutlined />}
-      />
+        Hogwarts
+      </h1>
+
+      <div className={classes.headerButtonsRow}>
+        <Button
+          type="text"
+          className={classes.headerTextButton}
+          onClick={handleShowHouseMenu}
+        >
+          Houses
+        </Button>
+
+        <Button type="text" className={classes.headerTextButton}>
+          Shop
+        </Button>
+      </div>
+
+
+
+      <div className={classes.headerButtonsRow}>
+        <Button
+          type="text"
+          onClick={handleNavigateToFavoritePage}
+          size="large"
+          icon={<HeartOutlined className={classes.headerIconButton} />}
+        />
+        <Button
+          type="text"
+          onClick={handleNavigateCreate}
+          size="large"
+          icon={<PlusOutlined className={classes.headerIconButton} />}
+          className={classes.headerIconButton}
+        />
+      </div>
     </header>
+
+{isShowHouseMenu && (
+  <PopupMenu>
+    {houses.map((house) => (
+      <HouseCard house={house} type="popupMenu" />
+    ))}
+  </PopupMenu>
+)}
+    </>
+   
   );
 };
 
