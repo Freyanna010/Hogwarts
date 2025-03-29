@@ -16,6 +16,7 @@ import React from "react";
 import { Link, Element } from "react-scroll";
 
 const HogwartsPage: FC = () => {
+  // TODO: 1️⃣импорты:
   const houses = useSelector((state: RootState) => state.houses.houses);
   const students = useSelector(
     (state: RootState) => state.students.allStudents,
@@ -28,6 +29,7 @@ const HogwartsPage: FC = () => {
   const [isShowModal, seIsShowModal] = useState(false);
   const [isShowTooltip, seIsShowTooltip] = useState(false);
 
+//TODO: 2️⃣названия функций
   const navigateToHousePage = (houseName: string) => {
     navigate(`/house/${houseName}`);
   };
@@ -45,13 +47,14 @@ const HogwartsPage: FC = () => {
   return (
     <div className={classes.wrapperHgPageSlider}>
       {isShowModal && (
+        // TODO: 3️⃣Модальное
         <LetterModal
           onCloseClick={handleCloseClick}
           onGoClick={handleGoClick}
         />
       )}
 
-      {/* TODO: вынести section  ⬇ контейнер в ui компонет, который задает высоту и позиционирование или просто общий класс для дивов*/}
+      {/* TODO: 4️⃣Section */}
       <section className={classes.hgPageTitle}>
         <Tooltip
           title="I have a letter for you!"
@@ -59,7 +62,7 @@ const HogwartsPage: FC = () => {
           placement="right"
           mouseEnterDelay={0.7}
         >
-          {/* TODO: выести в AnimateImage вместе со стилями анимфции ⬇*/}
+          {/* TODO: это я вынесу в ui-компонет*/}
           <img
             src={owl}
             className={classes.hgPageSliderImg}
@@ -68,26 +71,26 @@ const HogwartsPage: FC = () => {
             onMouseLeave={handleMouseLeave}
           />
         </Tooltip>
+      
         <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>
 
-        {/* TODO: не работает навигация ⬇*/}
+        {/* TODO: 5️⃣Навигация*/}
         <Link to="section2" smooth={true} duration={500}>
           About Hogwarts
         </Link>
       </section>
 
       <Element name="section1">
-        {/* TODO: вынести div контейнер в ui компонет который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
         <section className={classes.hgPageBanner}>
-          {/*TODO: не выносить в отдельный компоненет ⬇ */}
           <HogwartsBanner images={hogwartsImages} />
         </section>
       </Element>
 
       <Element name="section2">
         <section className={classes.hgPageSlider}>
-          {/*TODO: такой title eсть на других старницах ⬇*/}
+          {/* TODO: 6️⃣Заголовки*/}
           <h2 className={classes.title}> Hogwarts houses</h2>
+          {/* TODO: 7️⃣Slider  и HouseCard*/}
           <Slider>
             {houses.map((house) => (
               <HouseCard
@@ -101,14 +104,11 @@ const HogwartsPage: FC = () => {
       </Element>
 
       <Element name="section2">
-        {/* TODO: вынести div контейнер в ui компонет который задает высоту и позиционирование или просто общий класс для дивов ⬇*/}
         <section className={classes.hgPageThree}>
-          {/* TODO: оставить содержимое блока так или вынести как HogwartsBanner  в компонент ⬆*/}
           <div className={classes.hgPageThreeBg}>
             <div className={classes.hgPageThreeColumn}>
               <h2 className={classes.title}>The famous three</h2>
-
-              {/*TODO: разобрать, вынести в компонент,утилиты  */}
+              {/* TODO: 8️⃣текст */}
               <p>
                 {["Harry", "Ron", "Hermione"].map((firstName, index) => {
                   const student = students.find((s) =>
