@@ -47,7 +47,7 @@ const HogwartsPage: FC = () => {
   return (
     <div className={classes.wrapperHgPageSlider}>
       {isShowModal && (
-        // TODO: 3️⃣Модальное
+        // TODO: 3️⃣Модальноеe
         <LetterModal
           onCloseClick={handleCloseClick}
           onGoClick={handleGoClick}
