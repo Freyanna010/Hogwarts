@@ -14,6 +14,7 @@ import { Tooltip } from "antd";
 import { chooseStudentById } from "@features/studentsSlice";
 import React from "react";
 import { Link, Element } from "react-scroll";
+import AnimatedImage from "@components/ui/AnimatedImage";
 
 const HogwartsPage: FC = () => {
   // TODO: 1️⃣импорты:
@@ -62,9 +63,9 @@ const HogwartsPage: FC = () => {
           placement="right"
           mouseEnterDelay={0.7}
         >
-          {/* TODO: это я вынесу в ui-компонет*/}
-          <img
+          <AnimatedImage
             src={owl}
+            type="swing"
             className={classes.hgPageSliderImg}
             onClick={handleImageClick}
             onMouseEnter={handleMouseEnter}
