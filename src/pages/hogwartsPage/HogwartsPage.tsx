@@ -37,7 +37,7 @@ const HogwartsPage: FC = () => {
 
   const handleImageClick = () => seIsShowModal(!isShowModal);
   const handleCloseClick = () => seIsShowModal(false);
-  const handleGoClick = () => navigate("/create-student");
+  const handleGoClick = () => navigate("/students/create-student");
   const handleMouseEnter = () => seIsShowTooltip(true);
   const handleMouseLeave = () => seIsShowTooltip(false);
   const handleLinkClick = (studentId: string) => {

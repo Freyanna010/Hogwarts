@@ -1,3 +1,4 @@
+@use "../../styles/variables" as *;
 
 .modalLetterContainer {
   position: absolute;
@@ -47,12 +48,30 @@
   text-align: start;
 }
 
-.modalLetterButtons {
+.modalLetterButtonsRow {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 0.2rem;
+  color: $dark ;
+}
+.buttons{
+color: $dark
+}
+.primaryButton{
+  background-color: $lite-yellow;
+
+  &:hover{
+background-color: $yellow !important;
+color: $dark !important;
+  }
+}
+.defaultButton{
+  border-color:  $yellow;
+
+border-color: $yellow !important;
+color: $dark !important;
 }
 
 .overlay {
