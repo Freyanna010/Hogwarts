@@ -1,5 +1,16 @@
 @use "../../styles/variables" as *;
 
+@keyframes zoomIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
 .modalLetterContainer {
   position: absolute;
   top: 50%;
@@ -8,6 +19,8 @@
   z-index: 20;
   width: auto;
   height: 80vh;
+
+  animation: zoomIn 0.5s ease-out forwards;
 }
 
 .modalLetterImage {
@@ -29,18 +42,33 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  height: 100%;
+  // background-color: #00ffff;
+}
+
+.closeButton {
+position: absolute;
+right:0px;
+top: 2%;
+background-color: none !important;
+}
+.closeButtonIcon{
+  font-size: 1.2rem !important;
 }
 
 .modalLetterText {
+  position: relative;
+  top: 30%;
   display: flex;
   flex-direction: column;
   font-family: "Texturina", serif;
   font-weight: 400;
   line-height: 1.3;
+
 }
 .manText {
   font-size: 2rem;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
   text-align: center;
 }
 .minText {
@@ -48,19 +76,11 @@
   text-align: start;
 }
 
-.modalLetterButtonsRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.2rem;
-  color: $dark;
-}
-.buttons {
-  color: $dark;
-}
 .primaryButton {
+  position: relative;
+  color: $dark;
   background-color: $lite-yellow;
+  top: 35%;
 
   &:hover {
     background-color: $yellow !important;
