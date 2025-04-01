@@ -10,13 +10,10 @@ import {
   UploadFile,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-
 import { useDispatch } from "react-redux";
-
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { AppDispatch } from "@store/store";
-
 import BgCard from "@components/ui/BgCard";
 import { FieldType } from "@types";
 import { addNewStudent } from "@features/studentsSlice";

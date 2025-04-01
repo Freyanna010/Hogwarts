@@ -1,7 +1,8 @@
 import ReactPlayer from "react-player";
-import { VidePlayerProps } from "./VideoPlayer.type";
 import { FC, useRef, useState } from "react";
 import { Skeleton } from "antd";
+
+import { VidePlayerProps } from "./VideoPlayer.type";
 import classes from "./videoPlayer.module.scss";
 
 const VideoPlayer: FC<VidePlayerProps> = ({

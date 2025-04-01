@@ -1,7 +1,8 @@
 import { FC } from "react";
+import clsx from "clsx";
+
 import { HouseCardProps } from "../HouseCard.type";
 import classes from "./PopupMenuHouseCard.module.scss";
-import clsx from "clsx";
 
 const PopupMenuHouseCard: FC<Omit<HouseCardProps, "type">> = (props) => {
   const { className, onCardClick, house } = props;
@@ -15,7 +16,7 @@ const PopupMenuHouseCard: FC<Omit<HouseCardProps, "type">> = (props) => {
 
   return (
     <div className={clsx(classes.card, className)} onClick={handleCardClick}>
-      <img src={emblemImg}  className={classes.cardImg}/>
+      <img src={emblemImg} className={classes.cardImg} />
       <h3>{name}</h3>
     </div>
   );

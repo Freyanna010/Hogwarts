@@ -1,14 +1,18 @@
 import { FC, useState } from "react";
-import classes from "./BannerHouseCard.module.scss";
-import { HouseCardProps } from "../HouseCard.type";
 import { Button } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import VideoPlayer from "@components/ui/VideoPlayer";
 import clsx from "clsx";
 import { getVideoId } from "@components/ui/VideoPlayer/getVideoId";
 
+import { HouseCardProps } from "../HouseCard.type";
+import classes from "./BannerHouseCard.module.scss";
+
 // TODO:Типизация
-const BannerHouseCard: FC<Omit<HouseCardProps, "type">> = ({ house, className }) => {
+const BannerHouseCard: FC<Omit<HouseCardProps, "type">> = ({
+  house,
+  className,
+}) => {
   const { name, emblemImg, description, video } = house;
   const [isShowVideo, setShowVideo] = useState(false);
 

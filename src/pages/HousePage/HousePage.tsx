@@ -1,4 +1,3 @@
-import classes from "./HousePage.module.scss";
 import {
   changeFavoriteStudents,
   chooseStudentById,
@@ -18,6 +17,8 @@ import HouseCard from "@components/HouseCard";
 import StudentCardList from "@components/StudentCardList";
 import debounce from "lodash.debounce";
 import { useEffectEvent } from "@hooks/useEffectEvent";
+
+import classes from "./HousePage.module.scss";
 
 const HousePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();

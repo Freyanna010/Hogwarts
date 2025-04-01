@@ -1,4 +1,5 @@
 import video from "@assets/Harry_Potter_Magic_Awakened.mp4";
+
 import classes from "./videoBg.module.scss";
 
 const VideoBg = () => {

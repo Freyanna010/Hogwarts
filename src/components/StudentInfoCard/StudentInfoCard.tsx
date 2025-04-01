@@ -1,14 +1,14 @@
 import { Button, Col, Image, Row, Spin, Typography } from "antd";
 import { useSelector } from "react-redux";
-import LineRow from "../ui/LineRow";
 import { useNavigate } from "react-router-dom";
-import BgCard from "../ui/BgCard";
-
 import { LoadingOutlined } from "@ant-design/icons";
 import avatar from "@assets/hogAvatar.webp";
 import { RootState } from "@store/store";
 import { hogwartsTheme } from "@styles/theme";
 import { calculateAge } from "@utils/dateUtils";
+
+import BgCard from "../ui/BgCard";
+import LineRow from "../ui/LineRow";
 
 const StudentInfoCard = () => {
   const {

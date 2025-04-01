@@ -2,11 +2,12 @@ import { Button, Card, Flex, Tooltip, Typography } from "antd";
 import React, { FC, useState } from "react";
 import { HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
 import { getHouseColor } from "@utils/colorUtils";
-import classes from "./StudentCard.module.scss";
 import clsx from "clsx";
 import { Student } from "@types";
 import HgEmblem from "@assets/hogAvatar.webp";
 import Image from "@components/ui/Image";
+
+import classes from "./StudentCard.module.scss";
 
 interface Props {
   student: Student;

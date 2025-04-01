@@ -1,10 +1,11 @@
 import { FC } from "react";
-import { AnimatedImageProps } from "./AnimatedImg.types";
 import clsx from "clsx";
+
+import { AnimatedImageProps } from "./AnimatedImg.types";
 import classes from "./AnimatedImage.module.scss";
 
 const AnimatedImage: FC<AnimatedImageProps> = (props) => {
-  const { className, type,  ...imgProps } = props;
+  const { className, type, ...imgProps } = props;
 
   return (
     <img

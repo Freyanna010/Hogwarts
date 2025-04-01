@@ -1,9 +1,10 @@
 import { FC, useCallback, useEffect, useRef, useState } from "react";
-import classes from "./Slider.module.scss";
 import { Button } from "antd";
 import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
-import { getSlideClass } from "./utils";
 import clsx from "clsx";
+
+import { getSlideClass } from "./utils";
+import classes from "./Slider.module.scss";
 import { SliderProps } from "./Slider.types";
 
 const Slider: FC<SliderProps> = (props) => {

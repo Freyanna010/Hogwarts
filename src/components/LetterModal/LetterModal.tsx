@@ -1,10 +1,11 @@
 import { FC } from "react";
-import classes from "./LetterModal.module.scss";
 import { Button } from "antd";
-import { LetterModalProps } from "./LetterModal.types";
 import AnimatedImage from "@components/ui/AnimatedImage";
 import letter from "@assets/letter.jpg";
 import clsx from "clsx";
+
+import { LetterModalProps } from "./LetterModal.types";
+import classes from "./LetterModal.module.scss";
 
 const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
   return (
@@ -35,12 +36,15 @@ const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
           <div className={classes.modalLetterButtonsRow}>
             <Button
               type="primary"
-              className={clsx(classes.buttons,classes.primaryButton )}
+              className={clsx(classes.buttons, classes.primaryButton)}
               onClick={onGoClick}
             >
               Go to Hogwarts
             </Button>
-            <Button  className={clsx(classes.buttons,classes.defaultButton )} onClick={onCloseClick} >
+            <Button
+              className={clsx(classes.buttons, classes.defaultButton)}
+              onClick={onCloseClick}
+            >
               Close
             </Button>
           </div>

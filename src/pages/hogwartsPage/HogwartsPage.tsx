@@ -1,6 +1,5 @@
 import Slider from "@components/ui/Slider";
 import { FC, useState } from "react";
-import classes from "./HogwartsPage.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/store";
@@ -15,6 +14,8 @@ import { chooseStudentById } from "@features/studentsSlice";
 import React from "react";
 import { Link, Element } from "react-scroll";
 import AnimatedImage from "@components/ui/AnimatedImage";
+
+import classes from "./HogwartsPage.module.scss";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
@@ -69,7 +70,7 @@ const HogwartsPage: FC = () => {
             onMouseLeave={handleMouseLeaveModal}
           />
         </Tooltip>
-      
+
         <h1 className={classes.titleMain}>Welcome to Hogwarts</h1>
 
         {/* TODO: 5️⃣Навигация*/}

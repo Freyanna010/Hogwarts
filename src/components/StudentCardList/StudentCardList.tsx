@@ -1,11 +1,12 @@
 import { Col, Input, Row } from "antd";
 import { ChangeEvent, FC } from "react";
-import StudentCard from "../StudentCard";
 import { SearchOutlined } from "@ant-design/icons";
-import classes from "./StudentCardList.module.scss";
-import { StudentCardListProps } from "./StudentCardList.types";
 import SortingButton from "@components/ui/SortingButton";
 import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
+
+import StudentCard from "../StudentCard";
+import classes from "./StudentCardList.module.scss";
+import { StudentCardListProps } from "./StudentCardList.types";
 
 const StudentCardList: FC<StudentCardListProps> = (props) => {
   const {

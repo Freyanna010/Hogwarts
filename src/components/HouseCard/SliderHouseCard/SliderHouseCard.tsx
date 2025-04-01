@@ -1,7 +1,8 @@
 import { FC } from "react";
+import clsx from "clsx";
+
 import classes from "./SliderHouseCard.module.scss";
 import { HouseCardProps } from "../HouseCard.type";
-import clsx from "clsx";
 
 const SliderHouseCard: FC<Omit<HouseCardProps, "type">> = ({
   house,

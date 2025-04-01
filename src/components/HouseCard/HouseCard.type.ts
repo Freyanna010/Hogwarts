@@ -1,6 +1,6 @@
 import { House } from "@types";
 
-export type HouseCardType =  "slider" | "banner" | "popupMenu" ;
+export type HouseCardType = "slider" | "banner" | "popupMenu";
 
 export interface HouseCardProps {
   className?: string;
@@ -8,4 +8,3 @@ export interface HouseCardProps {
   type: HouseCardType;
   onCardClick?: (nameName: string) => void;
 }
-

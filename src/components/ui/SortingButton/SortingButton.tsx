@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "antd";
+
 import { Direction, SortingButtonProps } from "./SortingВutton.types";
 import { getDirection } from "./utils/getDirection";
 import { getIcon } from "./utils/getIcon";

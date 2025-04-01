@@ -1,12 +1,13 @@
 import { FC, useEffect } from "react";
 import VideoBg from "@components/ui/VideoBg";
 import Routing from "@components/Routing";
-import classes from "./App.module.scss";
 import Header from "@components/Header";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
 import { fetchStudentsData } from "@features/studentsThunks";
 import { AppDispatch } from "@store/store";
+
+import classes from "./App.module.scss";
 
 const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
