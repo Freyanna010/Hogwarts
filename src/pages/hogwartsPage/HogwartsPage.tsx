@@ -17,30 +17,27 @@ import { Link, Element } from "react-scroll";
 import AnimatedImage from "@components/ui/AnimatedImage";
 
 const HogwartsPage: FC = () => {
-  // TODO: 1️⃣импорты:
   const houses = useSelector((state: RootState) => state.houses.houses);
   const students = useSelector(
     (state: RootState) => state.students.allStudents,
   );
-  const dispatch = useDispatch<AppDispatch>();
   const hogwartsImages = hogwartsImagesData;
 
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [isShowModal, seIsShowModal] = useState(false);
   const [isShowTooltip, seIsShowTooltip] = useState(false);
 
-//TODO: 2️⃣названия функций
-  const navigateToHousePage = (houseName: string) => {
+  const handleHouseCardClick = (houseName: string) => {
     navigate(`/house/${houseName}`);
   };
-
   const handleImageClick = () => seIsShowModal(!isShowModal);
-  const handleCloseClick = () => seIsShowModal(false);
-  const handleGoClick = () => navigate("/students/create-student");
-  const handleMouseEnter = () => seIsShowTooltip(true);
-  const handleMouseLeave = () => seIsShowTooltip(false);
-  const handleLinkClick = (studentId: string) => {
+  const handleCloseModal = () => seIsShowModal(false);
+  const handleGoToHogwartsClick = () => navigate("/students/create-student");
+  const handleMouseEnterModal = () => seIsShowTooltip(true);
+  const handleMouseLeaveModal = () => seIsShowTooltip(false);
+  const handleStudentLinkClick = (studentId: string) => {
     navigate(`/students/${studentId}`);
     dispatch(chooseStudentById(studentId));
   };
@@ -50,8 +47,8 @@ const HogwartsPage: FC = () => {
       {isShowModal && (
         // TODO: 3️⃣Модальноеe
         <LetterModal
-          onCloseClick={handleCloseClick}
-          onGoClick={handleGoClick}
+          onCloseClick={handleCloseModal}
+          onGoClick={handleGoToHogwartsClick}
         />
       )}
 
@@ -68,8 +65,8 @@ const HogwartsPage: FC = () => {
             type="swing"
             className={classes.hgPageSliderImg}
             onClick={handleImageClick}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnterModal}
+            onMouseLeave={handleMouseLeaveModal}
           />
         </Tooltip>
       
@@ -96,7 +93,7 @@ const HogwartsPage: FC = () => {
             {houses.map((house) => (
               <HouseCard
                 house={house}
-                onCardClick={navigateToHousePage}
+                onCardClick={handleHouseCardClick}
                 type="slider"
               />
             ))}
@@ -123,7 +120,7 @@ const HogwartsPage: FC = () => {
                         href={`/students/${student.id}`}
                         onClick={(e) => {
                           e.preventDefault();
-                          handleLinkClick(student.id);
+                          handleStudentLinkClick(student.id);
                         }}
                       >
                         {firstName}
