@@ -2,38 +2,35 @@ import React from "react";
 import { HighlightedLinksProps } from "./HighlightedLinks.types";
 
 const HighlightedLinks = <T extends { id: string; name: string }>(
-  props: HighlightedLinksProps<T>
+props: HighlightedLinksProps<T>
 ) => {
-const { linkWords, linkItems, className, onClick } = props;
+const { text, linkItems, className, onClick } = props;
 
-  return (
-    <>
-    {linkWords.map((word, index) => {
-        const item = linkItems.find((el) => el.name.startsWith(word));
+return (
+    <span className={className}>
+    {text.split(/\b/).map((word, index) => {
+    const linkItem = linkItems.find((item) => item.name.split(" ")[0] === word);
 
-        return item ? (
-        <React.Fragment key={item.id}>
-            {index > 0 && " "}
+        return (
+        <React.Fragment key={index}>
+            {linkItem ? (
             <a
-            className={className}
-            href={`#${item.id}`}
-            onClick={(e) => {
+                href={`/students/${linkItem.id}`}
+                onClick={(e) => {
                 e.preventDefault();
-                onClick(item.id);
-            }}
+                onClick(linkItem.id);
+                }}
             >
-            {word}
+                {word}
             </a>
-        </React.Fragment>
-        ) : (
-        <React.Fragment key={word}>
-            {index > 0 && " "}
-            {word}
+            ) : (
+            word
+            )}
+            {' '}
         </React.Fragment>
         );
     })}
-    </>
-);
-};
+    </span>
+  );}
 
 export default HighlightedLinks;

@@ -121,6 +121,12 @@
   }
 }
 
-.text{
-  color: $lite-yellow
+.linkText{
+  color: $lite-yellow;
+  font-size: 1.2rem;
+
+  a{
+    color: $yellow
+  }
+  
 }

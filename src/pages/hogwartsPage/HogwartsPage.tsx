@@ -16,11 +16,12 @@ import { Link, Element } from "react-scroll";
 import AnimatedImage from "@components/ui/AnimatedImage";
 
 import classes from "./HogwartsPage.module.scss";
+import HighlightedLinks from "@components/ui/HighlightedLinks";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
   const students = useSelector(
-    (state: RootState) => state.students.allStudents,
+    (state: RootState) => state.students.allStudents
   );
   const hogwartsImages = hogwartsImagesData;
 
@@ -107,39 +108,13 @@ const HogwartsPage: FC = () => {
           <div className={classes.hgPageThreeBg}>
             <div className={classes.hgPageThreeColumn}>
               <h2 className={classes.title}>The famous three</h2>
-              {/* TODO: 8️⃣текст */}
-              <p>
-                {["Harry", "Ron", "Hermione"].map((firstName, index) => {
-                  const student = students.find((s) =>
-                    s.name.startsWith(firstName),
-                  );
-
-                  return student ? (
-                    <React.Fragment key={student.id}>
-                      {index > 0 && " "}
-                      <a
-                        href={`/students/${student.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleStudentLinkClick(student.id);
-                        }}
-                      >
-                        {firstName}
-                      </a>
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment key={firstName}>
-                      {index > 0 && " "}
-                      {firstName}
-                    </React.Fragment>
-                  );
-                })}{" "}
-                are students at Hogwarts School of Witchcraft and Wizardry.
-                Together, they faced many challenges and defeated a terrifying
-                monster that threatened the school. With Harry’s bravery, Ron’s
-                loyalty, and Hermione’s cleverness, they proved that true
-                friendship and courage can overcome even the darkest dangers.
-              </p>
+              {/* TODO: 8️⃣текст*/}
+                  <HighlightedLinks
+                  className={classes.linkText}
+                  text="Harry Ron Hermione are students at Hogwarts School of Witchcraft and Wizardry. Together, they faced many challenges and defeated a terrifying monster that threatened the school. With Harry’s bravery, Ron’s loyalty, and Hermione’s cleverness, they proved that true friendship and courage can overcome even the darkest dangers."
+                  linkItems={students}
+                  onClick={handleStudentLinkClick}
+                />
             </div>
 
             <div className={classes.hgPageThreeImage}>
