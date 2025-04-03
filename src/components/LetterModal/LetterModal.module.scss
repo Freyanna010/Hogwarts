@@ -43,7 +43,6 @@
   flex-direction: column;
   gap: 3rem;
   height: 100%;
-  // background-color: #00ffff;
 }
 
 .closeButton {
@@ -51,6 +50,11 @@ position: absolute;
 right:0px;
 top: 2%;
 background-color: none !important;
+
+&:hover {
+  cursor:url("../../assets/cursor2.png") 10 10,
+  auto;
+    }
 }
 .closeButtonIcon{
   font-size: 1.2rem !important;
@@ -85,6 +89,8 @@ background-color: none !important;
   &:hover {
     background-color: $yellow !important;
     color: $dark !important;
+    cursor:url("../../assets/cursor2.png") 10 10,
+    auto;
   }
 }
 .defaultButton {

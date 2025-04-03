@@ -1,5 +1,6 @@
 import React from "react";
 import { HighlightedLinksProps } from "./HighlightedLinks.types";
+import classes from "./HighlightedLinksText.module.scss"
 
 const HighlightedLinks = <T extends { id: string; name: string }>(
 props: HighlightedLinksProps<T>
@@ -14,7 +15,7 @@ return (
         return (
         <React.Fragment key={index}>
             {linkItem ? (
-            <a
+            <a  className={classes.link}
                 href={`/students/${linkItem.id}`}
                 onClick={(e) => {
                 e.preventDefault();

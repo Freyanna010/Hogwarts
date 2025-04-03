@@ -16,7 +16,7 @@ import { Link, Element } from "react-scroll";
 import AnimatedImage from "@components/ui/AnimatedImage";
 
 import classes from "./HogwartsPage.module.scss";
-import HighlightedLinks from "@components/ui/HighlightedLinks";
+import HighlightedLinks from "@components/ui/HighlightedLinksText";
 
 const HogwartsPage: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
