@@ -3,7 +3,6 @@ import { Student } from "@types";
 
 export interface StudentCardListProps {
   onLikeClicK: (studentId: string) => void;
-  onDeleteClicK: (studentId: string) => void;
   onCardClick: (studentId: string) => void;
   onSortClick: (direction: Direction) => void;
   onSearchChange: (value: string) => void;

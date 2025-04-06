@@ -10,8 +10,8 @@ import { StudentCardListProps } from "./StudentCardList.types";
 
 const StudentCardList: FC<StudentCardListProps> = (props) => {
   const {
-    onLikeClicK,
     students,
+    onLikeClicK,
     onCardClick,
     onSortClick,
     onSearchChange,
@@ -22,7 +22,6 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
   const handleSortChange = (direction: Direction) => {
     onSortClick(direction);
   };
-
   const handleOnChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
@@ -32,6 +31,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
   return (
     <div className={className}>
       <Row className={classes.searchCardListRow}>
+        {/* 3️⃣Поиск */}
         <Input
           size="large"
           placeholder="search student"
@@ -41,6 +41,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
           value={searchValue}
         />
         <Row>
+          {/* 4️⃣Кнопка */}
           Sort name:
           <SortingButton onSortClick={handleSortChange} />
         </Row>
@@ -51,7 +52,7 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
           <Col key={student.id} xs={24} sm={24} md={8} lg={8} xl={8}>
             <StudentCard
               student={student}
-              type="favoritePage"
+              type="housePage"
               onLikeClick={onLikeClicK}
               onCardClick={onCardClick}
             />

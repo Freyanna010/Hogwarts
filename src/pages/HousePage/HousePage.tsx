@@ -42,16 +42,12 @@ const HousePage: FC = () => {
   }, [dispatch, houseName, allStudents]);
 
   const handleLikeStudentCard = (studentId: string) =>
+    // TODO: 5️⃣changeFavoriteStudents
     dispatch(changeFavoriteStudents(studentId));
-
-  const handleDeleteStudentCard = (studentId: string) =>
-    dispatch(deleteStudent(studentId));
-
   const handleStudentCardClick = (studentId: string) => {
     navigate(`/students/${studentId}`);
     dispatch(chooseStudentById(studentId));
   };
-
   const handleSortStudentByName = (direction: "asc" | "desc" | "none") =>
     dispatch(sortStudentByName(direction));
 
@@ -60,7 +56,6 @@ const HousePage: FC = () => {
       dispatch(filterStudentsBySearch(value));
     }, 500),
   );
-
   const handleChangeSearch = (value: string) => {
     debouncedChangeSearch(value);
   };
@@ -93,9 +88,9 @@ const HousePage: FC = () => {
         </Col>
 
         <Col span={24}>
+        {/* TODO: 2️⃣ StudentCardList */}
           <StudentCardList
             onLikeClicK={handleLikeStudentCard}
-            onDeleteClicK={handleDeleteStudentCard}
             onCardClick={handleStudentCardClick}
             onSortClick={handleSortStudentByName}
             onSearchChange={handleChangeSearch}
