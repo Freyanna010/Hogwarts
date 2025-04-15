@@ -1,0 +1,54 @@
+@use "../../../../styles/variables" as *;
+
+.manSection {
+  padding-top: 10vh;
+  position: relative;
+}
+
+.title {
+  font-size: 6em;
+  font-family: "Almendra";
+  text-transform: uppercase;
+  color: $lite-yellow;
+  text-shadow: 0px 0px 6px $yellow;
+  text-align: center;
+  transform: translateY(-50%);
+  font-weight: 600;
+}
+
+.imgOwl {
+  position: absolute;
+  bottom: 30vh;
+  left: 1vw;
+  width: 350px;
+  height: auto;
+  z-index: 2;
+  transition: width ease-in-out 0.5s;
+  filter: drop-shadow(0px 10px 25px rgb(0, 0, 0));
+
+  &:hover {
+    width: 400px;
+    cursor:
+      url("../../assets/cursor2.png") 10 10,
+      auto;
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+
+  a {
+    color: $lite-yellow;
+    font-size: 1em;
+    text-decoration: underline;
+    cursor:
+      url("../../../../assets/cursor2.png") 10 10,
+      auto;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
+}

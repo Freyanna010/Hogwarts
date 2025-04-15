@@ -23,7 +23,7 @@ const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
             onClick={onCloseClick}
             icon={<CloseCircleOutlined className={classes.closeButtonIcon} />}
           />
-          
+
           <div className={classes.modalLetterText}>
             <p className={classes.manText}>
               We are pleased to inform you that you have been granted a place at
@@ -31,7 +31,6 @@ const LetterModal: FC<LetterModalProps> = ({ onGoClick, onCloseClick }) => {
             </p>
             <p className={classes.minText}> Yours sincerely, </p>
             <p className={classes.minText}>
-              {" "}
               Minerva McGonagall, Deputy Headmistress!
             </p>
           </div>

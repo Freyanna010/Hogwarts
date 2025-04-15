@@ -1,0 +1,51 @@
+@use "../../../../styles/variables" as *;
+
+.background {
+display: flex;
+background-color: $dark;
+height: 40%;
+align-items: center;
+width: 100%;
+position: relative;
+
+.hgPageThreeColumn {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    color: $lite-yellow;
+    padding-left: 3vh;
+    gap: 20px;
+
+    p {
+    font-size: 1.2rem;
+    text-indent: 3%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    }
+}
+
+.hgPageThreeImage {
+    width: 40%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    padding-top: 2%;
+
+    img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    }
+}
+}
+
+.linkText {
+color: $lite-yellow;
+font-size: 1.2rem;
+
+a {
+    color: $yellow;
+}
+}

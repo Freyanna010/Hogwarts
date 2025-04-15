@@ -1,7 +1,6 @@
 @use "../../styles/variables" as *;
 
 .bannerContainer {
-  background-color: $dark;
   color: $lite-yellow;
   display: flex;
   flex-direction: column;
@@ -34,11 +33,4 @@
 .imageBannerSlider {
   height: auto;
   max-height: 100%;
-}
-
-// TODO: для проверки
-@media (max-width: 480px) {
-  .bannerContainer {
-    background-color: aqua;
-  }
 }

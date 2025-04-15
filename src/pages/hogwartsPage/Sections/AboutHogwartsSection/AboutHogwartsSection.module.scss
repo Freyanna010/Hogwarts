@@ -1,0 +1,24 @@
+@use "../../../../styles/variables" as *;
+
+.title {
+  font-size: 3em;
+}
+
+.text {
+  font-size: 1em;
+  text-indent: 3%;
+  margin-top: 2.5vh;
+  padding: 0 5em;
+}
+
+.slider {
+  margin: 5vh 0;
+  max-height: 50%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.sliderImage {
+  height: auto;
+  max-height: 100%;
+}

@@ -45,7 +45,7 @@ const HousePage: FC = () => {
     // TODO: 5️⃣changeFavoriteStudents
     dispatch(changeFavoriteStudents(studentId));
   const handleStudentCardClick = (studentId: string) => {
-    navigate(`/students/${studentId}`);
+    navigate(`/Hogwarts/students/${studentId}`);
     dispatch(chooseStudentById(studentId));
   };
   const handleSortStudentByName = (direction: "asc" | "desc" | "none") =>
@@ -88,7 +88,7 @@ const HousePage: FC = () => {
         </Col>
 
         <Col span={24}>
-        {/* TODO: 2️⃣ StudentCardList */}
+          {/* TODO: 2️⃣ StudentCardList */}
           <StudentCardList
             onLikeClicK={handleLikeStudentCard}
             onCardClick={handleStudentCardClick}

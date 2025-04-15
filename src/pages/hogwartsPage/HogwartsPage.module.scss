@@ -4,15 +4,9 @@
   position: relative;
 }
 
-.hgPageTitle {
+.manSection {
   padding-top: 10vh;
-  height: 100dvh;
   position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .titleMain {
@@ -121,12 +115,11 @@
   }
 }
 
-.linkText{
+.linkText {
   color: $lite-yellow;
   font-size: 1.2rem;
 
-  a{
-    color: $yellow
+  a {
+    color: $yellow;
   }
-  
 }

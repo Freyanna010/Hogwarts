@@ -14,16 +14,15 @@ const Header: FC = () => {
   const houses = useSelector((state: RootState) => state.houses.houses);
 
   const [isShowHouseMenu, setIsShowHouseMenu] = useState(false);
-  // const [isShowShopMenu, setIsShowShopMenu] = useState(false);
 
   const handleNavigateToHogwartsPage = () => {
-    navigate("/");
+    navigate("/Hogwarts/");
   };
   const handleNavigateToFavoritePage = () => {
-    navigate("/students/favorites");
+    navigate("/Hogwarts/students/favorites");
   };
   const handleNavigateCreate = () => {
-    navigate("/students/create-student");
+    navigate("/Hogwarts/students/create-student");
   };
   const handleShowHouseMenu = () => {
     setIsShowHouseMenu(!isShowHouseMenu);

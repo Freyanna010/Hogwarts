@@ -7,12 +7,11 @@ import FavoritePage from "@pages/FavoritePage";
 
 const Routing = () => (
   <Routes>
-    {/* //TODO: названия path  */}
-    <Route path="/" element={<HogwartsPage />} />
-    <Route path="/students/:id" element={<StudentPage />} />
-    <Route path="/students/create-student" element={<CreatePage />} />
-    <Route path="/house/:houseName" element={<HousePage />} />
-    <Route path="/students/favorites" element={<FavoritePage />} />
+    <Route path="/Hogwarts/" element={<HogwartsPage />} />
+    <Route path="/Hogwarts/students/:id" element={<StudentPage />} />
+    <Route path="/Hogwarts/students/create-student" element={<CreatePage />} />
+    <Route path="/Hogwarts/house/:houseName" element={<HousePage />} />
+    <Route path="/Hogwarts/students/favorites" element={<FavoritePage />} />
   </Routes>
 );
 
