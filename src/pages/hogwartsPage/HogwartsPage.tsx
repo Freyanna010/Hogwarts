@@ -5,9 +5,8 @@ import { AppDispatch, RootState } from "@store/store";
 import { hogwartsImagesData } from "@store/hogwartsImageData";
 import LetterModal from "@components/LetterModal/LetterModal";
 import { chooseStudentById } from "@features/studentsSlice";
+
 import classes from "./HogwartsPage.module.scss";
-import HighlightedLinks from "@components/ui/HighlightedLinksText";
-import Section from "@components/ui/Section/Section";
 import ManSection from "./Sections/ManSection/ManSection";
 import AboutHogwartsSection from "./Sections/AboutHogwartsSection";
 import HousesSection from "./Sections/HousesSection";

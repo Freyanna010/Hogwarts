@@ -1,4 +1,5 @@
 import React from "react";
+
 import { HighlightedLinksProps } from "./HighlightedLinks.types";
 import classes from "./HighlightedLinksText.module.scss";
 

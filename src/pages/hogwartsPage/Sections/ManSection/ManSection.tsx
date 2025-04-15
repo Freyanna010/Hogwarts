@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { Tooltip } from "antd";
 import owl from "@assets/owl.png";
-import classes from "./ManSection.module.scss";
 import AnimatedImage from "@components/ui/AnimatedImage";
 import Section from "@components/ui/Section/Section";
+
+import classes from "./ManSection.module.scss";
 import { ManSectionProps } from "./ManSection.types";
 
 const ManSection: FC<ManSectionProps> = (props) => {

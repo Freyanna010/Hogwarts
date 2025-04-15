@@ -1,9 +1,10 @@
 import Section from "@components/ui/Section";
-import classes from "./HousesSection.module.scss";
 import { FC } from "react";
-import { HousesSectionProps } from "./HousesSection.types";
 import HouseCard from "@components/HouseCard";
 import Slider from "@components/ui/Slider";
+
+import { HousesSectionProps } from "./HousesSection.types";
+import classes from "./HousesSection.module.scss";
 
 const HousesSection: FC<HousesSectionProps> = ({ onCardClick, houses }) => (
   <Section id="section3">

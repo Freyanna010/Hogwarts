@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+
 import classes from "./Section.module.scss";
 import { SectionProps } from "./Section.types";
 

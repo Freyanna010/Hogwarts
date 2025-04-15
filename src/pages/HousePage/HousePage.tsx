@@ -1,7 +1,6 @@
 import {
   changeFavoriteStudents,
   chooseStudentById,
-  deleteStudent,
   filterStudentsByHouse,
   filterStudentsBySearch,
   sortStudentByName,
