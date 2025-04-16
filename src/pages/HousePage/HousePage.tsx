@@ -9,7 +9,7 @@ import { chooseHouseByName } from "@features/hоusesSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { Col, Row, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { FC, useEffect } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
@@ -40,23 +40,34 @@ const HousePage: FC = () => {
     }
   }, [dispatch, houseName, allStudents]);
 
-  const handleLikeStudentCard = (studentId: string) =>
-    dispatch(changeFavoriteStudents(studentId));
-  const handleStudentCardClick = (studentId: string) => {
-    navigate(`/Hogwarts/students/${studentId}`);
-    dispatch(chooseStudentById(studentId));
-  };
-  const handleSortStudentByName = (direction: "asc" | "desc" | "none") =>
-    dispatch(sortStudentByName(direction));
+  const handleLikeStudentCard = useCallback(
+    (studentId: string) => dispatch(changeFavoriteStudents(studentId)),
+    [dispatch],
+  );
+  const handleStudentCardClick = useCallback(
+    (studentId: string) => {
+      navigate(`/Hogwarts/students/${studentId}`);
+      dispatch(chooseStudentById(studentId));
+    },
+    [navigate, dispatch],
+  );
+  const handleSortStudentByName = useCallback(
+    (direction: "asc" | "desc" | "none") =>
+      dispatch(sortStudentByName(direction)),
+    [dispatch],
+  );
 
   const debouncedChangeSearch = useEffectEvent(
     debounce((value: string) => {
       dispatch(filterStudentsBySearch(value));
-    }, 500),
+    }, 400),
   );
-  const handleChangeSearch = (value: string) => {
-    debouncedChangeSearch(value);
-  };
+  const handleChangeSearch = useCallback(
+    (value: string) => {
+      debouncedChangeSearch(value);
+    },
+    [debouncedChangeSearch],
+  );
 
   if (isStudentsLoading) {
     return (
@@ -86,7 +97,6 @@ const HousePage: FC = () => {
         </Col>
 
         <Col span={24}>
-          {/* TODO: 2️⃣ StudentCardList */}
           <StudentCardList
             onLikeClicK={handleLikeStudentCard}
             onCardClick={handleStudentCardClick}

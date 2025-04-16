@@ -4,7 +4,6 @@ import {
   chooseStudentById,
 } from "@features/studentsSlice";
 import { AppDispatch, RootState } from "@store/store";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -15,10 +14,6 @@ const FavoritePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(favoriteStudents);
-  }, []);
-
   const handleDeleteStudentCard = (studentId: string) =>
     dispatch(changeFavoriteStudents(studentId));
   const handleStudentCardClick = (studentId: string) => {
@@ -28,13 +23,16 @@ const FavoritePage = () => {
 
   return (
     <>
+      //TODO: перенести student List сюда
       {favoriteStudents.map((student) => {
-        <StudentCard
-          student={student}
-          type="favoritePage"
-          onDeleteClick={handleDeleteStudentCard}
-          onCardClick={handleStudentCardClick}
-        />;
+        return (
+          <StudentCard
+            student={student}
+            type="favoritePage"
+            onDeleteClick={handleDeleteStudentCard}
+            onCardClick={handleStudentCardClick}
+          />
+        );
       })}
     </>
   );

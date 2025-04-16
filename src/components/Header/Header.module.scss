@@ -23,21 +23,20 @@
   margin-left: 10px;
   margin-bottom: 5px;
   cursor:
-  url("../../assets/cursor2.png") 10 10,
-  auto;
+    url("../../assets/cursor2.png") 10 10,
+    auto;
 }
 
 .textButton {
   color: $lite-yellow;
   transition: text-decoration 0.3s ease-in-out;
   cursor:
-  url("../../assets/cursor2.png") 10 10,
-  auto;
+    url("../../assets/cursor2.png") 10 10,
+    auto;
 
   &:hover {
     text-decoration: underline !important;
     color: $lite-yellow !important;
-
   }
 }
 
@@ -50,12 +49,11 @@
   transition: font-size 0.3s ease-in-out;
   font-size: 24px !important;
   cursor:
-  url("../../assets/cursor2.png") 10 10,
-  auto;
+    url("../../assets/cursor2.png") 10 10,
+    auto;
 
   &:hover {
     font-size: 24px !important;
-
   }
 }
 

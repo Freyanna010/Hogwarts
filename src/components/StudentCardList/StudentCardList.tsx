@@ -1,5 +1,5 @@
 import { Col, Input, Row } from "antd";
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, memo } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import SortingButton from "@components/ui/SortingButton";
 import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
@@ -8,7 +8,7 @@ import StudentCard from "../StudentCard";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 
-const StudentCardList: FC<StudentCardListProps> = (props) => {
+const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   const {
     students,
     onLikeClicK,
@@ -61,6 +61,6 @@ const StudentCardList: FC<StudentCardListProps> = (props) => {
       </Row>
     </div>
   );
-};
+});
 
 export default StudentCardList;

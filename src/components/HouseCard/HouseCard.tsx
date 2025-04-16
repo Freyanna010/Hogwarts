@@ -29,7 +29,7 @@ const HouseCard: FC<HouseCardProps> = (props) => {
   };
 
   if (type) {
-    return componentMap[type] || null;
+    return componentMap[type] || <p>no cards</p>;
   }
 };
 export default HouseCard;
