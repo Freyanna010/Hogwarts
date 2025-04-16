@@ -40,7 +40,7 @@ const HogwartsPage: FC = () => {
   };
 
   return (
-    <div className={classes.wrapperHgPageSlider}>
+    <div className={classes.slider}>
       {isShowModal && (
         // TODO:МОДАЛКА: вынести в ui-компонент
         <LetterModal
