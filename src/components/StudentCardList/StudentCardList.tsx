@@ -41,7 +41,7 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
           value={searchValue}
         />
         <div className={classes.sortButtonRow} >
-        <p className={classes.sortButtonTitle}>Sort name:</p> 
+        <p className={classes.sortButtonTitle}>Sort name:</p>     
         {/* TODO: поправить стили */}
         <SortingButton onSortClick={handleSortChange} />
         </div>
