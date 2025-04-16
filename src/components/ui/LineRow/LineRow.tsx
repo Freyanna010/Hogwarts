@@ -3,11 +3,13 @@ import { FC } from "react";
 
 const LineRow: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
+    // TODO: вынести  в классы
     <Card
       style={{
         background: "none",
         border: "none",
         borderBottom: "2px solid #000",
+        borderRadius: 0,
         padding: "0px",
         margin: "0px",
       }}

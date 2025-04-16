@@ -1,128 +1,75 @@
-import { Button, Col, Image, Row, Spin, Typography } from "antd";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { LoadingOutlined } from "@ant-design/icons";
-import avatar from "@assets/hogAvatar.webp";
-import { RootState } from "@store/store";
-import { hogwartsTheme } from "@styles/theme";
+import { Col, Row, Typography } from "antd";
 import { calculateAge } from "@utils/dateUtils";
-
+import classes from "./StudentInfoCard.module.scss";
 import BgCard from "../ui/BgCard";
 import LineRow from "../ui/LineRow";
+import { StudentInfoCardProps } from "./StudentInfoCard.types";
+import { FC } from "react";
+import Image from "@components/ui/Image";
 
-const StudentInfoCard = () => {
-  const {
-    currentStudent,
-    isStudentLoading: studentLoading,
-    errorMessage: studentsError,
-  } = useSelector((state: RootState) => state.students);
-
-  // const student = currentStudent ? currentStudent[0] : null;
-
-  // const [student] = currentStudent || []
-  // деструтуризироваь массив
-
-  const navigate = useNavigate();
-
+const StudentInfoCard: FC<StudentInfoCardProps> = ({ student, avatar }) => {
+  // TODO: добавить классы
   const { Title } = Typography;
-  const { shadow } = hogwartsTheme.token;
 
-  const handleReturn = () => navigate("/students");
+  return (
+    <BgCard className={classes.bgGard}>
+      <Row gutter={16}>
+        <Col span={6}>
+          {/* TODO: курсор, добавить логику увелечения */}
+          <Image src={student.image || avatar} className={classes.image} />
+          <Title level={1} style={{ paddingTop: 10 }}>
+            {student.name}
+          </Title>
+          {student.wizard && <Title level={4}>Wizard</Title>}
+        </Col>
 
-  if (currentStudent) {
-    return (
-      <>
-        {studentLoading ? (
-          <Spin
-            indicator={
-              <LoadingOutlined
-                style={{
-                  fontSize: 60,
-                  boxShadow: shadow,
-                  borderRadius: "50%",
-                }}
-                spin
-              />
-            }
-          />
-        ) : studentsError ? (
-          <div>{studentsError}</div>
-        ) : (
-          <BgCard>
-            <Row gutter={16}>
-              <Col span={24}>
-                <Button onClick={handleReturn} style={{ marginBottom: "16px" }}>
-                  Return
-                </Button>
-              </Col>
-            </Row>
-
-            <Row gutter={16}>
-              <Col span={6}>
-                <Image
-                  width={220}
-                  height={300}
-                  src={currentStudent.image || avatar}
-                />
-                <Title level={1} style={{ paddingTop: 10 }}>
-                  {currentStudent.name}
+        <Col span={18}>
+          {student.alternate_names.length > 0 && (
+            <LineRow>
+              <Title level={4}>Alternate names:</Title>
+              {student.alternate_names.map((name, index) => (
+                <Title level={5} key={index}>
+                  {name}
+                  {index < student.alternate_names.length - 1 && ", "}
                 </Title>
-                {currentStudent.wizard && <Title level={4}>Wizard</Title>}
-              </Col>
+              ))}
+            </LineRow>
+          )}
 
-              <Col span={18}>
-                {currentStudent.alternate_names.length > 0 && (
-                  <LineRow>
-                    <Title level={4}>Alternate names:</Title>
-                    {currentStudent.alternate_names.map((name, index) => (
-                      <Title level={5} key={index}>
-                        {name}
-                        {index < currentStudent.alternate_names.length - 1 &&
-                          ", "}
-                      </Title>
-                    ))}
-                  </LineRow>
-                )}
+          <LineRow>
+            <Title level={4}>Gender: </Title>
+            <Title level={5}>{student.gender}</Title>
+          </LineRow>
 
-                <LineRow>
-                  <Title level={4}>Gender: </Title>
-                  <Title level={5}>{currentStudent.gender}</Title>
-                </LineRow>
+          <LineRow>
+            <Title level={4}>House: </Title>
+            <Title level={5}>{student.house || "unknown"}</Title>
+          </LineRow>
 
-                <LineRow>
-                  <Title level={4}>House: </Title>
-                  <Title level={5}>{currentStudent.house || "unknown"}</Title>
-                </LineRow>
+          <LineRow>
+            <Title level={4}>Date of birth: </Title>
+            <Title level={5}>{student.dateOfBirth || "unknown"}</Title>
+          </LineRow>
 
-                <LineRow>
-                  <Title level={4}>Date of birth: </Title>
-                  <Title level={5}>
-                    {currentStudent.dateOfBirth || "unknown"}
-                  </Title>
-                </LineRow>
+          <LineRow>
+            <Title level={4}>Age: </Title>
+            <Title level={5}>
+              {student.dateOfBirth
+                ? calculateAge(student.dateOfBirth)
+                : "unknown"}
+            </Title>
+          </LineRow>
 
-                <LineRow>
-                  <Title level={4}>Age: </Title>
-                  <Title level={5}>
-                    {currentStudent.dateOfBirth
-                      ? calculateAge(currentStudent.dateOfBirth)
-                      : "unknown"}
-                  </Title>
-                </LineRow>
-
-                {currentStudent.patronus && (
-                  <LineRow>
-                    <Title level={4}>Patronus: </Title>
-                    <Title level={5}>{currentStudent.patronus}</Title>
-                  </LineRow>
-                )}
-              </Col>
-            </Row>
-          </BgCard>
-        )}
-      </>
-    );
-  }
+          {student.patronus && (
+            <LineRow>
+              <Title level={4}>Patronus: </Title>
+              <Title level={5}>{student.patronus}</Title>
+            </LineRow>
+          )}
+        </Col>
+      </Row>
+    </BgCard>
+  );
 };
 
 export default StudentInfoCard;

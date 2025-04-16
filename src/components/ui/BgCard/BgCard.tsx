@@ -1,10 +1,11 @@
 import { Card } from "antd";
-import React, { FC } from "react";
-
+import { FC } from "react";
 import classes from "./BgCard.module.scss";
+import { BgGardProps } from "./BgCard.types";
+import clsx from "clsx";
 
-const BgCard: FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <Card className={classes.cardBg}>{children}</Card>;
+const BgCard: FC<BgGardProps> = ({ children, className }) => {
+  return <Card className={clsx(classes.cardBg, className)}>{children}</Card>;
 };
 
 export default BgCard;
