@@ -1,5 +1,45 @@
 @use "../../styles/variables" as *;
 
+// TODO: убрать пиксели
+.searchRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  font-size: 30px;
+  gap: 0.5em;
+  margin-bottom: 1em;
+
+}
+
+.sortButtonTitle{
+  color: $lite-yellow;
+  font-size: 0.5em;
+  
+}
+.searchInput {
+  background-color: $background-dark;
+  color: $lite-yellow;
+  width: 90%;
+
+
+  &:is(:hover, :focus-within) {
+    color: $lite-yellow;
+    background-color: $background-dark;
+    border: 1em solid $lite-yellow;
+  }
+}
+
+.sortButtonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  
+}
+
+
 .searchCardListRow {
   background-color: $background-dark;
   color: $lite-yellow;

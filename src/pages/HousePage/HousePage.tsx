@@ -33,6 +33,7 @@ const HousePage: FC = () => {
   } = useSelector((state: RootState) => state.students);
   const { currentHouse } = useSelector((state: RootState) => state.houses);
 
+
   useEffect(() => {
     if (allStudents.length > 0 && houseName) {
       dispatch(filterStudentsByHouse(houseName));
@@ -42,31 +43,31 @@ const HousePage: FC = () => {
 
   const handleLikeStudentCard = useCallback(
     (studentId: string) => dispatch(changeFavoriteStudents(studentId)),
-    [dispatch],
+    [dispatch]
   );
   const handleStudentCardClick = useCallback(
     (studentId: string) => {
       navigate(`/Hogwarts/students/${studentId}`);
       dispatch(chooseStudentById(studentId));
     },
-    [navigate, dispatch],
+    [navigate, dispatch]
   );
   const handleSortStudentByName = useCallback(
     (direction: "asc" | "desc" | "none") =>
       dispatch(sortStudentByName(direction)),
-    [dispatch],
+    [dispatch]
   );
 
   const debouncedChangeSearch = useEffectEvent(
     debounce((value: string) => {
       dispatch(filterStudentsBySearch(value));
-    }, 400),
+    }, 300)
   );
   const handleChangeSearch = useCallback(
     (value: string) => {
       debouncedChangeSearch(value);
     },
-    [debouncedChangeSearch],
+    [debouncedChangeSearch]
   );
 
   if (isStudentsLoading) {
