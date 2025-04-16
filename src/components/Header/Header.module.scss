@@ -49,6 +49,9 @@
   color: $lite-yellow;
   transition: font-size 0.3s ease-in-out;
   font-size: 24px !important;
+  cursor:
+  url("../../assets/cursor2.png") 10 10,
+  auto;
 
   &:hover {
     font-size: 24px !important;
