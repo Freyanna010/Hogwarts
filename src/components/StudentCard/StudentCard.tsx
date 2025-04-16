@@ -16,15 +16,14 @@ interface Props {
   onCardClick: (id: string) => void;
   type: "housePage" | "favoritePage";
   studentsLoading?: boolean;
+  className?: string;
 }
 
 const StudentCard: FC<Props> = (props) => {
-  const { student, onLikeClick, onDeleteClick, onCardClick, type } = props;
-
+  const { student, onLikeClick, onDeleteClick, onCardClick, type, className } =
+    props;
   const { id, image, name, house } = student;
-
   const { Title } = Typography;
-
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,9 +44,10 @@ const StudentCard: FC<Props> = (props) => {
 
   const CardColor = getHouseColor(house);
 
+  // TODO: стили править
   return (
     <Card
-      className={clsx(classes.studentCard, classes[CardColor])}
+      className={clsx(classes.studentCard, classes[CardColor], className)}
       onClick={handelCardClick}
     >
       <Flex justify="end">

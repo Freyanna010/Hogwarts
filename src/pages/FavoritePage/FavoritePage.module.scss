@@ -1,0 +1,23 @@
+@use "../../styles/variables" as *;
+.favoritePage {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.developTitle {
+  position: absolute;
+  font-size: 60px;
+  color: $lite-yellow;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  padding: 0.5em;
+}
+
+.develop {
+  filter: blur(25px);
+}

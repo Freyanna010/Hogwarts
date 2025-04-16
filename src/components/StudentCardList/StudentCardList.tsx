@@ -27,8 +27,8 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
 
     onSearchChange(value);
   };
-// TODO:  вынести стайлы, добавить кастомные флексы грид, переименовать классы
-// TODO:  стили карточек (цвет текста/размер/адаптив)
+  // TODO:  вынести стайлы, добавить кастомные флексы грид, переименовать классы
+  // TODO:  стили карточек (цвет текста/размер/адаптив)
   return (
     <div className={className}>
       <div className={classes.searchRow}>
@@ -40,12 +40,11 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
           className={classes.searchInput}
           value={searchValue}
         />
-        <div className={classes.sortButtonRow} >
-        <p className={classes.sortButtonTitle}>Sort name:</p>     
-        {/* TODO: поправить стили */}
-        <SortingButton onSortClick={handleSortChange} />
+        <div className={classes.sortButtonRow}>
+          <p className={classes.sortButtonTitle}>Sort name:</p>
+          {/* TODO: поправить стили */}
+          <SortingButton onSortClick={handleSortChange} />
         </div>
-
       </div>
 
       <Row gutter={[24, 24]} justify="start">

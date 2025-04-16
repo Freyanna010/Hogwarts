@@ -32,7 +32,7 @@ const StudentPage = () => {
       />
     );
   }
-  
+
   if (studentsError) {
     return <div>{studentsError}</div>;
   }
@@ -43,6 +43,5 @@ const StudentPage = () => {
 
   return <StudentInfoCard student={currentStudent} avatar={avatar} />;
 };
-
 
 export default StudentPage;

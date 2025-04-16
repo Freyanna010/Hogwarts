@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-export interface  BgGardProps {
-    children: React.ReactNode,
-    className?: string
+export interface BgGardProps {
+  children: React.ReactNode;
+  className?: string;
 }
