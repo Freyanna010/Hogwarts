@@ -42,7 +42,7 @@ const HogwartsPage: FC = () => {
   return (
     <div className={classes.wrapperHgPageSlider}>
       {isShowModal && (
-        // TODO:добавить чилдрен
+        // TODO:МОДАЛКА: вынести в ui-компонент
         <LetterModal
           onCloseClick={handleCloseModal}
           onGoClick={handleGoToHogwartsClick}

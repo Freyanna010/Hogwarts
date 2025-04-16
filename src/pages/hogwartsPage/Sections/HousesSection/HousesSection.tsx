@@ -12,7 +12,7 @@ const HousesSection: FC<HousesSectionProps> = ({ onCardClick, houses }) => (
     <Slider className={classes.slider}>
       {houses.map((house) => (
         <HouseCard
-          key={house.name}
+          key={house.id}
           house={house}
           onCardClick={onCardClick}
           type="slider"

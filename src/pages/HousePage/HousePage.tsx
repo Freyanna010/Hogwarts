@@ -41,7 +41,6 @@ const HousePage: FC = () => {
   }, [dispatch, houseName, allStudents]);
 
   const handleLikeStudentCard = (studentId: string) =>
-    // TODO: 5️⃣changeFavoriteStudents
     dispatch(changeFavoriteStudents(studentId));
   const handleStudentCardClick = (studentId: string) => {
     navigate(`/Hogwarts/students/${studentId}`);

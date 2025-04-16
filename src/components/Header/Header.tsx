@@ -1,11 +1,12 @@
 import { FC, useState } from "react";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 import { HeartOutlined, PlusOutlined } from "@ant-design/icons";
 import PopupMenu from "@components/ui/PopupMenu";
 import { useSelector } from "react-redux";
 import { RootState } from "@store/store";
 import HouseCard from "@components/HouseCard";
+import clsx from "clsx";
 
 import classes from "./Header.module.scss";
 
@@ -31,39 +32,41 @@ const Header: FC = () => {
   return (
     <>
       <header className={classes.header}>
-        <h1
-          className={classes.headerTitle}
-          onClick={handleNavigateToHogwartsPage}
-        >
+        <h1 className={classes.title} onClick={handleNavigateToHogwartsPage}>
           Hogwarts
         </h1>
 
-        <div className={classes.headerButtonsRow}>
+        <div className={classes.buttonsRow}>
           <Button
             type="text"
-            className={classes.headerTextButton}
+            className={classes.textButton}
             onClick={handleShowHouseMenu}
           >
             Houses
           </Button>
 
-          <Button type="text" className={classes.headerTextButton}>
-            Shop
-          </Button>
+          <Tooltip title="Coming soon">
+            <Button
+              type="text"
+              className={clsx(classes.textButton, classes.development)}
+            >
+              Shop
+            </Button>
+          </Tooltip>
         </div>
 
-        <div className={classes.headerButtonsRow}>
+        <div className={classes.buttonsRow}>
           <Button
             type="text"
             onClick={handleNavigateToFavoritePage}
             size="large"
-            icon={<HeartOutlined className={classes.headerIconButton} />}
+            icon={<HeartOutlined className={classes.buttonIcon} />}
           />
           <Button
             type="text"
             onClick={handleNavigateCreate}
             size="large"
-            icon={<PlusOutlined className={classes.headerIconButton} />}
+            icon={<PlusOutlined className={classes.buttonIcon} />}
             className={classes.headerIconButton}
           />
         </div>
@@ -72,7 +75,11 @@ const Header: FC = () => {
       {isShowHouseMenu && (
         <PopupMenu>
           {houses.map((house) => (
-            <HouseCard house={house} type="popupMenu" />
+            <Tooltip key={house.id} title={<span>Feature in development</span>}>
+              <div className={classes.development}>
+                <HouseCard house={house} type="popupMenu" key={house.id} />
+              </div>
+            </Tooltip>
           ))}
         </PopupMenu>
       )}
