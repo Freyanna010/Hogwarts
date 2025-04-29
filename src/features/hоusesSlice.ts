@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import housesData from "@store/housesData.json";
-import { House } from "@types";
+import { House } from "shared/types";
 
 interface HousesState {
   houses: House[];

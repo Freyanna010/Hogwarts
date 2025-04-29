@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { fetchStudentDataById, fetchStudentsData } from "./studentsThunks";
-import { Student } from "../types/types";
+import { Student } from "../shared/types/types";
 
 interface StudentsState {
   allStudents: Student[];

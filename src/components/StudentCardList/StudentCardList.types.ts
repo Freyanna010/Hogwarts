@@ -1,5 +1,5 @@
 import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
-import { Student } from "@types";
+import { Student } from "shared/types";
 
 export interface StudentCardListProps {
   onLikeClicK: (studentId: string) => void;

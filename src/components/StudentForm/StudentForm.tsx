@@ -1,121 +1,62 @@
-import { FC } from "react";
-import {
-  Button,
-  DatePicker,
-  Form,
-  FormProps,
-  Input,
-  Select,
-  Upload,
-  UploadFile,
-} from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { FC, useState } from "react";
+import { StudentFormProps } from "./StudentForm.types";
+import FormStep from "@components/ui/FormStep";
 import BgCard from "@components/ui/BgCard";
-import { FieldType } from "@types";
+import Input from "@components/ui/Input";
+import Select from "@components/ui/Select";
 
-import classes from "./StudentForm.module.scss";
+const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
+  const [step, setStep] = useState(0);
 
-// TODO: вынести
-interface StudentFormProps {
-  fileList: UploadFile[];
-  onFileChange: (info: { fileList: UploadFile[] }) => void;
-  onSubmit: FormProps<FieldType>["onFinish"];
-  onError: FormProps<FieldType>["onFinishFailed"];
-}
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    gender: "",
+    dateOfBirth: "",
+    house: "",
+    image: "",
+    patronus: "",
+  });
 
-const StudentForm: FC<StudentFormProps> = ({
-  fileList,
-  onFileChange,
-  onSubmit,
-  onError,
-}) => {
-  const { Option } = Select;
+  const handelOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) =>({
+      ...prev,
+    [e.target.name]: e.target.value
+    }) )
+  }
 
   return (
-    <BgCard className={classes.bgGard}>
-      <Form
-        name="student"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 20 }}
-        style={{ maxWidth: 800, marginTop: 16 }}
-        initialValues={{ remember: true }}
-        onFinish={onSubmit}
-        onFinishFailed={onError}
-        autoComplete="off"
-      >
-        <Form.Item<FieldType>
-          label="Name"
-          name="name"
-          rules={[{ required: true, message: "Please input name!" }]}
+    <>
+      <BgCard>
+        <FormStep
+          title="So your name is, young wizard?"
+          buttonText="Let the Sorting Begin"
         >
-          <Input className={classes.form} />
-        </Form.Item>
+          <Input
+            name="firstName"
+            label="What is your name, young wizard?"
+            size="xl"
+            type="text"
+            isRequired={true}
+            errorMassage="Every young witch or wizard must have a name. The Sorting Hat insists!"
+            onChange={handelOnChange}
+          />
 
-        <Form.Item label="Date of birth" name="dateOfBirth">
-          <DatePicker className={classes.form} />
-        </Form.Item>
+          <Input
+            name="lastName"
+            label="And the last name?"
+            size="xl"
+            type="text"
+            isRequired={true}
+            errorMassage="Hogwarts records demand a full name for entry."
+            onChange={handelOnChange}
+          />
 
-        <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
-          {/* TODO: стили селекшн */}
-          <Select placeholder="Gender" allowClear className={classes.form}>
-            <Option value="male">male</Option>
-            <Option value="female">female</Option>
-          </Select>
-        </Form.Item>
+          <Select/>
 
-        <Form.Item name="house" label="House" rules={[{ required: true }]}>
-          {/* TODO: стили селекшн */}
-          <Select
-            placeholder="choose a house"
-            allowClear
-            className={classes.form}
-          >
-            <Option value="Gryffindor">Gryffindor</Option>
-            <Option value="Slytherin">Slytherin</Option>
-            <Option value="Ravenclaw">Ravenclaw</Option>
-            <Option value="Hufflepuff">Hufflepuff</Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item<FieldType>
-          label="Patronus"
-          name="patronus"
-          rules={[{ required: false }]}
-        >
-          <Input className={classes.form} />
-        </Form.Item>
-
-        <Form.Item
-          name="fileList"
-          valuePropName="fileList"
-          getValueFromEvent={(e) => e?.fileList}
-          label="Add photo"
-        >
-          <Upload
-            listType="picture-card"
-            fileList={fileList}
-            onChange={onFileChange}
-            beforeUpload={() => false}
-            className={classes.upload}
-          >
-            <button className={classes.uploadButton} type="button">
-              <PlusOutlined />
-              <div>Photo</div>
-            </button>
-          </Upload>
-        </Form.Item>
-
-        <Form.Item label={null}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className={classes.buttonSubmit}
-          >
-            Create student
-          </Button>
-        </Form.Item>
-      </Form>
-    </BgCard>
+        </FormStep>
+      </BgCard>
+    </>
   );
 };
 

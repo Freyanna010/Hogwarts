@@ -1,18 +1,17 @@
-import { FormProps, UploadFile } from "antd";
-import dayjs from "dayjs";
+import { Student } from "shared/types";
 
-export interface FieldType {
-  name: string;
-  dateOfBirth?: dayjs.Dayjs;
-  gender: string;
-  house: string;
-  patronus?: string;
-  fileList?: UploadFile[];
-}
-
+export interface StudentForm
+  extends Pick<
+    Student,
+    | "id"
+    | "name"
+    | "gender"
+    | "house"
+    | "dateOfBirth"
+    | "wizard"
+    | "patronus"
+    | "image"
+  > {}
 export interface StudentFormProps {
-  fileList: UploadFile[];
-  onFileChange: (info: { fileList: UploadFile[] }) => void;
-  onSubmit: FormProps<FieldType>["onFinish"];
-  onError: FormProps<FieldType>["onFinishFailed"];
+  onAddStudent: (student: Student) => void;
 }

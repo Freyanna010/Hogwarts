@@ -18,6 +18,7 @@ export default defineConfig({
       "@types": "/src/types",
       "@utils": "/src/utils",
       "@assets": "/src/assets",
+      "@shared": "/src/shared",
     },
   },
 });

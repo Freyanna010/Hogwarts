@@ -1,4 +1,4 @@
-import { HogwartsImage } from "@types";
+import { HogwartsImage } from "shared/types";
 
 export interface HogwartsBannerProps {
   images: HogwartsImage[];

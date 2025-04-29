@@ -3,7 +3,7 @@ import React, { FC, useState } from "react";
 import { HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
 import { getHouseColor } from "@utils/colorUtils";
 import clsx from "clsx";
-import { Student } from "@types";
+import { Student } from "shared/types";
 import HgEmblem from "@assets/hogAvatar.webp";
 import Image from "@components/ui/Image";
 

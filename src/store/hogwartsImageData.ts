@@ -1,4 +1,4 @@
-import { HogwartsImage } from "./../types/types";
+import { HogwartsImage } from "../shared/types/types";
 
 export const hogwartsImagesData: HogwartsImage[] = [
   {

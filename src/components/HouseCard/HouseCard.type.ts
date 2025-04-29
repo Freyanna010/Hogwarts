@@ -1,4 +1,4 @@
-import { House } from "@types";
+import { House } from "shared/types";
 
 export type HouseCardType = "slider" | "banner" | "popupMenu";
 
