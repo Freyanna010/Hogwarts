@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Tooltip } from "antd";
 import owl from "@assets/owl.png";
 import AnimatedImage from "@components/ui/AnimatedImage";
@@ -7,13 +7,11 @@ import Section from "@components/ui/Section/Section";
 import classes from "./ManSection.module.scss";
 import { ManSectionProps } from "./ManSection.types";
 
-const ManSection: FC<ManSectionProps> = (props) => {
-  const {
-    isShowTooltip,
-    handleImageClick,
-    handleMouseEnterModal,
-    handleMouseLeaveModal,
-  } = props;
+const ManSection: FC<ManSectionProps> = ( { handleImageClick }) => {
+  const [isShowTooltip, seIsShowTooltip] = useState(false);
+
+  const handleMouseEnterModal = () => seIsShowTooltip(true);
+  const handleMouseLeaveModal = () => seIsShowTooltip(false);
 
   return (
     <Section id="section1" className={classes.manSection}>
