@@ -7,6 +7,7 @@ import letterImage from "@assets/letter.jpg";
 const HogwartsLetterModal: FC<HogwartsLetterModalProps> = ({
   onClose,
   onGo,
+  isOpen
 }) => {
   return (
     <Modal
@@ -15,6 +16,7 @@ const HogwartsLetterModal: FC<HogwartsLetterModalProps> = ({
       okButtonText="Go to Hogwarts"
       cancelButtonText="Stay in the Muggle World"
       image={letterImage}
+      isOpen={isOpen}
     >
       <div className={classes.modalLetterText}>
         <p className={classes.manText}>

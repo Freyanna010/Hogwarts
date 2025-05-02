@@ -28,6 +28,7 @@ const HogwartsPage: FC = () => {
   <HogwartsLetterModal
   onClose={handleCloseModal}
   onGo={handleGoToHogwartsClick}
+  isOpen={isShowModal}
 />
       )}
       <ManSection handleImageClick={handleImageClick} />
