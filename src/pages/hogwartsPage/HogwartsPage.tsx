@@ -6,7 +6,7 @@ import AboutHogwartsSection from "./Sections/AboutHogwartsSection";
 import HousesSection from "./Sections/HousesSection";
 import FamousThreeSection from "./Sections/FamousThreeSection";
 import { useHogwartsPage } from "./hooks";
-import letterImage from "@assets/letter.jpg";
+
 import HogwartsLetterModal from "@components/HogwartsLetterModal";
 
 const HogwartsPage: FC = () => {

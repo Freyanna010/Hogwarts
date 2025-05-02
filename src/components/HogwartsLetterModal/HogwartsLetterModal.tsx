@@ -7,7 +7,7 @@ import letterImage from "@assets/letter.jpg";
 const HogwartsLetterModal: FC<HogwartsLetterModalProps> = ({
   onClose,
   onGo,
-  isOpen
+  isOpen,
 }) => {
   return (
     <Modal
