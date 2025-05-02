@@ -1,17 +1,13 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/store";
-import { hogwartsImagesData } from "@store/hogwartsImageData";
-import LetterModal from "@components/LetterModal/LetterModal";
-import { chooseStudentById } from "@features/studentsSlice";
-
+import Modal from "@components/ui/Modal/Modal";
 import classes from "./HogwartsPage.module.scss";
 import ManSection from "./Sections/ManSection/ManSection";
 import AboutHogwartsSection from "./Sections/AboutHogwartsSection";
 import HousesSection from "./Sections/HousesSection";
 import FamousThreeSection from "./Sections/FamousThreeSection";
-import { useHogwartsPage } from "./hooks/useHogwarstPage";
+import { useHogwartsPage } from "./hooks";
+import letterImage from "@assets/letter.jpg";
+import HogwartsLetterModal from "@components/HogwartsLetterModal";
 
 const HogwartsPage: FC = () => {
   const {
@@ -29,11 +25,10 @@ const HogwartsPage: FC = () => {
   return (
     <div className={classes.slider}>
       {isShowModal && (
-        // TODO:МОДАЛКА: вынести в ui-компонент
-        <LetterModal
-          onCloseClick={handleCloseModal}
-          onGoClick={handleGoToHogwartsClick}
-        />
+  <HogwartsLetterModal
+  onClose={handleCloseModal}
+  onGo={handleGoToHogwartsClick}
+/>
       )}
       <ManSection handleImageClick={handleImageClick} />
       <AboutHogwartsSection images={hogwartsImages} />
