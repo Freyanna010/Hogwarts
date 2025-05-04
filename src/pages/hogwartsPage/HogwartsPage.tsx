@@ -28,6 +28,7 @@ const HogwartsPage: FC = () => {
           isOpen={isShowModal}
         />
       )}
+
       <ManSection handleImageClick={handleImageClick} />
       <AboutHogwartsSection />
       <HousesSection houses={houses} onCardClick={handleHouseCardClick} />
