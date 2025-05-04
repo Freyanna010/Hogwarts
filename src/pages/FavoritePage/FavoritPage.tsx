@@ -6,7 +6,7 @@ import {
 import { AppDispatch, RootState } from "@store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import classes from "./FavoritePage.module.scss"
+import classes from "./FavoritePage.module.scss";
 
 const FavoritePage = () => {
   const { favoriteStudents } = useSelector(
@@ -21,7 +21,7 @@ const FavoritePage = () => {
     navigate(`/students/${studentId}`);
     dispatch(chooseStudentById(studentId));
   };
-//TODO: перенести student List сюда
+  //TODO: перенести student List сюда
   return (
     <div className={classes.favoritePageContainer}>
       <div className={classes.developTitle}>Work in progress 😅</div>

@@ -6,29 +6,24 @@ const Select = () => {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
- useEffect (() =>{
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target;
 
-  const handleClick = (e:MouseEvent ) => {
-    const target = e.target
-
-    if(target instanceof Node && !rootRef.current?.contains(target)){
-      if(isOpen) {
-        // onClose?.();
+      if (target instanceof Node && !rootRef.current?.contains(target)) {
+        if (isOpen) {
+          // onClose?.();
+        }
+        setIsOpen(false);
       }
-      setIsOpen(false)
-    }
 
-    window.addEventListener('click', handleClick);
+      window.addEventListener("click", handleClick);
 
-    return () => {
-      window.removeEventListener('click', handleClick);
+      return () => {
+        window.removeEventListener("click", handleClick);
+      };
     };
-  }
-
- }, [])
-
- 
-
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.target.value);

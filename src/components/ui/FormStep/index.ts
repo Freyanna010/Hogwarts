@@ -1,1 +1,1 @@
-export {default} from "./FormStep"
+export { default } from "./FormStep";

@@ -2,10 +2,10 @@ import { ReactNode } from "react";
 
 export interface ModalProps {
   children?: ReactNode;
-  isOpen: boolean
+  isOpen: boolean;
   onOk: () => void;
   onCancel: () => void;
-  image?: string
+  image?: string;
   okButtonText?: string;
   cancelButtonText?: string;
 }

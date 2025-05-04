@@ -19,11 +19,11 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
   });
 
   const handelOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) =>({
+    setFormData((prev) => ({
       ...prev,
-    [e.target.name]: e.target.value
-    }) )
-  }
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
     <>
@@ -52,8 +52,7 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
             onChange={handelOnChange}
           />
 
-          <Select/>
-
+          <Select />
         </FormStep>
       </BgCard>
     </>

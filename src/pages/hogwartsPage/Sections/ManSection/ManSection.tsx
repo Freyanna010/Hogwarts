@@ -7,7 +7,7 @@ import Section from "@components/ui/Section/Section";
 import classes from "./ManSection.module.scss";
 import { ManSectionProps } from "./ManSection.types";
 
-const ManSection: FC<ManSectionProps> = ( { handleImageClick }) => {
+const ManSection: FC<ManSectionProps> = ({ handleImageClick }) => {
   const [isShowTooltip, seIsShowTooltip] = useState(false);
 
   const handleMouseEnterModal = () => seIsShowTooltip(true);

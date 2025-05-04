@@ -8,17 +8,24 @@ import { ModalProps } from "./Modal.types";
 import classes from "./Modal.module.scss";
 import { useClickOutside } from "@hooks/useClickOutside";
 
-const Modal: FC<ModalProps> = ({ onOk, onCancel, image, okButtonText="Ok", cancelButtonText="Cancel", children, isOpen}) => {
- const ref = useRef<HTMLDivElement>(null)
+const Modal: FC<ModalProps> = ({
+  onOk,
+  onCancel,
+  image,
+  okButtonText = "Ok",
+  cancelButtonText = "Cancel",
+  children,
+  isOpen,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
 
- useClickOutside(ref, onCancel, isOpen)
+  useClickOutside(ref, onCancel, isOpen);
   return (
     <div className={classes.overlay} onClick={onCancel}>
       {/* TODO: добавит хук для закрытия */}
       <div
         className={classes.modalLetterContainer}
-        onClick={(e) => e.stopPropagation()        
-        }
+        onClick={(e) => e.stopPropagation()}
         ref={ref}
       >
         {image && <img src={letter} className={classes.modalLetterImage} />}
@@ -31,8 +38,6 @@ const Modal: FC<ModalProps> = ({ onOk, onCancel, image, okButtonText="Ok", cance
             icon={<CloseCircleOutlined className={classes.closeButtonIcon} />}
           />
 
-
-
           {children}
 
           <Button
@@ -40,14 +45,14 @@ const Modal: FC<ModalProps> = ({ onOk, onCancel, image, okButtonText="Ok", cance
             className={clsx(classes.buttons, classes.primaryButton)}
             onClick={onOk}
           >
-          {cancelButtonText}
+            {cancelButtonText}
           </Button>
           <Button
             type="primary"
             className={clsx(classes.buttons, classes.primaryButton)}
             onClick={onOk}
           >
-          {okButtonText}
+            {okButtonText}
           </Button>
         </div>
       </div>

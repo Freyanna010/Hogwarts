@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
 export interface FormProviderProps<T> {
-    initialValue: T
-    children: React.ReactNode
+  initialValue: T;
+  children: React.ReactNode;
 }

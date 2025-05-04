@@ -3,7 +3,7 @@ export interface SelectProps {
   options: Option[];
   placeholder?: string;
   // status?: 'default' | 'invalid';
-  onChange?: (selected: Option['value']) => void;
+  onChange?: (selected: Option["value"]) => void;
   onClose?: () => void;
   isRequired?: boolean;
   errorMassage: string;
@@ -11,5 +11,3 @@ export interface SelectProps {
 }
 
 type Option = { title: string; value: string };
-
-

@@ -1,31 +1,31 @@
-
 inputColumn {
-    display: flex;
-    flex-direction: column;
-    padding: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
 }
 
-.labelRow{
-display: flex;
-flex-direction: row;
+.labelRow {
+  display: flex;
+  flex-direction: row;
 }
 
 .sm {
-    font-size: 14px; }
+  font-size: 14px;
+}
 .md {
-    font-size: 16px;
+  font-size: 16px;
 }
 .xl {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .label {
-    font-size: 0.85em;
+  font-size: 0.85em;
 }
 
 .input {
-    width: 100%;
-    font-size: 1em;
-    height: 1em;
-    padding: 0.5em;
+  width: 100%;
+  font-size: 1em;
+  height: 1em;
+  padding: 0.5em;
 }

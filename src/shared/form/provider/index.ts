@@ -1,1 +1,1 @@
-export {default} from  "./FormProvider"
+export { default } from "./FormProvider";

@@ -4,7 +4,11 @@ import Input from "../Input";
 import { FormStepTypes } from "./FormStep.types";
 import { FC } from "react";
 
-const FormStep: FC<FormStepTypes> = ({ title, children, buttonText= "Next" }) => {
+const FormStep: FC<FormStepTypes> = ({
+  title,
+  children,
+  buttonText = "Next",
+}) => {
   return (
     <div>
       <h2>{title}</h2>

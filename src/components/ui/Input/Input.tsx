@@ -13,12 +13,11 @@ const Input: FC<InputProps> = (props) => {
     isRequired = true,
     errorMassage = "Input is required",
   } = props;
-  const [inputDirty, setInputDirty] = useState(false)
-
+  const [inputDirty, setInputDirty] = useState(false);
 
   const noBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     const isEmpty = e.target.value.trim() === "";
-  
+
     if (isEmpty) {
       setInputDirty(true);
     } else {
@@ -26,14 +25,13 @@ const Input: FC<InputProps> = (props) => {
     }
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>{
-    if(inputDirty){
-      setInputDirty(false)
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (inputDirty) {
+      setInputDirty(false);
     } else {
-      onChange(e)
+      onChange(e);
     }
-
-  }
+  };
 
   return (
     <div className={clsx(classes.inputColumn, classes[size])}>
@@ -41,12 +39,12 @@ const Input: FC<InputProps> = (props) => {
         {isRequired && <p>*</p>}
 
         <label htmlFor={name} className={classes.label}>
-  {label}
-</label>
+          {label}
+        </label>
       </div>
 
       <input
-        name= {name}
+        name={name}
         id={name}
         type={type}
         className={classes.input}
@@ -55,7 +53,7 @@ const Input: FC<InputProps> = (props) => {
         onChange={onChangeHandler}
       />
 
-      {(errorMassage && isRequired && inputDirty) && <div>{errorMassage}</div>}
+      {errorMassage && isRequired && inputDirty && <div>{errorMassage}</div>}
     </div>
   );
 };

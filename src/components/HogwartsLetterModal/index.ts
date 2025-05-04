@@ -1,1 +1,1 @@
-export {default} from "./HogwartsLetterModal"
+export { default } from "./HogwartsLetterModal";

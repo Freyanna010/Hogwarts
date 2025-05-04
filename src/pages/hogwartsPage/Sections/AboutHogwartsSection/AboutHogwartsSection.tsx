@@ -1,11 +1,11 @@
 import { FC } from "react";
 import Section from "@components/ui/Section";
 import Slider from "@components/ui/Slider";
-import { HogwartsImage } from "shared/types";
+import { hogwartsImagesData as images } from "@store/hogwartsImageData";
 
 import classes from "./AboutHogwartsSection.module.scss";
 
-const AboutHogwartsSection: FC<{ images: HogwartsImage[] }> = ({ images }) => (
+const AboutHogwartsSection: FC = () => (
   <Section id="section2" typeColor="dark">
     <h2 className={classes.title}>Hogwarts</h2>
     <p className={classes.text}>
