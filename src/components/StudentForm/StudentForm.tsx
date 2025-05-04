@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
-import { StudentFormProps } from "./StudentForm.types";
 import FormStep from "@components/ui/FormStep";
 import BgCard from "@components/ui/BgCard";
 import Input from "@components/ui/Input";
 import Select from "@components/ui/Select";
+
+import { StudentFormProps } from "./StudentForm.types";
 
 const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
   const [step, setStep] = useState(0);

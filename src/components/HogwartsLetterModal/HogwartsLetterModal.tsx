@@ -1,8 +1,9 @@
 import { FC } from "react";
-import classes from "./HogwartsLetterModal.module.scss";
-import { HogwartsLetterModalProps } from "./HogwartsLetterModal.types";
 import Modal from "@components/ui/Modal";
 import letterImage from "@assets/letter.jpg";
+
+import classes from "./HogwartsLetterModal.module.scss";
+import { HogwartsLetterModalProps } from "./HogwartsLetterModal.types";
 
 const HogwartsLetterModal: FC<HogwartsLetterModalProps> = ({
   onClose,

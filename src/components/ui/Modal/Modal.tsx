@@ -3,10 +3,10 @@ import { Button } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import letter from "@assets/letter.jpg";
 import clsx from "clsx";
+import { useClickOutside } from "@hooks/useClickOutside";
 
 import { ModalProps } from "./Modal.types";
 import classes from "./Modal.module.scss";
-import { useClickOutside } from "@hooks/useClickOutside";
 
 const Modal: FC<ModalProps> = ({
   onOk,

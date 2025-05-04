@@ -1,7 +1,9 @@
-import classes from "./Input.module.scss";
 import clsx from "clsx";
-import { InputProps } from "./Input.types";
 import { FC, useState } from "react";
+
+import classes from "./Input.module.scss";
+import { InputProps } from "./Input.types";
+
 
 const Input: FC<InputProps> = (props) => {
   const {

@@ -1,11 +1,12 @@
 import { FC } from "react";
+import HogwartsLetterModal from "@components/HogwartsLetterModal";
+
 import classes from "./HogwartsPage.module.scss";
 import ManSection from "./Sections/ManSection/ManSection";
 import AboutHogwartsSection from "./Sections/AboutHogwartsSection";
 import HousesSection from "./Sections/HousesSection";
 import FamousThreeSection from "./Sections/FamousThreeSection";
 import { useHogwartsPage } from "./hooks";
-import HogwartsLetterModal from "@components/HogwartsLetterModal";
 
 const HogwartsPage: FC = () => {
   const {

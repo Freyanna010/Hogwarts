@@ -6,6 +6,7 @@ import {
 import { AppDispatch, RootState } from "@store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import classes from "./FavoritePage.module.scss";
 
 const FavoritePage = () => {

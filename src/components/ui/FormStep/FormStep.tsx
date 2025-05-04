@@ -1,8 +1,6 @@
 import { Button } from "antd";
-import BgCard from "../BgCard";
-import Input from "../Input";
-import { FormStepTypes } from "./FormStep.types";
 import { FC } from "react";
+import { FormStepTypes } from "./FormStep.types";
 
 const FormStep: FC<FormStepTypes> = ({
   title,

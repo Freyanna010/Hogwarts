@@ -12,6 +12,4 @@ export interface StudentForm
     | "patronus"
     | "image"
   > {}
-export interface StudentFormProps {
-  onAddStudent: (student: Student) => void;
-}
+
