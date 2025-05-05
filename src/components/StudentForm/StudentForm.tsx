@@ -4,12 +4,14 @@ import BgCard from "@components/ui/BgCard";
 import Input from "@components/ui/Input";
 import Select from "@components/ui/Select";
 
-import { StudentFormProps } from "./StudentForm.types";
+import { InitialStudentForm } from "./StudentForm.types.ts";
+import FormProvider from "@shared/form/provider";
 
 const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
   const [step, setStep] = useState(0);
 
-  const [formData, setFormData] = useState({
+  const initialFormData:  InitialStudentForm = {
+    id: "",
     firstName: "",
     lastName: "",
     gender: "",
@@ -17,7 +19,8 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
     house: "",
     image: "",
     patronus: "",
-  });
+    wizard: true,
+  };
 
   const handelOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({
@@ -27,7 +30,7 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
   };
 
   return (
-    <>
+    <FormProvider initialValue={initialFormData} >
       <BgCard>
         <FormStep
           title="So your name is, young wizard?"
@@ -56,7 +59,7 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
           <Select />
         </FormStep>
       </BgCard>
-    </>
+    </FormProvider>
   );
 };
 

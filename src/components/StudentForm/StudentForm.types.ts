@@ -1,15 +1,16 @@
 import { Student } from "shared/types";
-
-export interface StudentForm
+export interface InitialStudentForm
   extends Pick<
     Student,
     | "id"
-    | "name"
     | "gender"
     | "house"
     | "dateOfBirth"
     | "wizard"
     | "patronus"
     | "image"
-  > {}
+  > {
+  firstName: string;
+  lastName: string;
+}
 
