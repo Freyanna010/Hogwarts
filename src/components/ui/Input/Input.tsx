@@ -3,12 +3,12 @@ import { FC, useState } from "react";
 
 import classes from "./Input.module.scss";
 import { InputProps } from "./Input.types";
+import { useFormContext } from "@shared/form";
 
 
-const Input: FC<InputProps> = (props) => {
+export const Input = <T, K extends keyof T>(props: InputProps<T, K>) => {
   const {
     name,
-    onChange,
     label,
     size = "md",
     type = "text",
@@ -27,12 +27,12 @@ const Input: FC<InputProps> = (props) => {
     }
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (inputDirty) {
-      setInputDirty(false);
-    } else {
-      onChange(e);
-    }
+  const form = useFormContext<T>()
+  const {value, setFieldValue} = form
+
+  const onChangeHandler = (name: keyof T, e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue  = e.target.value as T[K]
+    setFieldValue(name,inputValue)
   };
 
   return (
@@ -48,11 +48,12 @@ const Input: FC<InputProps> = (props) => {
       <input
         name={name}
         id={name}
+        value={value}
         type={type}
         className={classes.input}
         required={isRequired}
         onBlur={noBlurHandler}
-        onChange={onChangeHandler}
+        onChange={(e) => onChangeHandler(name, e)}
       />
 
       {errorMassage && isRequired && inputDirty && <div>{errorMassage}</div>}

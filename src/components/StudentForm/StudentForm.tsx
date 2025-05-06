@@ -19,14 +19,6 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
     house: "",
     image: "",
     patronus: "",
-    wizard: true,
-  };
-
-  const handelOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
   };
 
   return (
@@ -36,14 +28,14 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
           title="So your name is, young wizard?"
           buttonText="Let the Sorting Begin"
         >
-          <Input
+          <Input<InitialStudentForm>
             name="firstName"
             label="What is your name, young wizard?"
             size="xl"
             type="text"
             isRequired={true}
             errorMassage="Every young witch or wizard must have a name. The Sorting Hat insists!"
-            onChange={handelOnChange}
+
           />
 
           <Input
