@@ -15,7 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
 import StudentCardList from "@components/StudentCardList";
 import debounce from "lodash.debounce";
-import { useEffectEvent } from "@hooks/useEffectEvent";
+import { useEffectEvent } from "@shared/hooks/useEffectEvent";
 
 import classes from "./HousePage.module.scss";
 

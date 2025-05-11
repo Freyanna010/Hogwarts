@@ -66,6 +66,7 @@ const StudentCard: FC<Props> = (props) => {
         )}
 
         {type === "favoritePage" && (
+          // TODO: вынести в DeletButton?
           <Tooltip title="Delete">
             <Button
               type="text"

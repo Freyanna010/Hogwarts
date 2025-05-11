@@ -2,11 +2,11 @@ import clsx from "clsx";
 import { FC, useState } from "react";
 
 import classes from "./Input.module.scss";
-import { InputProps } from "./Input.types";
-import { useFormContext } from "@shared/form";
+import { InputProps, NameValue } from "./Input.types";
+import { CheckedValue, InputValue, useFormContext } from "@shared/form";
 
 
-export const Input = <T, K extends keyof T>(props: InputProps<T, K>) => {
+export const Input = <T, K extends NameValue<T>>(props: InputProps<T, K>) => {
   const {
     name,
     label,
@@ -15,11 +15,11 @@ export const Input = <T, K extends keyof T>(props: InputProps<T, K>) => {
     isRequired = true,
     errorMassage = "Input is required",
   } = props;
-  const [inputDirty, setInputDirty] = useState(false);
 
+  //TODO: вынести
+  const [inputDirty, setInputDirty] = useState(false);
   const noBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     const isEmpty = e.target.value.trim() === "";
-
     if (isEmpty) {
       setInputDirty(true);
     } else {
@@ -30,8 +30,8 @@ export const Input = <T, K extends keyof T>(props: InputProps<T, K>) => {
   const form = useFormContext<T>()
   const {value, setFieldValue} = form
 
-  const onChangeHandler = (name: keyof T, e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue  = e.target.value as T[K]
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = (type === "checkbox") ? e.target.checked: e.target.value
     setFieldValue(name,inputValue)
   };
 
@@ -40,20 +40,23 @@ export const Input = <T, K extends keyof T>(props: InputProps<T, K>) => {
       <div className={classes.labelRow}>
         {isRequired && <p>*</p>}
 
-        <label htmlFor={name} className={classes.label}>
+        <label htmlFor={String(name)} className={classes.label}>
           {label}
         </label>
       </div>
 
       <input
+      // TODO: поправить
         name={name}
         id={name}
-        value={value}
+        {...(type === "checkbox"
+          ? { checked: value?.[name] as CheckedValue }
+          : { value: value?.[name] as InputValue})}
         type={type}
         className={classes.input}
         required={isRequired}
         onBlur={noBlurHandler}
-        onChange={(e) => onChangeHandler(name, e)}
+        onChange={onChangeHandler}
       />
 
       {errorMassage && isRequired && inputDirty && <div>{errorMassage}</div>}

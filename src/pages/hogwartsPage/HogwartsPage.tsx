@@ -12,9 +12,9 @@ const HogwartsPage: FC = () => {
   const {
     houses,
     students,
-    isShowModal,
+    isModalOpen: isShowModal,
     handleHouseCardClick,
-    handleImageClick,
+    handleOwlImageClick: handleImageClick,
     handleCloseModal,
     handleGoToHogwartsClick,
     handleStudentLinkClick,

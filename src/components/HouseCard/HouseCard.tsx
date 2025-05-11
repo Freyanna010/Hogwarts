@@ -8,9 +8,11 @@ import PopupMenuHouseCard from "./PopupMenuHouseCard/PopupMenuHouseCard";
 const HouseCard: FC<HouseCardProps> = (props) => {
   const { house, onCardClick, type, className } = props;
 
+  // TODO: или switch
   const componentMap: Record<HouseCardType, JSX.Element> = {
     slider: (
       <SliderHouseCard
+      // TODO: можно ли передавать весь house
         house={house}
         onCardClick={onCardClick}
         className={className}

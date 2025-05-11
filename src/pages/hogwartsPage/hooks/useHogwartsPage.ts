@@ -1,8 +1,8 @@
 import { chooseStudentById } from "@features/studentsSlice";
 import { AppDispatch, RootState } from "@store/store";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useModal } from "./useModal";
 
 const selectHouses = (state: RootState) => state.houses.houses;
 const selectStudents = (state: RootState) => state.students.allStudents;
@@ -14,13 +14,12 @@ export const useHogwartsPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const [isShowModal, seIsShowModal] = useState(false);
+  const modal = useModal()
 
   const handleHouseCardClick = (houseName: string) => {
     navigate(`/Hogwarts/house/${houseName}`);
   };
-  const handleImageClick = () => seIsShowModal(!isShowModal);
-  const handleCloseModal = () => seIsShowModal(false);
+
   const handleGoToHogwartsClick = () =>
     navigate("/Hogwarts/students/create-student");
 
@@ -32,10 +31,11 @@ export const useHogwartsPage = () => {
   return {
     houses,
     students,
-    isShowModal,
+    isModalOpen: modal.isOpen,
+
     handleHouseCardClick,
-    handleImageClick,
-    handleCloseModal,
+    handleOwlImageClick: modal.onToggle,
+    handleCloseModal: modal.onClose,
     handleGoToHogwartsClick,
     handleStudentLinkClick,
   };

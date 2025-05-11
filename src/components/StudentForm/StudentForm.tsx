@@ -28,7 +28,8 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
           title="So your name is, young wizard?"
           buttonText="Let the Sorting Begin"
         >
-          <Input<InitialStudentForm>
+          {/*TODO: как будто не очень удобно передавать таким образом типы  */}
+          <Input<InitialStudentForm, "firstName">
             name="firstName"
             label="What is your name, young wizard?"
             size="xl"
@@ -38,7 +39,7 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
 
           />
 
-          <Input
+          {/* <Input
             name="lastName"
             label="And the last name?"
             size="xl"
@@ -46,7 +47,7 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
             isRequired={true}
             errorMassage="Hogwarts records demand a full name for entry."
             onChange={handelOnChange}
-          />
+          /> */}
 
           <Select />
         </FormStep>
