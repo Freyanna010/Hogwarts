@@ -1,14 +1,13 @@
 import { useContext } from "react";
-
 import { FormContext } from "../context";
-import { FormContextTypes } from "../types";
 
-export const useFormContext = <T,>() => {
-  const context = useContext(FormContext);
+export const useFormContext = <T extends {}>() => {
+  const context = FormContext<T>();
+  const formContext = useContext(context);
 
-  if (!context) {
+  if (!formContext) {
     throw new Error("useFormContext must be used within a FormProvider");
   }
 
-  return context as FormContextTypes<T>;
+  return formContext;
 };

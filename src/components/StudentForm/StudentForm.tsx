@@ -4,21 +4,17 @@ import BgCard from "@components/ui/BgCard";
 import Input from "@components/ui/Input";
 import Select from "@components/ui/Select";
 
-import { InitialStudentForm } from "./StudentForm.types.ts";
+import { StudentFormValue } from "./StudentForm.types.ts";
 import FormProvider from "@shared/form/provider";
 
-const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
+const StudentForm: FC= () => {
   const [step, setStep] = useState(0);
 
-  const initialFormData:  InitialStudentForm = {
-    id: "",
+  const initialFormData:  StudentFormValue = {
+
     firstName: "",
     lastName: "",
-    gender: "",
-    dateOfBirth: "",
-    house: "",
-    image: "",
-    patronus: "",
+
   };
 
   return (
@@ -28,14 +24,13 @@ const StudentForm: FC<StudentFormProps> = ({ onAddStudent }) => {
           title="So your name is, young wizard?"
           buttonText="Let the Sorting Begin"
         >
-          {/*TODO: как будто не очень удобно передавать таким образом типы  */}
-          <Input<InitialStudentForm, "firstName">
+          <Input<StudentFormValue, "firstName">
             name="firstName"
             label="What is your name, young wizard?"
             size="xl"
             type="text"
             isRequired={true}
-            errorMassage="Every young witch or wizard must have a name. The Sorting Hat insists!"
+            errorMessage="Every young witch or wizard must have a name. The Sorting Hat insists!"
 
           />
 

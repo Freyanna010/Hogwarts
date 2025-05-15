@@ -3,23 +3,25 @@ import { useState } from "react";
 import { FormProviderProps } from "./FormProvider.types";
 import { FormContext } from "../context";
 
-export const FormProvider = <T,>({
+export const FormProvider = <T extends {}>({
   initialValue,
   children,
 }: FormProviderProps<T>) => {
-  const [value, setValue] = useState<T>(initialValue);
+  const [formData, setFormData] = useState<T>(initialValue);
 
-  const setFieldValue = <K extends keyof T>(name: K, newValue: T[K]) => {
-    setValue((prev) => ({
+  const setFormValue = <K extends keyof T>(name: K, newValue: T[K]) => {
+    setFormData((prev) => ({
       ...prev,
       [name]: newValue,
     }));
   };
 
+  const Context = FormContext<T>();
+
   return (
-    <FormContext.Provider value={{ value, setFieldValue }}>
+    <Context.Provider value={{ formData, setFormValue }}>
       {children}
-    </FormContext.Provider>
+    </Context.Provider>
   );
 };
 

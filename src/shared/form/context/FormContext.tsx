@@ -1,4 +1,14 @@
-import { createContext } from "react";
+import { createContext } from "react"
+import { FormContextValues } from "../types";
 
-// TODO: типизация
-export const FormContext = createContext<unknown>(null);
+ export const FormContext = <T extends {}> () => {
+    const InitialFormValue: T = {} as T
+
+  return createContext<FormContextValues<T>>({
+    formData: InitialFormValue,
+    setFormValue: () => {},
+  });
+}
+
+
+
