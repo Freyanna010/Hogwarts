@@ -1,29 +1,29 @@
 import clsx from "clsx";
-import { useState } from "react";
 import classes from "./Input.module.scss";
-import { InputProps, NameValue } from "./Input.types";
-import { useFormContext } from "@shared/form";
+import { InputProps } from "./Input.types";
+import { NameValue, useFormContext } from "@shared/form";
 
 export const Input = <T extends {}, K extends NameValue<T>>(
-  props: InputProps<T, K>
+  props: InputProps<T>
 ) => {
   const {
     name,
     label,
     size = "md",
     type = "text",
-    isRequired = true,
+    isRequired,
     errorMessage = "Input is required",
   } = props;
 
-  const [inputDirty, setInputDirty] = useState(false);
+  const { formData, setFormValue, checkRequiredInput, isInputEmpty } =
+    useFormContext<T>();
 
   const noBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    const isEmpty = e.target.value.trim() === "";
-    setInputDirty(isEmpty);
+    if (isRequired) {
+      checkRequiredInput(name, e, type);
+      console.log("blur handler");
+    }
   };
-
-  const { formData, setFormValue } = useFormContext<T>();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue =
@@ -38,7 +38,7 @@ export const Input = <T extends {}, K extends NameValue<T>>(
     <div className={clsx(classes.inputColumn, classes[size])}>
       <div className={classes.labelRow}>
         {isRequired && <p>*</p>}
-        <label htmlFor={String(name)} className={classes.label}>
+        <label htmlFor={name} className={classes.label}>
           {label}
         </label>
       </div>
@@ -56,7 +56,7 @@ export const Input = <T extends {}, K extends NameValue<T>>(
           : { value: formData[name] as string })}
       />
 
-      {errorMessage && isRequired && inputDirty && (
+      {isInputEmpty[name] && (
         <div className={classes.error}>{errorMessage}</div>
       )}
     </div>

@@ -1,10 +1,9 @@
-export type NameValue<T> = Extract<keyof T, string>;
-
-export interface InputProps<T, K extends NameValue<T>> {
-  name: K;
+import { InputType, NameValue } from "@shared/form";
+export interface InputProps<T> {
+  name: NameValue<T>;
   label: string;
   size?: string;
-  type?: "text" | "number" | "date" | "password" | "checkbox";
+  type?: InputType
   isRequired?: boolean;
   errorMessage: string;
 }
