@@ -14,17 +14,17 @@ const StudentInfoCard: FC<StudentInfoCardProps> = ({ student, avatar }) => {
 
   return (
     <BgCard className={classes.bgGard}>
-      <Row gutter={16}>
-        <Col span={6}>
+      <Row gutter={24} style={{ width:"100%"}}>
+        <Col span={10}>
           {/* TODO: курсор, добавить логику увелечения */}
           <Image src={student.image || avatar} className={classes.image} />
-          <Title level={1} style={{ paddingTop: 10 }}>
+          <Title level={3} style={{ paddingTop: 17 }}>
             {student.name}
           </Title>
           {student.wizard && <Title level={4}>Wizard</Title>}
         </Col>
 
-        <Col span={18}>
+        <Col span={14} >
           {student.alternate_names.length > 0 && (
             <LineRow>
               <Title level={4}>Alternate names:</Title>

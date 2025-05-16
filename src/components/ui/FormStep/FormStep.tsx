@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import { FC } from "react";
 import { FormStepTypes } from "./FormStep.types";
+import classes from "./FormStep.module.scss"
 
 const FormStep: FC<FormStepTypes> = ({
   title,
@@ -8,8 +9,8 @@ const FormStep: FC<FormStepTypes> = ({
   buttonText = "Next",
 }) => {
   return (
-    <div>
-      <h2>{title}</h2>
+    <div className={classes.step} >
+      <h2 className={classes.title}>{title}</h2>
       <div>{children}</div>
       <Button>{buttonText}</Button>
     </div>

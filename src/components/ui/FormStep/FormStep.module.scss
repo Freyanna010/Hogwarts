@@ -1,0 +1,15 @@
+@use "../../../styles/variables" as *;
+
+.step{
+padding: 1rem 3rem;
+font-size: 20px;
+}
+
+.title{
+font-size: 2rem;
+color: $dark;
+font-family: "Texturina", serif;
+text-align: center;
+margin-bottom: 1.5em;
+
+}

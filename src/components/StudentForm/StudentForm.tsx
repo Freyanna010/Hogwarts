@@ -7,21 +7,19 @@ import Select from "@components/ui/Select";
 import { StudentFormValue } from "./StudentForm.types.ts";
 import FormProvider from "@shared/form/provider";
 
-const StudentForm: FC= () => {
+const StudentForm: FC = () => {
   const [step, setStep] = useState(0);
 
-  const initialFormData:  StudentFormValue = {
-
+  const initialFormData: StudentFormValue = {
     firstName: "",
     lastName: "",
-
   };
 
   return (
-    <FormProvider initialValue={initialFormData} >
-      <BgCard>
+    <FormProvider initialValue={initialFormData}>
+      <BgCard >
         <FormStep
-          title="So your name is, young wizard?"
+          title="Let's get to know each other, young wizard!"
           buttonText="Let the Sorting Begin"
         >
           <Input<StudentFormValue, "firstName">
@@ -31,19 +29,15 @@ const StudentForm: FC= () => {
             type="text"
             isRequired={true}
             errorMessage="Every young witch or wizard must have a name. The Sorting Hat insists!"
-
           />
-
-          {/* <Input
+          <Input<StudentFormValue, "lastName">
             name="lastName"
             label="And the last name?"
             size="xl"
             type="text"
             isRequired={true}
-            errorMassage="Hogwarts records demand a full name for entry."
-            onChange={handelOnChange}
-          /> */}
-
+            errorMessage="Hogwarts records demand a full name for entry."
+          />
           <Select />
         </FormStep>
       </BgCard>

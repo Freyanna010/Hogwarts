@@ -1,7 +1,9 @@
-inputColumn {
+@use "../../../styles/variables" as *;
+
+.inputColumn {
   display: flex;
   flex-direction: column;
-  padding: 100px;
+  margin-bottom: 2em;   
 }
 
 .labelRow {
@@ -20,7 +22,8 @@ inputColumn {
 }
 
 .label {
-  font-size: 0.85em;
+  font-size: 1em;
+  margin-bottom: 0.5em;
 }
 
 .input {
@@ -28,4 +31,23 @@ inputColumn {
   font-size: 1em;
   height: 1em;
   padding: 0.5em;
+  border: none;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  background: none;
+  background-color: transparent;
+  font-family: "Texturina", serif;
+
+  &:hover,
+  &:focus {
+    background: none;
+    background-color: rgba(219, 219, 219, 0.233);
+    outline: none;
+  }
 }
+
+.error{
+margin-top: 0.5em;
+color: red;
+}
+
