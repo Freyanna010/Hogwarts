@@ -14,7 +14,7 @@ const HogwartsPage: FC = () => {
     students,
     isModalOpen: isShowModal,
     handleHouseCardClick,
-    handleOwlImageClick: handleImageClick,
+    handleOwlImageClick,
     handleCloseModal,
     handleGoToHogwartsClick,
     handleStudentLinkClick,
@@ -30,7 +30,7 @@ const HogwartsPage: FC = () => {
         />
       )}
 
-      <ManSection handleImageClick={handleImageClick} />
+      <ManSection handleImageClick={handleOwlImageClick} />
       <AboutHogwartsSection />
       <HousesSection houses={houses} onCardClick={handleHouseCardClick} />
       <FamousThreeSection

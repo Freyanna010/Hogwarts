@@ -2,10 +2,9 @@ import clsx from "clsx";
 import classes from "./Input.module.scss";
 import { InputProps } from "./Input.types";
 import { NameValue, useFormContext } from "@shared/form";
+import InputMask from "react-input-mask";
 
-export const Input = <T extends {}, K extends NameValue<T>>(
-  props: InputProps<T>
-) => {
+export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
   const {
     name,
     label,
@@ -18,20 +17,33 @@ export const Input = <T extends {}, K extends NameValue<T>>(
   const { formData, setFormValue, checkRequiredInput, isInputEmpty } =
     useFormContext<T>();
 
-  const noBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+  const value = formData[name];
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (isRequired) {
       checkRequiredInput(name, e, type);
-      console.log("blur handler");
     }
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue =
       type === "checkbox"
         ? (e.target.checked as T[K])
         : (e.target.value as T[K]);
 
     setFormValue(name, newValue);
+  };
+
+  const inputProps = {
+    id: name,
+    name,
+    required: isRequired,
+    onBlur: handleBlur,
+    onChange: handleChange,
+    className: classes.input,
+    ...(type === "checkbox"
+      ? { checked: value as boolean }
+      : { value: value as string }),
   };
 
   return (
@@ -43,18 +55,13 @@ export const Input = <T extends {}, K extends NameValue<T>>(
         </label>
       </div>
 
-      <input
-        name={name}
-        id={name}
-        type={type}
-        required={isRequired}
-        onBlur={noBlurHandler}
-        onChange={onChangeHandler}
-        className={classes.input}
-        {...(type === "checkbox"
-          ? { checked: formData[name] as boolean }
-          : { value: formData[name] as string })}
-      />
+      {type === "date" ? (
+        <InputMask mask="99-99-9999" {...inputProps}>
+          {(inputProps) => <input type="text" {...inputProps} />}
+        </InputMask>
+      ) : (
+        <input type={type} {...inputProps} />
+      )}
 
       {isInputEmpty[name] && (
         <div className={classes.error}>{errorMessage}</div>

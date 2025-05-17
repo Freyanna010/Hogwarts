@@ -1,29 +1,25 @@
 .cardBg {
   position: relative;
-  width: 100%;
-  height: 100%; 
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bgImg {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
-  z-index: 1;
-  pointer-events: none;
+  display: block;
 }
 
 .content {
-  top: 15%;
-  left: 10%;
-  transform: translateX(-10%);
-  position: relative;
-  z-index: 3;
+  position: absolute;
+  width: 80%;
+  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0 15%;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  //  background-color: chocolate;
 }
