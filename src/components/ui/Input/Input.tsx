@@ -49,6 +49,7 @@ export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
   return (
     <div className={clsx(classes.inputColumn, classes[size])}>
       <div className={classes.labelRow}>
+              {/* TODO: вынести в компонент */}
         {isRequired && <p>*</p>}
         <label htmlFor={name} className={classes.label}>
           {label}
@@ -63,6 +64,7 @@ export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
         <input type={type} {...inputProps} />
       )}
 
+      {/* TODO: вынести в компонент */}
       {isInputEmpty[name] && (
         <div className={classes.error}>{errorMessage}</div>
       )}
