@@ -75,10 +75,9 @@
   top: 50%;
   display: flex;
   flex-direction: row;
-  background-color: aqua;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 1.5em;
 
 }
 
@@ -88,22 +87,11 @@
 
 .primaryButton {
   position: relative;
-  color: $dark;
-  background-color: $lite-yellow;
-  width: 70%;
- 
-
-  &:hover {
-    background-color: $yellow;
-    color: $dark ;
-    cursor:
-      url("../../assets/cursor2.png") 10 10,
-      auto;
-  }
+  width: 60%;
 }
 
 .secondaryButton{
-  width: 30%;
+  width: 40%;
 }
 
 

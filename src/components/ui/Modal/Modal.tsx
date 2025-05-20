@@ -7,6 +7,7 @@ import { useClickOutside } from "@shared/hooks/useClickOutside";
 
 import { ModalProps } from "./Modal.types";
 import classes from "./Modal.module.scss";
+import CustomButton from "../CustomButton";
 
 const Modal: FC<ModalProps> = ({
   onOk,
@@ -40,19 +41,22 @@ const Modal: FC<ModalProps> = ({
           {children}
 
           <div className={classes.rowButton}>
-            <button
+            <CustomButton
               className={clsx(classes.buttons, classes.primaryButton)}
               onClick={onOk}
+              btnType="primary"
             >
               {okButtonText}
-            </button>
+            </CustomButton>
 
-            <button
+            <CustomButton
               className={clsx(classes.buttons, classes.secondaryButton)}
               onClick={onCancel}
+              btnType="default"
+              
             >
               {cancelButtonText}
-            </button>
+            </CustomButton>
           </div>
         </div>
       </div>
