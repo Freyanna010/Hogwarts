@@ -9,6 +9,7 @@ import classes from "./StudentForm.module.scss";
 import { StudentFormValue } from "./StudentForm.types.ts";
 import FormProvider from "@shared/form/provider";
 import AnimatedImage from "@components/ui/AnimatedImage/AnimatedImage.tsx";
+import { OptionSelect } from "@components/ui/Select/Select.types.ts";
 
 const StudentForm: FC = () => {
   const [step, setStep] = useState(1);
@@ -16,11 +17,17 @@ const StudentForm: FC = () => {
   const initialFormData: StudentFormValue = {
     firstName: "",
     lastName: "",
-    gender: null,
+    gender: "",
     house: "",
     dateOfBirth: "",
-    wizard: true
+    wizard: true,
   };
+
+  const genderOptions: OptionSelect<StudentFormValue, "gender">[] = [
+    { title: "Wizard", value: "male" },
+    { title: "Witch", value: "female" },
+    { title: "Other", value: "other" },
+  ];
 
   const handelNextStep = () => {
     setStep((prev) => prev + 1);
@@ -53,20 +60,21 @@ const StudentForm: FC = () => {
               errorMessage="Hogwarts records demand a full name for entry."
             />
             <Input<StudentFormValue, "dateOfBirth">
-            name="dateOfBirth"
-            label="Well us the date the stars wrote your name"
-            size="xl"
-            type="date"
-            isRequired={true}
-            errorMessage="Even Voldemort has a birthday. So must you."
-/>
-            <Select
-            options={[
-    { title: "Wizard", value: "male" },
-    { title: "Witch", value: "female" },
-    { title: "Other", value: "other" },]}
+              name="dateOfBirth"
+              label="Well us the date the stars wrote your name"
+              size="xl"
+              type="date"
+              isRequired={true}
+              errorMessage="Even Voldemort has a birthday. So must you."
+            />
+            <Select<StudentFormValue, "gender">
+              name="gender"
+              options={genderOptions}
+              selected={null}
+              errorMessage="Choose The Sorting Hat demands your true nature!"
+              label="Select your magical essence"
+            />
 
-             />
           </FormStep>
 
           {step === 1 && (
@@ -109,6 +117,5 @@ const StudentForm: FC = () => {
     </FormProvider>
   );
 };
-
 
 export default StudentForm;

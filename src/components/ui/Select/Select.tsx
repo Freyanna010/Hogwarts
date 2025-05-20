@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-
+import { useFormContext } from "@shared/form";
 import classes from "./Select.module.scss";
-import { SelectProps } from "antd";
+import { SelectProps } from "./Select.types";
 
 const Select = <T, K extends Extract<keyof T, string>>(props: SelectProps<T, K>) => {
       const {
@@ -10,10 +9,18 @@ const Select = <T, K extends Extract<keyof T, string>>(props: SelectProps<T, K>)
     options,
     placeholder = "Choose...",
     onChange,
-    isRequired,
+    isRequired = false,
     errorMessage,
     label,
   } = props;
+
+    const { formData, setFormValue, } =
+      useFormContext<T>();
+
+      const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>{
+        const newValue = e.target.value as T[K]
+setFormValue(name, newValue )
+      }
 
 
   return (
@@ -21,14 +28,14 @@ const Select = <T, K extends Extract<keyof T, string>>(props: SelectProps<T, K>)
       <div className={classes.labelRow}>
         <p>*</p>
 {/* TODO: вынести в компонент */} 
-        <label className={classes.label}>{label}r</label>
+        <label className={classes.label}>{label}</label>
       </div>
 
-      <select value={value}>
-        <option value="">Choose...</option>
-        <option value="male">Wizard</option>
-        <option value="female">Witch</option>
-        <option value="other">Fantastic beasts</option>
+      <select value={formData[name] as string} onChange={handleChange}>
+        <option value="">{placeholder}</option>
+   {options?.map(option=>(
+    <option value={option.value}>{option.title}</option>
+   ))}
       </select>
 
 {/* TODO: вынести в компонент */} 
