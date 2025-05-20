@@ -1,7 +1,7 @@
 export interface StudentFormValue {
   firstName: string;
   lastName: string;
-  gender: string;
+  gender: "male" | "female" | "other" | null;
   house: string;
   dateOfBirth: string;
   wizard: boolean;

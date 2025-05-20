@@ -16,7 +16,7 @@ const StudentForm: FC = () => {
   const initialFormData: StudentFormValue = {
     firstName: "",
     lastName: "",
-    gender: "",
+    gender: null,
     house: "",
     dateOfBirth: "",
     wizard: true
@@ -60,7 +60,13 @@ const StudentForm: FC = () => {
             isRequired={true}
             errorMessage="Even Voldemort has a birthday. So must you."
 />
-            <Select />
+            <Select
+            options={[
+    { title: "Wizard", value: "male" },
+    { title: "Witch", value: "female" },
+    { title: "Other", value: "other" },]}
+
+             />
           </FormStep>
 
           {step === 1 && (

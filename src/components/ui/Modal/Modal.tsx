@@ -21,16 +21,15 @@ const Modal: FC<ModalProps> = ({
 
   useClickOutside(ref, onCancel, isOpen);
   return (
-    <div className={classes.overlay} onClick={onCancel}>
-      {/* TODO: добавит хук для закрытия */}
+    <div className={classes.overlay}>
       <div
-        className={classes.modalLetterContainer}
+        className={classes.modalContainer}
         onClick={(e) => e.stopPropagation()}
         ref={ref}
       >
-        {image && <img src={letter} className={classes.modalLetterImage} />}
+        {image && <img src={letter} className={classes.modalImage} />}
 
-        <div className={classes.modalLetterContent}>
+        <div className={classes.modalContent}>
           <Button
             className={classes.closeButton}
             type="text"
@@ -40,20 +39,21 @@ const Modal: FC<ModalProps> = ({
 
           {children}
 
-          <Button
-            type="primary"
-            className={clsx(classes.buttons, classes.primaryButton)}
-            onClick={onOk}
-          >
-            {cancelButtonText}
-          </Button>
-          <Button
-            type="primary"
-            className={clsx(classes.buttons, classes.primaryButton)}
-            onClick={onOk}
-          >
-            {okButtonText}
-          </Button>
+          <div className={classes.rowButton}>
+            <button
+              className={clsx(classes.buttons, classes.primaryButton)}
+              onClick={onOk}
+            >
+              {okButtonText}
+            </button>
+
+            <button
+              className={clsx(classes.buttons, classes.secondaryButton)}
+              onClick={onCancel}
+            >
+              {cancelButtonText}
+            </button>
+          </div>
         </div>
       </div>
     </div>

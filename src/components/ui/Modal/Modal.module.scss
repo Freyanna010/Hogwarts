@@ -11,7 +11,17 @@
   }
 }
 
-.modalLetterContainer {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modalContainer {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,11 +29,10 @@
   z-index: 20;
   width: auto;
   height: 80vh;
-
   animation: zoomIn 0.5s ease-out forwards;
 }
 
-.modalLetterImage {
+.modalImage {
   position: relative;
   top: 50%;
   left: 50%;
@@ -32,13 +41,13 @@
   height: 100%;
 }
 
-.modalLetterContent {
+.modalContent {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 30;
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -61,33 +70,45 @@
   font-size: 1.2rem !important;
 }
 
+.rowButton{
+  position: relative;
+  top: 50%;
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+
+}
+
+.buttons{
+  font-size: 1em;
+}
+
 .primaryButton {
   position: relative;
   color: $dark;
   background-color: $lite-yellow;
-  top: 35%;
+  width: 70%;
+ 
 
   &:hover {
-    background-color: $yellow !important;
-    color: $dark !important;
+    background-color: $yellow;
+    color: $dark ;
     cursor:
       url("../../assets/cursor2.png") 10 10,
       auto;
   }
 }
-.defaultButton {
-  border-color: $yellow;
 
-  border-color: $yellow !important;
-  color: $dark !important;
+.secondaryButton{
+  width: 30%;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
-}
+
+
+
+
+
+
