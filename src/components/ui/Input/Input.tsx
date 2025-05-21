@@ -14,17 +14,15 @@ export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
     errorMessage = "Input is required",
   } = props;
 
-  const { formData, setFormValue, checkRequiredInput, isInputEmpty } =
+  const { formData, setFormValue,  checkRequiredField, isFieldEmpty } =
     useFormContext<T>();
-
   const value = formData[name];
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (isRequired) {
-      checkRequiredInput(name, e, type);
+      checkRequiredField(name, e);
     }
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue =
       type === "checkbox"
@@ -65,7 +63,7 @@ export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
       )}
 
       {/* TODO: вынести в компонент */}
-      {isInputEmpty[name] && (
+      {isFieldEmpty[name] && (
         <div className={classes.error}>{errorMessage}</div>
       )}
     </div>

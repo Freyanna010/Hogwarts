@@ -7,7 +7,6 @@ const Select = <T, K extends Extract<keyof T, string>>(
 ) => {
   const {
     name,
-    selected,
     options,
     placeholder = "Choose...",
     isRequired = false,
@@ -15,11 +14,18 @@ const Select = <T, K extends Extract<keyof T, string>>(
     label,
   } = props;
 
-  const { formData, setFormValue } = useFormContext<T>();
+  const { formData, setFormValue, checkRequiredField, isFieldEmpty} = useFormContext<T>();
+  const value = formData[name] as string;
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = e.target.value as T[K];
     setFormValue(name, newValue);
+  };
+  
+  const handleBlur = (e: React.FocusEvent<HTMLSelectElement>) => {
+    if (isRequired) {
+      checkRequiredField(name, e);
+    }
   };
 
   return (
@@ -30,7 +36,7 @@ const Select = <T, K extends Extract<keyof T, string>>(
         <label className={classes.label}>{label}</label>
       </div>
 
-      <select value={formData[name] as string} onChange={handleChange}>
+      <select value={value} onChange={handleChange} onBlur={handleBlur}>
         <option value="">{placeholder}</option>
         {options?.map((option) => (
           <option value={option.value}>{option.title}</option>
@@ -38,9 +44,10 @@ const Select = <T, K extends Extract<keyof T, string>>(
       </select>
 
       {/* TODO: вынести в компонент */}
-      {isRequired && !selected && (
-        <p className={classes.error}>{errorMessage}</p>
+            {isFieldEmpty[name] && (
+        <div className={classes.error}>{errorMessage}</div>
       )}
+ 
     </div>
   );
 };

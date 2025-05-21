@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FormProviderProps } from "./FormProvider.types";
+import { FieldEvent, FormProviderProps } from "./FormProvider.types";
 import { FormContext } from "../context";
-import { InputType, NameValue } from "../types";
+import { NameValue } from "../types";
 
 export const FormProvider = <T extends {}>({
   initialValue,
@@ -13,26 +13,46 @@ export const FormProvider = <T extends {}>({
     acc[key as NameValue<T>] = false;
     return acc;
   }, {} as Record<NameValue<T>, boolean>);
-  const [isInputEmpty, setIsInputEmpty] =
+  const [isFieldEmpty, setIsFieldEmpty] =
     useState<Record<NameValue<T>, boolean>>(initialIsEmptyState);
 
   const setFormValue = <K extends NameValue<T>>(name: K, newValue: T[K]) => {
-    setIsInputEmpty((prev) => ({ ...prev, [name]: false }));
+    setIsFieldEmpty((prev) => ({ ...prev, [name]: false }));
     setFormData((prev) => ({ ...prev, [name]: newValue }));
   };
-  const checkRequiredInput = (
-    name: NameValue<T>,
-    e: React.FocusEvent<HTMLInputElement>,
-    type: InputType
-  ) => {
-    const isEmpty =
-      type === "checkbox" ? !e.target.checked : e.target.value.trim() === "";
-    setIsInputEmpty((prev) => ({ ...prev, [name]: isEmpty }));
+  const checkRequiredField = (name: NameValue<T>, e: FieldEvent) => {
+    let isEmpty: boolean;
+    const target = e.target;
+
+    switch (true) {
+      case target instanceof HTMLInputElement && target.type === "checkbox":
+        isEmpty = !target.checked;
+        break;
+      case target instanceof HTMLInputElement:
+        isEmpty = !target.value.trim();
+        break;
+      case target instanceof HTMLSelectElement:
+        isEmpty = !target.value;
+        break;
+      default:
+        isEmpty = true;
+        break;
+    }
+
+    setIsFieldEmpty((prev) => ({
+      ...prev,
+      [name]: isEmpty,
+    }));
   };
 
   return (
     <FormContext.Provider
-      value={{ formData, setFormValue, checkRequiredInput, isInputEmpty }}
+      value={{
+        formData,
+        setFormValue,
+        checkRequiredField,
+        isFieldEmpty,
+      }}
     >
       {children}
     </FormContext.Provider>

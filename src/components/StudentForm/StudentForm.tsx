@@ -73,6 +73,7 @@ const StudentForm: FC = () => {
               selected={null}
               errorMessage="Choose The Sorting Hat demands your true nature!"
               label="Select your magical essence"
+              isRequired={true}
             />
 
           </FormStep>
