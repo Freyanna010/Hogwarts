@@ -4,12 +4,12 @@ import BgCard from "@components/ui/BgCard";
 import Input from "@components/ui/Input";
 import Select from "@components/ui/Select";
 import hatImg from "@assets/hat.png";
-import classes from "./StudentForm.module.scss";
-
-import { StudentFormValue } from "./StudentForm.types.ts";
 import FormProvider from "@shared/form/provider";
 import AnimatedImage from "@components/ui/AnimatedImage/AnimatedImage.tsx";
 import { OptionSelect } from "@components/ui/Select/Select.types.ts";
+
+import { StudentFormValue } from "./StudentForm.types.ts";
+import classes from "./StudentForm.module.scss";
 
 const StudentForm: FC = () => {
   const [step, setStep] = useState(1);

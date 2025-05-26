@@ -2,6 +2,7 @@ import { chooseStudentById } from "@features/studentsSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { useModal } from "./useModal";
 
 const selectHouses = (state: RootState) => state.houses.houses;

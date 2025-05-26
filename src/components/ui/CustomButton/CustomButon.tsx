@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import classes from "./CustomButton.module.scss"
 import { ButtonProps } from "./CustomButton.types";
 

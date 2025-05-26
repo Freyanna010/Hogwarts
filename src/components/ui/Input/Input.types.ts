@@ -1,4 +1,5 @@
 import { InputType, NameValue } from "@shared/form";
+
 export interface InputProps<T> {
   name: NameValue<T>;
   label: string;

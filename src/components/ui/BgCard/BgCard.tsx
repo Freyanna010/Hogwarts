@@ -1,9 +1,9 @@
 import { FC } from "react";
 import clsx from "clsx";
+import bg from "@assets/BG.png";
 
 import classes from "./BgCard.module.scss";
 import { BgGardProps } from "./BgCard.types";
-import bg from "@assets/BG.png";
 
 const BgCard: FC<BgGardProps> = ({ children, className }) => {
   return (

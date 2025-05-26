@@ -1,8 +1,9 @@
 import { Button } from "antd";
 import { FC } from "react";
+import clsx from "clsx";
+
 import { FormStepTypes } from "./FormStep.types";
 import classes from "./FormStep.module.scss"
-import clsx from "clsx";
 
 const FormStep: FC<FormStepTypes> = ({
   title,

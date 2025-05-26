@@ -1,8 +1,9 @@
 import clsx from "clsx";
-import classes from "./Input.module.scss";
-import { InputProps } from "./Input.types";
 import { NameValue, useFormContext } from "@shared/form";
 import InputMask from "react-input-mask";
+
+import classes from "./Input.module.scss";
+import { InputProps } from "./Input.types";
 
 export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
   const {
