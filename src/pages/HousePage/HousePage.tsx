@@ -1,37 +1,33 @@
 import {
-  changeFavoriteStudents,
-  chooseStudentById,
   filterStudentsByHouse,
-  filterStudentsBySearch,
-  sortStudentByName,
 } from "@features/studentsSlice";
 import { chooseHouseByName } from "@features/hоusesSlice";
 import { AppDispatch, RootState } from "@store/store";
 import { Col, Row, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { FC, useCallback, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import HouseCard from "@components/HouseCard";
-import StudentCardList from "@components/StudentCardList";
-import debounce from "lodash.debounce";
-import { useEffectEvent } from "@shared/hooks/useEffectEvent";
-
 import classes from "./HousePage.module.scss";
+import { useStudentsListHandlers } from "@shared/hooks";
+import StudentCardList from "@components/StudentCardList";
 
 const HousePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { houseName } = useParams();
-  const navigate = useNavigate();
+
+  const { filteredStudents, allStudents, isStudentsLoading, errorMessage } =
+    useSelector((state: RootState) => state.students);
+  const { currentHouse } = useSelector((state: RootState) => state.houses);
 
   const {
-    filteredStudents,
-    allStudents,
-    isStudentsLoading,
-    errorMessage,
+    handleLikeStudentCard,
+    handleStudentCardClick,
+    handleSortStudentByName,
+    handleChangeSearch,
     searchValue,
-  } = useSelector((state: RootState) => state.students);
-  const { currentHouse } = useSelector((state: RootState) => state.houses);
+  } = useStudentsListHandlers();
 
   useEffect(() => {
     if (allStudents.length > 0 && houseName) {
@@ -39,35 +35,6 @@ const HousePage: FC = () => {
       dispatch(chooseHouseByName(houseName));
     }
   }, [dispatch, houseName, allStudents]);
-
-  const handleLikeStudentCard = useCallback(
-    (studentId: string) => dispatch(changeFavoriteStudents(studentId)),
-    [dispatch],
-  );
-  const handleStudentCardClick = useCallback(
-    (studentId: string) => {
-      navigate(`/Hogwarts/students/${studentId}`);
-      dispatch(chooseStudentById(studentId));
-    },
-    [navigate, dispatch],
-  );
-  const handleSortStudentByName = useCallback(
-    (direction: "asc" | "desc" | "none") =>
-      dispatch(sortStudentByName(direction)),
-    [dispatch],
-  );
-
-  const debouncedChangeSearch = useEffectEvent(
-    debounce((value: string) => {
-      dispatch(filterStudentsBySearch(value));
-    }, 300),
-  );
-  const handleChangeSearch = useCallback(
-    (value: string) => {
-      debouncedChangeSearch(value);
-    },
-    [debouncedChangeSearch],
-  );
 
   if (isStudentsLoading) {
     return (
@@ -113,3 +80,4 @@ const HousePage: FC = () => {
 };
 
 export default HousePage;
+
