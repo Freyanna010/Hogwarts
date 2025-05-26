@@ -4,7 +4,7 @@ import classes from "./Select.module.scss";
 import { SelectProps } from "./Select.types";
 
 const Select = <T, K extends Extract<keyof T, string>>(
-  props: SelectProps<T, K>
+  props: SelectProps<T, K>,
 ) => {
   const {
     name,
@@ -15,14 +15,15 @@ const Select = <T, K extends Extract<keyof T, string>>(
     label,
   } = props;
 
-  const { formData, setFormValue, checkRequiredField, isFieldEmpty} = useFormContext<T>();
+  const { formData, setFormValue, checkRequiredField, isFieldEmpty } =
+    useFormContext<T>();
   const value = formData[name] as string;
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = e.target.value as T[K];
     setFormValue(name, newValue);
   };
-  
+
   const handleBlur = (e: React.FocusEvent<HTMLSelectElement>) => {
     if (isRequired) {
       checkRequiredField(name, e);
@@ -45,10 +46,9 @@ const Select = <T, K extends Extract<keyof T, string>>(
       </select>
 
       {/* TODO: вынести в компонент */}
-            {isFieldEmpty[name] && (
+      {isFieldEmpty[name] && (
         <div className={classes.error}>{errorMessage}</div>
       )}
- 
     </div>
   );
 };

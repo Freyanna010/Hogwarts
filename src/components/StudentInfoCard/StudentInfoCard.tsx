@@ -14,7 +14,7 @@ const StudentInfoCard: FC<StudentInfoCardProps> = ({ student, avatar }) => {
 
   return (
     <BgCard className={classes.bgGard}>
-      <Row gutter={24} style={{ width:"100%"}}>
+      <Row gutter={24} style={{ width: "100%" }}>
         <Col span={10}>
           {/* TODO: курсор, добавить логику увелечения */}
           <Image src={student.image || avatar} className={classes.image} />
@@ -24,7 +24,7 @@ const StudentInfoCard: FC<StudentInfoCardProps> = ({ student, avatar }) => {
           {student.wizard && <Title level={4}>Wizard</Title>}
         </Col>
 
-        <Col span={14} >
+        <Col span={14}>
           {student.alternate_names.length > 0 && (
             <LineRow>
               <Title level={4}>Alternate names:</Title>

@@ -75,7 +75,6 @@ const StudentForm: FC = () => {
               label="Select your magical essence"
               isRequired={true}
             />
-
           </FormStep>
 
           {step === 1 && (

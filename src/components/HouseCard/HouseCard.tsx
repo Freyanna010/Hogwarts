@@ -12,7 +12,7 @@ const HouseCard: FC<HouseCardProps> = (props) => {
   const componentMap: Record<HouseCardType, JSX.Element> = {
     slider: (
       <SliderHouseCard
-      // TODO: можно ли передавать весь house
+        // TODO: можно ли передавать весь house
         house={house}
         onCardClick={onCardClick}
         className={className}

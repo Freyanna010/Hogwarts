@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { FormContext } from "../context";
 import { FormContextValues } from "../types";
 
-export const useFormContext = <T, >() => {
+export const useFormContext = <T,>() => {
   // TODO: типизируется тут
   const context = useContext(FormContext) as FormContextValues<T>;
 

@@ -53,7 +53,6 @@ const Modal: FC<ModalProps> = ({
               className={clsx(classes.buttons, classes.secondaryButton)}
               onClick={onCancel}
               btnType="default"
-              
             >
               {cancelButtonText}
             </CustomButton>

@@ -1,13 +1,13 @@
-@use "../../../styles/variables" as *;       
+@use "../../../styles/variables" as *;
 
 .button {
-  border: none;  
-  border-radius: 0.45rem; 
+  border: none;
+  border-radius: 0.45rem;
   font-weight: 500;
   transition: all 0.2s ease;
-    cursor:
-      url("../../../assets/cursor2.png") 10 10,
-      auto;
+  cursor:
+    url("../../../assets/cursor2.png") 10 10,
+    auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -20,13 +20,13 @@
 }
 
 .large {
-  padding: 0.75rem 1.5rem; 
-  font-size: 1rem; 
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
 }
 
 .middle {
-  padding: 0.5rem 1rem; 
-  font-size: 0.875rem; 
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
 }
 
 .small {
@@ -62,7 +62,7 @@
 }
 
 .link {
- background: none;
+  background: none;
   color: $yellow;
   text-decoration: underline;
   padding: 0;

@@ -4,7 +4,7 @@ export interface InputProps<T> {
   name: NameValue<T>;
   label: string;
   size?: string;
-  type?: InputType
+  type?: InputType;
   isRequired?: boolean;
   errorMessage: string;
 }

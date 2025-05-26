@@ -1,11 +1,11 @@
-
 export type ButtonType = "primary" | "default" | "danger" | "link" | "icon";
 export type ButtonSize = "large" | "middle" | "small";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   btnType?: ButtonType;
   size?: ButtonSize;
   className?: string;
-   icon?: React.ReactNode;
+  icon?: React.ReactNode;
 }

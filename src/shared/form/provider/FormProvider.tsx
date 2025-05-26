@@ -10,10 +10,13 @@ export const FormProvider = <T extends {}>({
 }: FormProviderProps<T>) => {
   const [formData, setFormData] = useState<T>(initialValue);
 
-  const initialIsEmptyState = Object.keys(initialValue).reduce((acc, key) => {
-    acc[key as NameValue<T>] = false;
-    return acc;
-  }, {} as Record<NameValue<T>, boolean>);
+  const initialIsEmptyState = Object.keys(initialValue).reduce(
+    (acc, key) => {
+      acc[key as NameValue<T>] = false;
+      return acc;
+    },
+    {} as Record<NameValue<T>, boolean>,
+  );
   const [isFieldEmpty, setIsFieldEmpty] =
     useState<Record<NameValue<T>, boolean>>(initialIsEmptyState);
 

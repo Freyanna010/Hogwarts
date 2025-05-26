@@ -15,7 +15,7 @@ export const useHogwartsPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const modal = useModal()
+  const modal = useModal();
 
   const handleHouseCardClick = (houseName: string) => {
     navigate(`/Hogwarts/house/${houseName}`);

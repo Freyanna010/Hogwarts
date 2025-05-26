@@ -1,9 +1,10 @@
 import { Col, Row, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { FC,} from "react";
+import { FC } from "react";
 import HouseCard from "@components/HouseCard";
-import classes from "./HousePage.module.scss";
 import StudentCardList from "@components/StudentCardList";
+
+import classes from "./HousePage.module.scss";
 import { useHousePage } from "./useHausePage";
 
 const HousePage: FC = () => {

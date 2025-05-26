@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
 //  export const FormContext = <T extends {}> () => {
 //     const InitialFormValue: T = {} as T
@@ -12,8 +12,5 @@ import { createContext } from "react"
 //   });
 // }
 
-
 export const FormContext = createContext<unknown>(null);
-// TODO:  нужно ли начальное состояние вместо null?  
-
-
+// TODO:  нужно ли начальное состояние вместо null?

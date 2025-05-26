@@ -15,7 +15,7 @@ export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
     errorMessage = "Input is required",
   } = props;
 
-  const { formData, setFormValue,  checkRequiredField, isFieldEmpty } =
+  const { formData, setFormValue, checkRequiredField, isFieldEmpty } =
     useFormContext<T>();
   const value = formData[name];
 
@@ -48,7 +48,7 @@ export const Input = <T, K extends NameValue<T>>(props: InputProps<T>) => {
   return (
     <div className={clsx(classes.inputColumn, classes[size])}>
       <div className={classes.labelRow}>
-              {/* TODO: вынести в компонент */}
+        {/* TODO: вынести в компонент */}
         {isRequired && <p>*</p>}
         <label htmlFor={name} className={classes.label}>
           {label}

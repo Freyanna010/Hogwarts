@@ -1,5 +1,5 @@
 export interface SelectProps<T, K extends Extract<keyof T, string>> {
-  name: K
+  name: K;
   selected: OptionSelect<T, K> | null;
   options: OptionSelect<T, K>[];
   placeholder?: string;
@@ -8,7 +8,10 @@ export interface SelectProps<T, K extends Extract<keyof T, string>> {
   isRequired?: boolean;
   errorMessage?: string;
   size?: string;
-  label?: string
+  label?: string;
 }
 
-export type OptionSelect<T, K extends  keyof T> = { title: string; value:Extract<T[K], string> };
+export type OptionSelect<T, K extends keyof T> = {
+  title: string;
+  value: Extract<T[K], string>;
+};

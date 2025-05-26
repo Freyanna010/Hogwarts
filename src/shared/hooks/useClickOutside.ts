@@ -3,7 +3,7 @@ import { useEffect } from "react";
 export const useClickOutside = <T extends HTMLElement>(
   ref: React.RefObject<T>,
   onClickOutside: () => void,
-  enabled: boolean
+  enabled: boolean,
 ): void => {
   useEffect(() => {
     const handelClick = (e: MouseEvent) => {

@@ -1,17 +1,17 @@
 @use "../../../styles/variables" as *;
 
-.step{
-padding: 1rem 2rem;
-width: 100%;
-font-size: 20px;
-display: flex;
-flex-direction: column;
-gap: 2rem;
+.step {
+  padding: 1rem 2rem;
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.title{
-font-size: 2rem;
-color: $dark;
-font-family: "Texturina", serif;
-text-align: center;
+.title {
+  font-size: 2rem;
+  color: $dark;
+  font-family: "Texturina", serif;
+  text-align: center;
 }

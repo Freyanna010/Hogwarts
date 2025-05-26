@@ -3,17 +3,17 @@ import { FC } from "react";
 import clsx from "clsx";
 
 import { FormStepTypes } from "./FormStep.types";
-import classes from "./FormStep.module.scss"
+import classes from "./FormStep.module.scss";
 
 const FormStep: FC<FormStepTypes> = ({
   title,
   children,
   buttonText = "Next",
   className,
-  onClick
+  onClick,
 }) => {
   return (
-    <div className={clsx(classes.step, className) } >
+    <div className={clsx(classes.step, className)}>
       <h2 className={classes.title}>{title}</h2>
       <div>{children}</div>
       <Button onClick={onClick}>{buttonText}</Button>
