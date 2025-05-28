@@ -9,75 +9,32 @@ import Image from "@components/ui/Image";
 
 import classes from "./StudentCard.module.scss";
 
-interface Props {
+interface StudentCardProps {
   student: Student;
-  onLikeClick?: (id: string) => void;
-  onDeleteClick?: (id: string) => void;
   onCardClick: (id: string) => void;
-  type: "housePage" | "favoritePage";
-  studentsLoading?: boolean;
   className?: string;
+  actions?: React.ReactNode;
 }
 
-const StudentCard: FC<Props> = (props) => {
-  const { student, onLikeClick, onDeleteClick, onCardClick, type, className } =
-    props;
+export const StudentCard: FC<StudentCardProps> = ({
+  student,
+  onCardClick,
+  className,
+  actions,
+}) => {
   const { id, image, name, house } = student;
   const { Title } = Typography;
-  const [isLiked, setIsLiked] = useState(false);
-
-  const handleLikeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onLikeClick) {
-      e.stopPropagation();
-      setIsLiked((prev) => !prev);
-      onLikeClick(id);
-    }
-  };
-  const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onDeleteClick) {
-      e.stopPropagation();
-      onDeleteClick(id);
-    }
-  };
 
   const handelCardClick = () => onCardClick(id);
-
   const CardColor = getHouseColor(house);
 
-  // TODO: стили править
   return (
     <Card
       className={clsx(classes.studentCard, classes[CardColor], className)}
       onClick={handelCardClick}
     >
-      <Flex justify="end">
-        {type === "housePage" && (
-          <Tooltip
-            title={isLiked ? "remove from favorites" : "add to favorites"}
-          >
-            <Button
-              type="text"
-              icon={isLiked ? <HeartFilled /> : <HeartOutlined />}
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                handleLikeClick(e)
-              }
-            />
-          </Tooltip>
-        )}
+      <Flex justify="end">{actions}</Flex>
 
-        {type === "favoritePage" && (
-          // TODO: вынести в DeletButton?
-          <Tooltip title="Delete">
-            <Button
-              type="text"
-              icon={<DeleteOutlined />}
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                handleDeleteClick(e)
-              }
-            />
-          </Tooltip>
-        )}
-      </Flex>
       <Flex justify="center" align="center">
         <Image src={image || HgEmblem} className={classes.cardImg} />
       </Flex>
@@ -85,11 +42,7 @@ const StudentCard: FC<Props> = (props) => {
       <Flex justify="center" align="center" vertical>
         <Title
           level={4}
-          style={{
-            fontFamily: "Spectral ",
-            fontWeight: 300,
-            marginTop: 14,
-          }}
+          style={{ fontFamily: "Spectral", fontWeight: 300, marginTop: 14 }}
         >
           {name}
         </Title>
@@ -108,5 +61,6 @@ const StudentCard: FC<Props> = (props) => {
     </Card>
   );
 };
+
 
 export default StudentCard;
