@@ -76,6 +76,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
+    cursor:
+    url("../../../assets/cursor2.png") 10 10,
+    auto;
 }
 
 .content {
@@ -87,6 +91,7 @@
   border-radius: 50%;
   width: auto;
   height: auto;
+
 
   .icon {
     margin: 0;

@@ -59,15 +59,16 @@
   right: 0px;
   top: 2%;
   background-color: none !important;
+}
+
+.closeButtonIcon {
+  font-size: 1.2rem ;
 
   &:hover {
     cursor:
-      url("../../assets/cursor2.png") 10 10,
+      url("../../../assets/cursor.png") 10 10,
       auto;
   }
-}
-.closeButtonIcon {
-  font-size: 1.2rem !important;
 }
 
 .rowButton {
@@ -82,6 +83,7 @@
 
 .buttons {
   font-size: 1em;
+
 }
 
 .primaryButton {

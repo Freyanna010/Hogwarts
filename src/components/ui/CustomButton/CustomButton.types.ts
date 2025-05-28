@@ -3,7 +3,7 @@ export type ButtonSize = "large" | "middle" | "small";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   btnType?: ButtonType;
   size?: ButtonSize;
   className?: string;

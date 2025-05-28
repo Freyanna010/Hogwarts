@@ -31,9 +31,9 @@ const Modal: FC<ModalProps> = ({
         {image && <img src={letter} className={classes.modalImage} />}
 
         <div className={classes.modalContent}>
-          <Button
+          <CustomButton
             className={classes.closeButton}
-            type="text"
+            btnType="icon"
             onClick={onCancel}
             icon={<CloseCircleOutlined className={classes.closeButtonIcon} />}
           />
