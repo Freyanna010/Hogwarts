@@ -1,6 +1,6 @@
-import { Button, Col, Input, Row, Tooltip } from "antd";
+import { Col, Input, Row } from "antd";
 import { ChangeEvent, FC, memo } from "react";
-import { HeartFilled, HeartOutlined, SearchOutlined } from "@ant-design/icons";
+import {SearchOutlined } from "@ant-design/icons";
 import SortingButton from "@components/ui/SortingButton";
 import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
 
@@ -9,6 +9,7 @@ import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 import { useSelector } from "react-redux";
 import { RootState } from "@store/store";
+import LikeButtonAction from "@shared/ui/LikeButtonAction";
 
 const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   const {
@@ -22,6 +23,7 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   } = props;
 
   const favoriteIds = useSelector((state: RootState) => state.students.favoriteStudentsId);
+
 
   const onSortChangeClick = (direction: Direction) => {
     onSortClick(direction);
@@ -58,18 +60,16 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
               <StudentCard
                 student={student}
                 onCardClick={onCardClick}
+
                 actions={
-                  <Tooltip title={isLiked ? "Remove from favorites" : "Add to favorites"}>
-                    <Button
-                      type="text"
-                      icon={isLiked ? <HeartFilled /> : <HeartOutlined />}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onLikeClicK(student.id);
-                      }}
-                    />
-                  </Tooltip>
+                  <LikeButtonAction
+        isLiked={isLiked}
+      onClick={(e) => {
+        e.stopPropagation();
+        onLikeClicK(student.id);
+      }
                 }
+}
               />
             </Col>
           );

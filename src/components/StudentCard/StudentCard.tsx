@@ -62,5 +62,4 @@ export const StudentCard: FC<StudentCardProps> = ({
   );
 };
 
-
 export default StudentCard;

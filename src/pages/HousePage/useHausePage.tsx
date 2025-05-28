@@ -16,16 +16,6 @@ export const useHousePage = () => {
 
   const studentsListHandlers = useStudentsListHandlers();
 
-  const [likedStudentIds, setLikedStudentIds] = useState<string[]>([]);
-
-const handleLikeStudentCard = (id: string) => {
-  setLikedStudentIds((prev) =>
-    prev.includes(id)
-      ? prev.filter((studentId) => studentId !== id)
-      : [...prev, id]
-  );
-};
-
   useEffect(() => {
     if (allStudents.length > 0 && houseName) {
       dispatch(filterStudentsByHouse(houseName));
@@ -38,8 +28,6 @@ const handleLikeStudentCard = (id: string) => {
     isStudentsLoading,
     errorMessage,
     currentHouse,
-    likedStudentIds,
-    
     ...studentsListHandlers,
   };
 };
