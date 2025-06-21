@@ -1,6 +1,5 @@
-import { Button, Card, Flex, Tooltip, Typography } from "antd";
-import React, { FC, useState } from "react";
-import { HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
+import { Card, Flex, Typography } from "antd";
+import React, { FC, } from "react";
 import { getHouseColor } from "@utils/colorUtils";
 import clsx from "clsx";
 import { Student } from "shared/types";
@@ -13,14 +12,14 @@ interface StudentCardProps {
   student: Student;
   onCardClick: (id: string) => void;
   className?: string;
-  actions?: React.ReactNode;
+  buttonAction: React.ReactNode;
 }
 
 export const StudentCard: FC<StudentCardProps> = ({
   student,
   onCardClick,
   className,
-  actions,
+  buttonAction
 }) => {
   const { id, image, name, house } = student;
   const { Title } = Typography;
@@ -33,7 +32,7 @@ export const StudentCard: FC<StudentCardProps> = ({
       className={clsx(classes.studentCard, classes[CardColor], className)}
       onClick={handelCardClick}
     >
-      <Flex justify="end">{actions}</Flex>
+      <Flex justify="end">{buttonAction}</Flex>
 
       <Flex justify="center" align="center">
         <Image src={image || HgEmblem} className={classes.cardImg} />

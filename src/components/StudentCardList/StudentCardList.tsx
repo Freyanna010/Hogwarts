@@ -1,6 +1,6 @@
 import { Col, Input, Row } from "antd";
 import { ChangeEvent, FC, memo } from "react";
-import {SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import SortingButton from "@components/ui/SortingButton";
 import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
 
@@ -9,7 +9,7 @@ import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 import { useSelector } from "react-redux";
 import { RootState } from "@store/store";
-import LikeButtonAction from "@shared/ui/LikeButtonAction";
+import LikeButtonAction from "@shared/ui/LikeButton";
 
 const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   const {
@@ -22,8 +22,9 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
     searchValue = "",
   } = props;
 
-  const favoriteIds = useSelector((state: RootState) => state.students.favoriteStudentsId);
-
+  const favoriteIds = useSelector(
+    (state: RootState) => state.students.favoriteStudentsId
+  );
 
   const onSortChangeClick = (direction: Direction) => {
     onSortClick(direction);
@@ -60,16 +61,15 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
               <StudentCard
                 student={student}
                 onCardClick={onCardClick}
-
-                actions={
+                buttonAction={
                   <LikeButtonAction
-        isLiked={isLiked}
-      onClick={(e) => {
-        e.stopPropagation();
-        onLikeClicK(student.id);
-      }
+                    isLiked={isLiked}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onLikeClicK(student.id);
+                    }}
+                  />
                 }
-}
               />
             </Col>
           );
@@ -78,6 +78,5 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
     </div>
   );
 });
-
 
 export default StudentCardList;
