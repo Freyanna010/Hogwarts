@@ -6,6 +6,7 @@ import StudentCardList from "@components/StudentCardList";
 
 import classes from "./HousePage.module.scss";
 import { useHousePage } from "./useHausePage";
+import LikeButton from "@shared/ui/LikeButton";
 
 const HousePage: FC = () => {
   const {
@@ -14,10 +15,11 @@ const HousePage: FC = () => {
     errorMessage,
     currentHouse,
     searchValue,
-    handleLikeStudentCard,
+    handleToggleFavorite,
     handleStudentCardClick,
     handleSortStudentByName,
     handleChangeSearch,
+    favoriteStudentsId
   } = useHousePage();
 
   if (isStudentsLoading) {
@@ -29,6 +31,7 @@ const HousePage: FC = () => {
       />
     );
   }
+
   if (errorMessage) return <h1>{errorMessage}</h1>;
 
   return (
@@ -44,15 +47,27 @@ const HousePage: FC = () => {
       </Col>
 
       <Col span={24}>
-        <StudentCardList
-          onLikeClicK={handleLikeStudentCard}
-          onCardClick={handleStudentCardClick}
-          onSortClick={handleSortStudentByName}
-          onSearchChange={handleChangeSearch}
-          students={filteredStudents}
-          className={classes.studentContainer}
-          searchValue={searchValue}
-        />
+<StudentCardList
+  onLikeClicK={handleToggleFavorite}
+  onCardClick={handleStudentCardClick}
+  onSortClick={handleSortStudentByName}
+  onSearchChange={handleChangeSearch}
+  students={filteredStudents}
+  searchValue={searchValue}
+  // TODO: можно вынести
+  renderActionButton={(student) => {
+    const isLiked = favoriteStudentsId.includes(student.id);
+    return (
+      <LikeButton
+        isLiked={isLiked}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleToggleFavorite(student.id);
+        }}
+      />
+    );
+  }}
+/>
       </Col>
     </Row>
   );

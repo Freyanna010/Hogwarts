@@ -1,43 +1,54 @@
-import StudentCard from "@components/StudentCard";
-import {
-  changeFavoriteStudents,
-  chooseStudentById,
-} from "@features/studentsSlice";
-import { AppDispatch, RootState } from "@store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
-import classes from "./FavoritePage.module.scss";
+import { LoadingOutlined } from "@ant-design/icons";
+import { useFavoritePage } from "./useFavoritePage";
+import { Col, Row, Spin, Typography } from "antd";
+import StudentCardList from "@components/StudentCardList";
+import { FC } from "react";
+import DeleteButton from "@shared/ui/DeleteButtonAction";
 
-const FavoritePage = () => {
-  const { favoriteStudents } = useSelector(
-    (state: RootState) => state.students,
-  );
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+const FavoritePage: FC = () => {
+  const {
+    favoriteStudents,
+    isStudentsLoading,
+    errorMessage,
+    handleToggleFavorite,
+    handleStudentCardClick,
+    handleSortStudentByName,
+    handleChangeSearch,
+    searchValue,
+  } = useFavoritePage();
 
-  const handleDeleteStudentCard = (studentId: string) =>
-    dispatch(changeFavoriteStudents(studentId));
-  const handleStudentCardClick = (studentId: string) => {
-    navigate(`/students/${studentId}`);
-    dispatch(chooseStudentById(studentId));
-  };
-  //TODO: перенести student List сюда
+  if (isStudentsLoading) {
+    return <Spin indicator={<LoadingOutlined spin />} size="large" />;
+  }
+  
+  if (errorMessage) return <h1>{errorMessage}</h1>;
+
   return (
-    <div className={classes.favoritePageContainer}>
-      <div className={classes.developTitle}>Work in progress 😅</div>
-      {favoriteStudents.map((student) => {
-        return (
-          <StudentCard
-            student={student}
-            type="favoritePage"
-            onDeleteClick={handleDeleteStudentCard}
-            onCardClick={handleStudentCardClick}
-            className={classes.develop}
-          />
-        );
-      })}
-    </div>
+    <Row gutter={[24, 24]} justify="start">
+      <Col span={24}>
+        <Typography.Title level={2}>Favorite Students</Typography.Title>
+      </Col>
+
+      <Col span={24}>
+          <StudentCardList
+          onLikeClicK={handleToggleFavorite}
+          onCardClick={handleStudentCardClick}
+          onSortClick={handleSortStudentByName}
+          onSearchChange={handleChangeSearch}
+          students={favoriteStudents}
+          searchValue={searchValue}
+          renderActionButton={(student) =>(
+            <DeleteButton
+            onClick={(e)=> {
+              e.stopPropagation()
+                  handleToggleFavorite(student.id);
+            }}/>
+          )}/>
+          
+
+      </Col>
+    </Row>
   );
 };
 

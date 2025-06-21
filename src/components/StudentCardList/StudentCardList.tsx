@@ -7,24 +7,18 @@ import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
 import StudentCard from "../StudentCard";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/store";
-import LikeButtonAction from "@shared/ui/LikeButton";
+
 
 const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   const {
     students,
-    onLikeClicK,
     onCardClick,
     onSortClick,
     onSearchChange,
     className,
     searchValue = "",
+    renderActionButton,
   } = props;
-
-  const favoriteIds = useSelector(
-    (state: RootState) => state.students.favoriteStudentsId
-  );
 
   const onSortChangeClick = (direction: Direction) => {
     onSortClick(direction);
@@ -54,22 +48,12 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
 
       <Row gutter={[24, 24]} justify="start">
         {students.map((student) => {
-          const isLiked = favoriteIds.includes(student.id);
-
           return (
             <Col key={student.id} xs={24} sm={24} md={8} lg={8} xl={8}>
               <StudentCard
                 student={student}
                 onCardClick={onCardClick}
-                buttonAction={
-                  <LikeButtonAction
-                    isLiked={isLiked}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onLikeClicK(student.id);
-                    }}
-                  />
-                }
+                buttonAction={renderActionButton(student)}
               />
             </Col>
           );

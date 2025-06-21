@@ -6,7 +6,9 @@ export interface StudentCardListProps {
   onCardClick: (studentId: string) => void;
   onSortClick: (direction: Direction) => void;
   onSearchChange: (value: string) => void;
-  className: string;
+  className?: string;
   students: Student[];
   searchValue: string;
+  renderActionButton: (student: Student) =>   React.ReactNode;
+
 }
