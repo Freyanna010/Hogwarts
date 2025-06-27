@@ -1,12 +1,12 @@
 import { Col, Input, Row } from "antd";
 import { ChangeEvent, FC, memo } from "react";
-import SortingButton from "@shared/ui/SortingButton";
 import { Direction } from "@shared/ui/SortingButton/SortingВutton.types";
 
 import StudentCard from "../StudentCard";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
 import SearchInput from "@shared/ui/SearchInput";
+import SortPanel from "@shared/ui/SortPanel";
 
 const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   const {
@@ -19,7 +19,7 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
     renderActionButton,
   } = props;
 
-  const onSortChangeClick = (direction: Direction) => {
+  const onSortNameClick = (direction: Direction) => {
     onSortClick(direction);
   };
 
@@ -32,10 +32,7 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
     <div className={className}>
       <div className={classes.searchRow}>
         <SearchInput onChange={onChangeSearch} value={searchValue} />
-        <div className={classes.sortButtonRow}>
-          <p className={classes.sortButtonTitle}>Sort name:</p>
-          <SortingButton onSortClick={onSortChangeClick} />
-        </div>
+        <SortPanel onSortClick={onSortNameClick} title="Sort by name:" />
       </div>
 
       <Row gutter={[24, 24]} justify="start">

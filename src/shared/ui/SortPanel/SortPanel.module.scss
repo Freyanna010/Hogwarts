@@ -1,0 +1,13 @@
+@use "../../../styles/variables" as *;
+
+.sortButtonTitle {
+  color: $lite-yellow;
+  font-size: 0.5em;
+}
+.sortButtonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+}
