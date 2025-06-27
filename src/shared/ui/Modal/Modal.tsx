@@ -1,5 +1,4 @@
 import { FC, useRef } from "react";
-import { Button } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import letter from "@assets/letter.jpg";
 import clsx from "clsx";

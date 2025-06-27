@@ -1,15 +1,15 @@
 import { FC, useState } from "react";
-import FormStep from "@components/ui/FormStep";
-import BgCard from "@components/ui/BgCard";
-import Input from "@components/ui/Input";
-import Select from "@components/ui/Select";
 import hatImg from "@assets/hat.png";
 import FormProvider from "@shared/form/provider";
-import AnimatedImage from "@components/ui/AnimatedImage/AnimatedImage.tsx";
-import { OptionSelect } from "@components/ui/Select/Select.types.ts";
+import AnimatedImage from "@shared/ui/AnimatedImage/AnimatedImage.tsx";
+import { OptionSelect } from "@shared/ui/Select/Select.types.ts";
+import BgCard from "@shared/ui/BgCard/index.ts";
+import FormStep from "@shared/ui/FormStep/FormStep.tsx";
+import Input from "@shared/ui/Input/Input.tsx";
+import Select from "@shared/ui/Select/Select.tsx";
 
-import { StudentFormValue } from "./StudentForm.types.ts";
 import classes from "./StudentForm.module.scss";
+import { StudentFormValue } from "./StudentForm.types.ts";
 
 const StudentForm: FC = () => {
   const [step, setStep] = useState(1);

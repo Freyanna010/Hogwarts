@@ -1,7 +1,7 @@
 import { FC } from "react";
-import Section from "@components/ui/Section";
-import Slider from "@components/ui/Slider";
 import { hogwartsImagesData as images } from "@store/hogwartsImageData";
+import Section from "@shared/ui/Section";
+import Slider from "@shared/ui/Slider";
 
 import classes from "./AboutHogwartsSection.module.scss";
 

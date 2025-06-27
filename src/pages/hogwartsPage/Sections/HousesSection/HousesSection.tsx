@@ -1,7 +1,7 @@
-import Section from "@components/ui/Section";
 import { FC } from "react";
 import HouseCard from "@components/HouseCard";
-import Slider from "@components/ui/Slider";
+import Section from "@shared/ui/Section";
+import Slider from "@shared/ui/Slider";
 
 import { HousesSectionProps } from "./HousesSection.types";
 import classes from "./HousesSection.module.scss";

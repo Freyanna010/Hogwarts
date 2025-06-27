@@ -1,6 +1,6 @@
 import { useStudentsListHandlers } from "@shared/hooks";
-import { AppDispatch, RootState } from "@store/store";
-import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@store/store";
+import { useSelector } from "react-redux";
 
 export const useFavoritePage = () => {
   

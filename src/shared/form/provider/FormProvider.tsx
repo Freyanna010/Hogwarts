@@ -4,6 +4,7 @@ import { FieldEvent, FormProviderProps } from "./FormProvider.types";
 import { FormContext } from "../context";
 import { NameValue } from "../types";
 
+// TODO: Lint ругается
 export const FormProvider = <T extends {}>({
   initialValue,
   children,

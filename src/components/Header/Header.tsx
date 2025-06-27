@@ -2,11 +2,11 @@ import { FC, useState } from "react";
 import { Button, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 import { HeartOutlined, PlusOutlined } from "@ant-design/icons";
-import PopupMenu from "@components/ui/PopupMenu";
 import { useSelector } from "react-redux";
 import { RootState } from "@store/store";
 import HouseCard from "@components/HouseCard";
 import clsx from "clsx";
+import PopupMenu from "@shared/ui/PopupMenu";
 
 import classes from "./Header.module.scss";
 

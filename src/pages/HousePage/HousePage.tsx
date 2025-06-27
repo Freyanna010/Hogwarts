@@ -3,10 +3,10 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { FC } from "react";
 import HouseCard from "@components/HouseCard";
 import StudentCardList from "@components/StudentCardList";
+import LikeButton from "@shared/ui/LikeButton";
 
 import classes from "./HousePage.module.scss";
 import { useHousePage } from "./useHausePage";
-import LikeButton from "@shared/ui/LikeButton";
 
 const HousePage: FC = () => {
   const {

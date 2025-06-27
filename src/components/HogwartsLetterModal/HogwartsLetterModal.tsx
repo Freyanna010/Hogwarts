@@ -1,6 +1,6 @@
 import { FC } from "react";
-import Modal from "@components/ui/Modal";
 import letterImage from "@assets/letter.jpg";
+import Modal from "@shared/ui/Modal";
 
 import classes from "./HogwartsLetterModal.module.scss";
 import { HogwartsLetterModalProps } from "./HogwartsLetterModal.types";

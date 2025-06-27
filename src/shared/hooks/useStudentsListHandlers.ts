@@ -8,9 +8,9 @@ import {
   filterStudentsBySearch,
   sortStudentByName,
 } from "@features/studentsSlice";
+import debounce from "lodash.debounce";
 
 import { useEffectEvent } from "./useEffectEvent";
-import debounce from "lodash.debounce";
 
 export const useStudentsListHandlers = () => {
   const dispatch = useDispatch<AppDispatch>();

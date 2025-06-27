@@ -1,7 +1,8 @@
-import Section from "@components/ui/Section";
+
 import { FC } from "react";
-import HighlightedLinks from "@components/ui/HighlightedLinksText";
 import three from "@assets/three.png";
+import Section from "@shared/ui/Section";
+import HighlightedLinks from "@shared/ui/HighlightedLinksText";
 
 import { FamousThreeSectionProps } from "./FamousThreeSection.types";
 import classes from "./FamousThreeSection.module.scss";

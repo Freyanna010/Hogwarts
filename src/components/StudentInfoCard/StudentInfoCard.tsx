@@ -1,11 +1,11 @@
 import { Col, Row, Typography } from "antd";
 import { calculateAge } from "@utils/dateUtils";
 import { FC } from "react";
-import Image from "@components/ui/Image";
+import LineRow from "@shared/ui/LineRow";
+import Image from "@shared/ui/Image";
 
 import classes from "./StudentInfoCard.module.scss";
-import BgCard from "../ui/BgCard";
-import LineRow from "../ui/LineRow";
+import BgCard from "../../shared/ui/BgCard";
 import { StudentInfoCardProps } from "./StudentInfoCard.types";
 
 const StudentInfoCard: FC<StudentInfoCardProps> = ({ student, avatar }) => {

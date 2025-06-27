@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { Tooltip } from "antd";
 import owl from "@assets/owl.png";
-import AnimatedImage from "@components/ui/AnimatedImage";
-import Section from "@components/ui/Section/Section";
+import AnimatedImage from "@shared/ui/AnimatedImage";
+import Section from "@shared/ui/Section";
 
 import classes from "./ManSection.module.scss";
 import { ManSectionProps } from "./ManSection.types";

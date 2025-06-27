@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { Button } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import VideoPlayer from "@components/ui/VideoPlayer";
+import VideoPlayer from "@shared/ui/VideoPlayer";
 import clsx from "clsx";
-import { getVideoId } from "@components/ui/VideoPlayer/getVideoId";
+import { getVideoId } from "@shared/ui/VideoPlayer/getVideoId";
 
 import { HouseCardProps } from "../HouseCard.type";
 import classes from "./BannerHouseCard.module.scss";

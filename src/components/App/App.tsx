@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import VideoBg from "@components/ui/VideoBg";
+import VideoBg from "@shared/ui/VideoBg";
 import Routing from "@components/Routing";
 import Header from "@components/Header";
 import clsx from "clsx";

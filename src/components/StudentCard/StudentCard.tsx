@@ -4,7 +4,7 @@ import { getHouseColor } from "@utils/colorUtils";
 import clsx from "clsx";
 import { Student } from "shared/types";
 import HgEmblem from "@assets/hogAvatar.webp";
-import Image from "@components/ui/Image";
+import Image from "@shared/ui/Image";
 
 import classes from "./StudentCard.module.scss";
 

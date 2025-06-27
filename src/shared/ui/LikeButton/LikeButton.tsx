@@ -1,7 +1,8 @@
 import  { FC } from "react";
-import { LikeButtonProps } from "./LikeBauttonAction.types";
 import { Button, Tooltip } from "antd";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+
+import { LikeButtonProps } from "./LikeBauttonAction.types";
 
 const LikeButton: FC<LikeButtonProps> = ({ isLiked, onClick }) => (
   <Tooltip title={isLiked ? "Remove from favorites" : "Add to favorites"}>
