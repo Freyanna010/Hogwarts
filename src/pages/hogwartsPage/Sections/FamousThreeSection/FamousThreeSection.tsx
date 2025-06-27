@@ -1,4 +1,3 @@
-
 import { FC } from "react";
 import three from "@assets/three.png";
 import Section from "@shared/ui/Section";

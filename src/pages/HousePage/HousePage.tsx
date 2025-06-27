@@ -19,7 +19,7 @@ const HousePage: FC = () => {
     handleStudentCardClick,
     handleSortStudentByName,
     handleChangeSearch,
-    favoriteStudentsId
+    favoriteStudentsId,
   } = useHousePage();
 
   if (isStudentsLoading) {
@@ -47,27 +47,27 @@ const HousePage: FC = () => {
       </Col>
 
       <Col span={24}>
-<StudentCardList
-  onLikeClicK={handleToggleFavorite}
-  onCardClick={handleStudentCardClick}
-  onSortClick={handleSortStudentByName}
-  onSearchChange={handleChangeSearch}
-  students={filteredStudents}
-  searchValue={searchValue}
-  // TODO: можно вынести
-  renderActionButton={(student) => {
-    const isLiked = favoriteStudentsId.includes(student.id);
-    return (
-      <LikeButton
-        isLiked={isLiked}
-        onClick={(e) => {
-          e.stopPropagation();
-          handleToggleFavorite(student.id);
-        }}
-      />
-    );
-  }}
-/>
+        <StudentCardList
+          onLikeClicK={handleToggleFavorite}
+          onCardClick={handleStudentCardClick}
+          onSortClick={handleSortStudentByName}
+          onSearchChange={handleChangeSearch}
+          students={filteredStudents}
+          searchValue={searchValue}
+          // TODO: можно вынести
+          renderActionButton={(student) => {
+            const isLiked = favoriteStudentsId.includes(student.id);
+            return (
+              <LikeButton
+                isLiked={isLiked}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggleFavorite(student.id);
+                }}
+              />
+            );
+          }}
+        />
       </Col>
     </Row>
   );

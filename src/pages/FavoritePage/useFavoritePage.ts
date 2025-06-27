@@ -3,9 +3,8 @@ import { RootState } from "@store/store";
 import { useSelector } from "react-redux";
 
 export const useFavoritePage = () => {
-  
   const { favoriteStudents, isStudentsLoading, errorMessage } = useSelector(
-    (state: RootState) => state.students
+    (state: RootState) => state.students,
   );
 
   const studentsListHandlers = useStudentsListHandlers();

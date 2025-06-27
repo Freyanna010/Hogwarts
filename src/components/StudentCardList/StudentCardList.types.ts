@@ -9,6 +9,5 @@ export interface StudentCardListProps {
   className?: string;
   students: Student[];
   searchValue: string;
-  renderActionButton: (student: Student) =>   React.ReactNode;
-
+  renderActionButton: (student: Student) => React.ReactNode;
 }

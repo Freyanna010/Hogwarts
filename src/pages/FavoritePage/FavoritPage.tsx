@@ -1,4 +1,3 @@
-
 import { LoadingOutlined } from "@ant-design/icons";
 import { Col, Row, Spin, Typography } from "antd";
 import StudentCardList from "@components/StudentCardList";
@@ -32,22 +31,22 @@ const FavoritePage: FC = () => {
       </Col>
 
       <Col span={24}>
-          <StudentCardList
+        <StudentCardList
           onLikeClicK={handleToggleFavorite}
           onCardClick={handleStudentCardClick}
           onSortClick={handleSortStudentByName}
           onSearchChange={handleChangeSearch}
           students={favoriteStudents}
           searchValue={searchValue}
-          renderActionButton={(student) =>(
+          renderActionButton={(student) => (
             <DeleteButton
-            onClick={(e)=> {
-              e.stopPropagation()
-                  handleToggleFavorite(student.id);
-            }}/>
-          )}/>
-          
-
+              onClick={(e) => {
+                e.stopPropagation();
+                handleToggleFavorite(student.id);
+              }}
+            />
+          )}
+        />
       </Col>
     </Row>
   );

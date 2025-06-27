@@ -1,5 +1,5 @@
 import { Card, Flex, Typography } from "antd";
-import React, { FC, } from "react";
+import React, { FC } from "react";
 import { getHouseColor } from "@utils/colorUtils";
 import clsx from "clsx";
 import { Student } from "shared/types";
@@ -19,7 +19,7 @@ export const StudentCard: FC<StudentCardProps> = ({
   student,
   onCardClick,
   className,
-  buttonAction
+  buttonAction,
 }) => {
   const { id, image, name, house } = student;
   const { Title } = Typography;

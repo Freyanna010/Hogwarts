@@ -1,4 +1,4 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@store/store";
@@ -10,8 +10,13 @@ export const useHousePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { houseName } = useParams();
 
-  const { filteredStudents, allStudents, isStudentsLoading, favoriteStudentsId, errorMessage } =
-    useSelector((state: RootState) => state.students);
+  const {
+    filteredStudents,
+    allStudents,
+    isStudentsLoading,
+    favoriteStudentsId,
+    errorMessage,
+  } = useSelector((state: RootState) => state.students);
   const { currentHouse } = useSelector((state: RootState) => state.houses);
 
   const studentsListHandlers = useStudentsListHandlers();

@@ -19,7 +19,7 @@ export const useStudentsListHandlers = () => {
     (state: RootState) => state.students.searchValue,
   );
 
-  const handleToggleFavorite  = useCallback(
+  const handleToggleFavorite = useCallback(
     (studentId: string) => dispatch(changeFavoriteStudents(studentId)),
     [dispatch],
   );
@@ -52,7 +52,7 @@ export const useStudentsListHandlers = () => {
   );
 
   return {
-    handleToggleFavorite ,
+    handleToggleFavorite,
     handleStudentCardClick,
     handleSortStudentByName,
     handleChangeSearch,
