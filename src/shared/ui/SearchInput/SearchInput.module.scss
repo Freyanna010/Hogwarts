@@ -1,0 +1,13 @@
+@use "../../../styles/variables" as *;
+
+.searchInput {
+  background-color: $background-dark;
+  color: $lite-yellow;
+  width: 90%;
+
+  &:is(:hover, :focus-within) {
+    color: $lite-yellow;
+    background-color: $background-dark;
+    border: 0.3em solid $lite-yellow;
+  }
+}

@@ -15,17 +15,6 @@
   color: $lite-yellow;
   font-size: 0.5em;
 }
-.searchInput {
-  background-color: $background-dark;
-  color: $lite-yellow;
-  width: 90%;
-
-  &:is(:hover, :focus-within) {
-    color: $lite-yellow;
-    background-color: $background-dark;
-    border: 1em solid $lite-yellow;
-  }
-}
 
 .sortButtonRow {
   display: flex;

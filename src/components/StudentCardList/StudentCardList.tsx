@@ -2,11 +2,11 @@ import { Col, Input, Row } from "antd";
 import { ChangeEvent, FC, memo } from "react";
 import SortingButton from "@shared/ui/SortingButton";
 import { Direction } from "@shared/ui/SortingButton/SortingВutton.types";
-import { SearchOutlined } from '@ant-design/icons';
 
 import StudentCard from "../StudentCard";
 import classes from "./StudentCardList.module.scss";
 import { StudentCardListProps } from "./StudentCardList.types";
+import SearchInput from "@shared/ui/SearchInput";
 
 const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   const {
@@ -31,14 +31,7 @@ const StudentCardList: FC<StudentCardListProps> = memo((props) => {
   return (
     <div className={className}>
       <div className={classes.searchRow}>
-        <Input
-          size="large"
-          placeholder="search student"
-          prefix={<SearchOutlined />}
-          onChange={onChangeSearch}
-          className={classes.searchInput}
-          value={searchValue}
-        />
+        <SearchInput onChange={onChangeSearch} value={searchValue} />
         <div className={classes.sortButtonRow}>
           <p className={classes.sortButtonTitle}>Sort name:</p>
           <SortingButton onSortClick={onSortChangeClick} />
