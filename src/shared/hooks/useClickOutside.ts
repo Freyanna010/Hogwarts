@@ -3,15 +3,16 @@ import { useEffect } from "react";
 export const useClickOutside = <T extends HTMLElement>(
   ref: React.RefObject<T>,
   onClickOutside: () => void,
-  enabled: boolean,
+  enabled: boolean //флаг, который включает/выключает логику.
 ): void => {
   useEffect(() => {
     const handelClick = (e: MouseEvent) => {
       const target = e.target;
-      if (target instanceof Node && !ref.current?.contains(target)) {
-        if (enabled) {
-          onClickOutside();
-        }
+      const isClickOutside =
+        target instanceof Node && !ref.current?.contains(target);
+
+      if (isClickOutside && enabled) {
+        onClickOutside();
       }
     };
 

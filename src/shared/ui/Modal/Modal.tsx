@@ -7,6 +7,7 @@ import { useClickOutside } from "@shared/hooks/useClickOutside";
 import { ModalProps } from "./Modal.types";
 import classes from "./Modal.module.scss";
 import CustomButton from "../CustomButton";
+import { useScrollLock } from "@shared/hooks";
 
 const Modal: FC<ModalProps> = ({
   onOk,
@@ -17,15 +18,19 @@ const Modal: FC<ModalProps> = ({
   children,
   isOpen,
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
 
-  useClickOutside(ref, onCancel, isOpen);
+  const ModalContainerRef = useRef<HTMLDivElement>(null);
+
+
+  useClickOutside(ModalContainerRef, onCancel, isOpen);
+  useScrollLock(isOpen)
+
   return (
     <div className={classes.overlay}>
       <div
         className={classes.modalContainer}
         onClick={(e) => e.stopPropagation()}
-        ref={ref}
+        ref={ModalContainerRef}
       >
         {image && <img src={letter} className={classes.modalImage} />}
 
