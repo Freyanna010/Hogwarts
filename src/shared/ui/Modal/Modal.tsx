@@ -9,6 +9,8 @@ import classes from "./Modal.module.scss";
 import CustomButton from "../CustomButton";
 import { useScrollLock } from "@shared/hooks";
 
+import { createPortal } from "react-dom";
+
 const Modal: FC<ModalProps> = ({
   onOk,
   onCancel,
@@ -18,21 +20,17 @@ const Modal: FC<ModalProps> = ({
   children,
   isOpen,
 }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
 
-  const ModalContainerRef = useRef<HTMLDivElement>(null);
+  useClickOutside(modalRef, onCancel, isOpen);
+  useScrollLock(isOpen);
 
+  if (!isOpen) return null;
 
-  useClickOutside(ModalContainerRef, onCancel, isOpen);
-  useScrollLock(isOpen)
-
-  return (
+  return createPortal(
     <div className={classes.overlay}>
-      <div
-        className={classes.modalContainer}
-        onClick={(e) => e.stopPropagation()}
-        ref={ModalContainerRef}
-      >
-        {image && <img src={letter} className={classes.modalImage} />}
+      <div className={classes.modalContainer} ref={modalRef}>
+        {image && <img src={image} className={classes.modalImage} />}
 
         <div className={classes.modalContent}>
           <CustomButton
@@ -63,8 +61,10 @@ const Modal: FC<ModalProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body // или document.getElementById("modal-root")!
   );
 };
+
 
 export default Modal;
