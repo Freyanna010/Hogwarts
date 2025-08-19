@@ -11,7 +11,8 @@ import { useScrollLock } from "@shared/hooks";
 
 import { createPortal } from "react-dom";
 
-const Modal: FC<ModalProps> = ({
+const Modal: FC<ModalProps> = (props) => {
+  const {
   onOk,
   onCancel,
   image,
@@ -19,7 +20,8 @@ const Modal: FC<ModalProps> = ({
   cancelButtonText = "Cancel",
   children,
   isOpen,
-}) => {
+} = props
+   
   const modalRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(modalRef, onCancel, isOpen);
