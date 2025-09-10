@@ -34,7 +34,8 @@
       "@pages/*": ["pages/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@config/*": ["config/*"]
     }
   },
   "include": ["src"]
