@@ -1,1 +1,1 @@
-export { default } from "./VideoBg";
+export { default } from "./ui/VideoBg";
