@@ -1,0 +1,1 @@
+import{j as s,c as o}from"./index-DsyKhffv.js";const a="/Hogwarts/assets/BG-B78QEk3B.png",e="_cardBg_1qepo_1",g="_bgImg_1qepo_8",r="_content_1qepo_15",c={cardBg:e,bgImg:g,content:r},d=({children:t,className:n})=>s.jsxs("div",{className:o(c.cardBg,n),children:[s.jsx("img",{src:a,className:c.bgImg}),s.jsxs("div",{className:c.content,children:[" ",t]})]});export{d as B};

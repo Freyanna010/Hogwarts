@@ -1,0 +1,1 @@
+import{j as m,c as a}from"./index-DsyKhffv.js";const g="_swing_c9g9t_25",i="_zoom_c9g9t_29",e="_zoomIn_c9g9t_1",_={swing:g,zoom:i,zoomIn:e},l=o=>{const{className:s,type:n,onClick:t,...c}=o;return m.jsx("img",{className:a(_[n],s),...c,alt:"Loading...",onClick:t})};export{l as A};
