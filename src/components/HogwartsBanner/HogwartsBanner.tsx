@@ -1,8 +1,8 @@
-import Slider from "@components/ui/Slider";
 import { FC } from "react";
 
 import classes from "./HogwartsBanner.module.scss";
 import { HogwartsBannerProps } from "./HogwartsBanner.types";
+import Slider from "@shared/ui/Slider";
 
 const HogwartsBanner: FC<HogwartsBannerProps> = ({ images }) => {
   return (

@@ -1,6 +1,5 @@
 import { FC, useRef } from "react";
 import { CloseCircleOutlined } from "@ant-design/icons";
-import letter from "@assets/letter.jpg";
 import clsx from "clsx";
 import { useClickOutside } from "@shared/hooks/useClickOutside";
 

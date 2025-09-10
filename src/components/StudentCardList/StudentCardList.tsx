@@ -1,4 +1,4 @@
-import { Col, Input, Row } from "antd";
+import { Col, Row } from "antd";
 import { ChangeEvent, FC, memo } from "react";
 import { Direction } from "@shared/ui/SortingButton/SortingВutton.types";
 

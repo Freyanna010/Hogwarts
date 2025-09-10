@@ -1,4 +1,4 @@
-import { Direction } from "@components/ui/SortingButton/SortingВutton.types";
+import { Direction } from "@shared/ui/SortingButton/SortingВutton.types";
 import { Student } from "shared/types";
 
 export interface StudentCardListProps {
